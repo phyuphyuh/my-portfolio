@@ -1,38 +1,44 @@
 // import { motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from "./Intro.module.scss";
 // import cloudImage from "../assets/cloud.png";
 
 const Intro = () => {
-  const [hasMoved, setHasMoved] = useState(false);
+  const hasMovedRef = useRef(false);
+  const frameId = useRef(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [shadowLength, setShadowLength] = useState(0.5);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      if (!hasMoved) {
-        setHasMoved(true);
+      if (!hasMovedRef.current) {
+        hasMovedRef.current = true;
       }
 
-      const { innerWidth: width, innerHeight: height } = window;
-      const x = (e.clientX / width - 0.5) * 30;
-      const y = (e.clientY / height - 0.5) * -30;
-      setRotation({ x, y });
+      cancelAnimationFrame(frameId.current);
+      frameId.current = requestAnimationFrame(() => {
+        const { innerWidth: width, innerHeight: height } = window;
+        const x = (e.clientX / width - 0.5) * 30;
+        const y = (e.clientY / height - 0.5) * -30;
+        setRotation({ x, y });
 
-      const centerX = width / 2;
-      const centerY = height / 2;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const distX = e.clientX - centerX;
+        const distY = e.clientY - centerY;
+        const distance = Math.sqrt(distX ** 2 + distY ** 2);
 
-      const distX = Math.abs(e.clientX - centerX);
-      const distY = Math.abs(e.clientY - centerY);
-      const distance = Math.sqrt(distX ** 2 + distY ** 2);
-
-      const newShadowLength = Math.max(0.2, 1.5 - distance / 300);
-      setShadowLength(newShadowLength);
+        const newShadowLength = Math.max(0.2, 1.5 - distance / 300);
+        setShadowLength(newShadowLength);
+      });
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [hasMoved]);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(frameId.current);
+    };
+  }, []);
 
   return (
     <section className={styles.intro}>
@@ -44,7 +50,7 @@ const Intro = () => {
           }}
         >
           <h2 className={styles.name}>Phyu Phyu</h2>
-          {hasMoved && (
+          {hasMovedRef.current && (
             <div
               className={styles.shadow}
               style={{
