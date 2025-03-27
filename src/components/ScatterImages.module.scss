@@ -1,0 +1,16 @@
+// .container {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%;
+//   max-width: 600px;
+//   gap: 10px;
+// }
+
+.scatterImg {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  will-change: transform, opacity;
+}

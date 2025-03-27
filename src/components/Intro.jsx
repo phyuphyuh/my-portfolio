@@ -1,11 +1,12 @@
 // import { motion } from "motion/react";
 import { useEffect, useState, useRef } from "react";
+import ScatterImages from './ScatterImages';
 import styles from "./Intro.module.scss";
-// import cloudImage from "../assets/cloud.png";
 
 const Intro = () => {
   const hasMovedRef = useRef(false);
   const frameId = useRef(null);
+  const containerRef = useRef(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [shadowLength, setShadowLength] = useState(0.5);
 
@@ -28,7 +29,7 @@ const Intro = () => {
         const distY = e.clientY - centerY;
         const distance = Math.sqrt(distX ** 2 + distY ** 2);
 
-        const newShadowLength = Math.max(0.2, 1.5 - distance / 300);
+        const newShadowLength = Math.max(0.2, 1.5 - distance / 500);
         setShadowLength(newShadowLength);
       });
     };
@@ -41,12 +42,12 @@ const Intro = () => {
   }, []);
 
   return (
-    <section className={styles.intro}>
+    <section className={styles.intro} ref={containerRef}>
       <div className={styles.header}>
         <div
           className={styles.nameWrapper}
           style={{
-            transform: `perspective(1000px) rotateX(${rotation.y}deg) rotateY(${rotation.x}deg)`,
+            transform: `perspective(500px) rotateX(${rotation.y}deg) rotateY(${rotation.x}deg)`,
           }}
         >
           <h2 className={styles.name}>Phyu Phyu</h2>
@@ -64,45 +65,7 @@ const Intro = () => {
         <div className={styles.title}>
           <h1>Web Developer</h1>
         </div>
-        {/* <div className={styles.images}>
-          <img
-            className={styles.clouds}
-            src={cloudImage}
-            alt="clouds"
-          />
-        </div> */}
-
-        {/* <motion.div
-          className={styles.title}
-          initial="hidden"
-          animate="visible"
-          variants={{
-            visible: {
-              transition: {
-                staggerChildren: 0.2,
-              },
-            },
-          }}
-        >
-          <motion.h1
-            className={styles.nameOne}
-            variants={{
-              hidden: { y: 100, opacity: 0 },
-              visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 200, damping: 10 } },
-            }}
-          >
-            Phyu
-          </motion.h1>{" "}
-          <motion.h1
-            className={styles.nameTwo}
-            variants={{
-              hidden: { y: 100, opacity: 0 },
-              visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 200, damping: 10 } },
-            }}
-          >
-            Phyu
-          </motion.h1>
-        </motion.div> */}
+        <ScatterImages containerRef={containerRef} />
       </div>
     </section>
   );
