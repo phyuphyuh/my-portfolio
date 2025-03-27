@@ -1,12 +1,14 @@
 import { animate, hover } from "motion";
 import { useMotionValue } from "motion/react";
 import { useEffect, useRef } from "react";
+import pp from "../assets/pp2.png";
 import mochi from "../assets/mochi.png";
 import muffin from "../assets/muffin.png";
 import milo from "../assets/milo.png";
+import pac from "../assets/pac.png";
 import styles from "./ScatterImages.module.scss";
 
-const images = [mochi, muffin, milo];
+const images = [pp, mochi, muffin, milo, pac];
 
 const ScatterImages = ({ containerRef }) => {
   const velocityX = useMotionValue(0);
@@ -52,7 +54,12 @@ const ScatterImages = ({ containerRef }) => {
   }, [containerRef]);
 
   return images.map((src, index) => (
-    <img key={index} src={src} className={styles.scatterImg} alt="scatter" />
+    <img
+      key={index}
+      src={src}
+      className={`${styles.scatterImg} ${styles[`position${index + 1}`]} ${index === 0 ? styles.largeImage : ''}`}
+      alt="scatter"
+    />
   ));
 };
 
