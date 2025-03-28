@@ -3,28 +3,15 @@ import { motion } from "motion/react";
 import styles from "./AnimatedHeading.module.scss";
 
 const fonts = [
-  "Movement-DirectThin",
-  "ZTBrosOskon90s-Regular",
-  "Movement-IndirectBlack",
-  "Subjectivity-Medium",
-  "Meera Inimai",
-  "Subjectivity-LightSlanted",
-  "Subjectivity-Thin",
   "ZTBrosOskon90s-Light",
   "ZTBrosOskon90s-Italic",
+  "ZTBrosOskon90s-LightItalic",
 ];
 
 const colors = [
+  "var(--jet2)",
+  "var(--lapis)",
   "var(--cobalt-blue)",
-  "var(--prussian-blue)",
-  "var(--mediumblue)",
-  "var(--royalblue)",
-  "var(--polynesianblue)",
-  "var(--lighter-jet)",
-  "var(--subtitleyellow)",
-  "var(--aureolin)",
-  "var(--naplesyellow)",
-  "var(--flax)",
 ];
 
 const AnimatedHeading = () => {
@@ -35,14 +22,16 @@ const AnimatedHeading = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const newStyles = text.split("").map(() => ({
-        fontFamily: Math.random() > 0.5
-          ? fonts[Math.floor(Math.random() * fonts.length)]
-          : "inherit",
-        color: colors[Math.floor(Math.random() * colors.length)],
-      }));
-
-      setCharStyles(newStyles);
+      setCharStyles((prevStyles) =>
+        prevStyles.map((style) => ({
+          fontFamily: Math.random() > 0.8
+            ? fonts[Math.floor(Math.random() * fonts.length)]
+            : style.fontFamily,
+          color: Math.random() > 0.8
+            ? colors[Math.floor(Math.random() * colors.length)]
+            : style.color,
+        }))
+      );
     }, 700);
 
     return () => clearInterval(interval);
