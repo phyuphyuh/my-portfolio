@@ -63,12 +63,9 @@ const Intro = () => {
             </div>
           )}
         </div>
-        {/* <div className={styles.title}>
-          <h1>Web Developer</h1>
-        </div> */}
         <AnimatedHeading />
-        <ScatterImages containerRef={containerRef} />
       </div>
+      <ScatterImages containerRef={containerRef} />
     </section>
   );
 };

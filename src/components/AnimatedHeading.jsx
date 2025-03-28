@@ -3,15 +3,19 @@ import { motion } from "motion/react";
 import styles from "./AnimatedHeading.module.scss";
 
 const fonts = [
-  "ZTBrosOskon90s-Light",
+  "ZTBrosOskon90s-Regular",
   "ZTBrosOskon90s-Italic",
-  "ZTBrosOskon90s-LightItalic",
 ];
 
 const colors = [
-  "var(--jet2)",
-  "var(--lapis)",
-  "var(--cobalt-blue)",
+  // "var(--subtitleyellow)",
+  // "var(--naplesyellow)",
+  // "var(--flax)",
+  // "var(--maize)",
+  // "var(--aureolin)",
+  "var(--greenishbeige)",
+  "var(--citron)",
+  "var(--parchment)",
 ];
 
 const AnimatedHeading = () => {
