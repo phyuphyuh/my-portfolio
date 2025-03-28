@@ -6,9 +6,10 @@ import mochi from "../assets/mochi.png";
 import muffin from "../assets/muffin.png";
 import milo from "../assets/milo.png";
 import pac from "../assets/pac.png";
+import matcha from "../assets/matcha.png";
 import styles from "./ScatterImages.module.scss";
 
-const images = [pp, mochi, muffin, milo, pac];
+const images = [pp, mochi, muffin, milo, pac, matcha];
 
 const ScatterImages = ({ containerRef }) => {
   const velocityX = useMotionValue(0);

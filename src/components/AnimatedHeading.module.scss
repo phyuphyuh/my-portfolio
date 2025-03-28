@@ -1,0 +1,14 @@
+@use '../styles/global.scss' as *;
+
+.title {
+  width: 100%;
+  max-width: 420px;
+  margin: 12px auto;
+  font-family: "Meera Inimai", sans-serif;
+  color: $aureolin;
+
+  span {
+    // font-size: 3.5rem;
+    font-size: calc(1.5rem + 2vw);
+  }
+}

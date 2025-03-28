@@ -1,6 +1,7 @@
 // import { motion } from "motion/react";
 import { useEffect, useState, useRef } from "react";
 import ScatterImages from './ScatterImages';
+import AnimatedHeading from './AnimatedHeading';
 import styles from "./Intro.module.scss";
 
 const Intro = () => {
@@ -62,9 +63,10 @@ const Intro = () => {
             </div>
           )}
         </div>
-        <div className={styles.title}>
+        {/* <div className={styles.title}>
           <h1>Web Developer</h1>
-        </div>
+        </div> */}
+        <AnimatedHeading />
         <ScatterImages containerRef={containerRef} />
       </div>
     </section>

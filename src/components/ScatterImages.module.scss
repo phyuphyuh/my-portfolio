@@ -6,12 +6,12 @@
 }
 
 .largeImage {
-  width: 250px;
-  height: 250px;
+  width: 270px;
+  height: 270px;
 }
 
 .position1 {
-  top: 20%;
+  top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -29,13 +29,19 @@
 }
 
 .position4 {
+  top: 80%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+}
+
+.position5 {
   top: 70%;
   left: 55%;
   transform: translate(-50%, -50%);
 }
 
-.position4 {
-  top: 80%;
-  left: 35%;
+.position6 {
+  top: 60%;
+  left: 85%;
   transform: translate(-50%, -50%);
 }
