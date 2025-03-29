@@ -31,6 +31,10 @@
   font-family: 'ZTBrosOskon90s-LightItalic';
   src: url('../fonts/webfonts/ZTBrosOskon90s/ZTBrosOskon90s-LightItalic.woff2') format('woff2');
 }
+@font-face {
+  font-family: 'ZTBrosOskon90s-ExtraLight';
+  src: url('../fonts/webfonts/ZTBrosOskon90s/ZTBrosOskon90s-ExtraLight.woff2') format('woff2');
+}
 
 @font-face {
   font-family: 'Subjectivity-Thin';
@@ -64,4 +68,21 @@
 @font-face {
   font-family: 'SimplePrint-Bold';
   src: url('../fonts/webfonts/SimplePrint/simple-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Velvelyne-Regular';
+  src: url('../fonts/webfonts/Velvelyne/Velvelyne-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Velvelyne-Bold';
+  src: url('../fonts/webfonts/Velvelyne/Velvelyne-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Velvelyne-Book';
+  src: url('../fonts/webfonts/Velvelyne/Velvelyne-Book.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Velvelyne-Light';
+  src: url('../fonts/webfonts/Velvelyne/Velvelyne-Light.woff2') format('woff2');
 }

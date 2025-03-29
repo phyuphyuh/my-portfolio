@@ -7,22 +7,17 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
   background-color: $moonrise;
   text-align: center;
   position: relative;
-  overflow: hidden;
+  // overflow: hidden;
 
-  // .header {
-  //   width: 100%;
-  //   height: 400px;
-  //   margin: 100px 0;
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-  //   align-items: center;
-  //   background-color: $moonrise;
-  // }
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
   .nameWrapper {
     display: inline-block;
