@@ -9,7 +9,6 @@
   align-items: center;
   background-color: $moonrise;
   text-align: center;
-  position: relative;
   // overflow: hidden;
 
   .header {
@@ -17,6 +16,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
   }
 
   .nameWrapper {

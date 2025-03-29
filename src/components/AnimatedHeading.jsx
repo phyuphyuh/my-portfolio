@@ -1,17 +1,5 @@
-import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import styles from "./AnimatedHeading.module.scss";
-
-// const fonts = [
-//   "Velvelyne-Regular",
-//   "Velvelyne-Light",
-//   "Velvelyne-Bold",
-//   "Velvelyne-Book",
-// ];
-
-// const colors = [
-//   "var(--jet2)",
-// ];
 
 const AnimatedHeading = () => {
   const letters = [
@@ -31,50 +19,10 @@ const AnimatedHeading = () => {
     "m 236.84203,106.03808 c 1.55351,5.11139 -0.4041,15.19722 4.34538,17.45364 -1.28189,-7.48943 1.90122,-19.27181 11.38981,-17.95043 4.93316,-1.78013 -5.21826,-2.1499 -7.36256,-0.52313 -5.6897,2.65501 -8.63718,15.66403 -3.97438,17.32541 -2.224,-5.07218 -0.22805,-14.50494 -4.08571,-17.10102 l -0.3125,0.79549 z",
   ];
 
-  // const text = "Web Developer";
-  // const [charStyles, setCharStyles] = useState(
-  //   text.split("").map(() => ({ fontFamily: "inherit" }))
-  // );
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCharStyles((prevStyles) =>
-  //       prevStyles.map((style) => ({
-  //         fontFamily: Math.random() > 0.8
-  //           ? fonts[Math.floor(Math.random() * fonts.length)]
-  //           : style.fontFamily,
-  //         color: Math.random() > 0.8
-  //           ? colors[Math.floor(Math.random() * colors.length)]
-  //           : style.color,
-  //       }))
-  //     );
-  //   }, 700);
-
-  //   return () => clearInterval(interval);
-  // }, []);
-
   return (
-    // <motion.h1 className={styles.title} initial={{ scale: 0.5 }} animate={{ scale: 1 }} transition={{ duration: 1 }}>
-    //   {text.split("").map((char, index) => (
-    //     <motion.span
-    //       key={index}
-    //       style={{
-    //         fontFamily: charStyles[index].fontFamily,
-    //         color: charStyles[index].color
-    //       }}
-    //       initial={{ opacity: 0, scale: 0.5 }}
-    //       animate={{ opacity: 1, scale: 1 }}
-    //       transition={{ duration: 0.3 }}
-    //     >
-    //       {char}
-    //     </motion.span>
-    //   ))}
-    // </motion.h1>
     <motion.svg
       className={styles.title}
       xmlns="http://www.w3.org/2000/svg"
-      width="400"
-      height="auto"
       initial="hidden"
       animate="visible"
     >
@@ -84,16 +32,14 @@ const AnimatedHeading = () => {
             d={d}
             fill="transparent"
             stroke="var(--lighter-jet)"
-            strokeWidth="1.7"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            // initial={{ pathLength: 0 }}
-            // animate={{ pathLength: 1 }}
             initial={{ strokeDasharray: 500, strokeDashoffset: 500 }}
             animate={{ strokeDashoffset: 0 }}
             transition={{
-              duration: 0.8,
-              ease: "linear",
+              duration: 0.5,
+              ease: "easeInOut",
               delay: index * 0.6,
             }}
         />
