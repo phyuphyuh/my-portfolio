@@ -28,7 +28,8 @@
       font-family: "Subjectivity-Black", sans-serif;
       color: $aureolin;
       // font-size: 4.5rem;
-      font-size: calc(2.2rem + 2.5vw);
+      // font-size: calc(2.2rem + 2.5vw);
+      font-size: calc(5.2rem + 2.5vw);
       margin: 0;
       position: relative;
       z-index: 2;
@@ -37,7 +38,8 @@
     .shadow {
       font-family: "Subjectivity-Black", sans-serif;
       // font-size: 4.5rem;
-      font-size: calc(2.2rem + 2.5vw);
+      // font-size: calc(2.2rem + 2.5vw);
+      font-size: calc(5.2rem + 2.5vw);
       color: rgba($moonstone, 0.9);
       position: absolute;
       bottom: -5px;
