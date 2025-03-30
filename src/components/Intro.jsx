@@ -2,6 +2,8 @@
 import { useEffect, useState, useRef } from "react";
 import ScatterImages from './ScatterImages';
 import AnimatedHeading from './AnimatedHeading';
+import { web_developer_paths } from "../svgPaths.js";
+import { yangon_mm_paths } from "../svgPaths.js";
 import styles from "./Intro.module.scss";
 
 const Intro = () => {
@@ -44,28 +46,27 @@ const Intro = () => {
 
   return (
     <section className={styles.intro} ref={containerRef}>
-      <div className={styles.header}>
-        <div
-          className={styles.nameWrapper}
-          style={{
-            transform: `perspective(500px) rotateX(${rotation.y}deg) rotateY(${rotation.x}deg)`,
-          }}
-        >
-          <h2 className={styles.name}>Phyu Phyu</h2>
-          {hasMovedRef.current && (
-            <div
-              className={styles.shadow}
-              style={{
-                transform: `rotateX(${rotation.y}deg) scaleY(${shadowLength}) skew(${rotation.x * 0.5}deg)`,
-              }}
-            >
-              Phyu Phyu
-            </div>
-          )}
-        </div>
-        <AnimatedHeading />
+      <div
+        className={styles.nameWrapper}
+        style={{
+          transform: `perspective(500px) rotateX(${rotation.y}deg) rotateY(${rotation.x}deg)`,
+        }}
+      >
+        <h2 className={styles.name}>Phyu Phyu</h2>
+        {hasMovedRef.current && (
+          <div
+            className={styles.shadow}
+            style={{
+              transform: `rotateX(${rotation.y}deg) scaleY(${shadowLength}) skew(${rotation.x * 0.5}deg)`,
+            }}
+          >
+            Phyu Phyu
+          </div>
+        )}
       </div>
       <ScatterImages containerRef={containerRef} />
+      <AnimatedHeading letters={web_developer_paths} className={styles.webdev} />
+      <AnimatedHeading letters={yangon_mm_paths} className={styles.yangon} />
     </section>
   );
 };

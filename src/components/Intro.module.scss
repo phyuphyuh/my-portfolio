@@ -9,15 +9,8 @@
   align-items: center;
   background-color: $moonrise;
   text-align: center;
+  position: relative;
   // overflow: hidden;
-
-  .header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
 
   .nameWrapper {
     display: inline-block;
@@ -54,17 +47,14 @@
     }
   }
 
-  .images {
-    .clouds {
-      width: 100%;
-      min-width: 1200px;
-      height: auto;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      object-fit: cover;
-      overflow: hidden;
-    }
+  .webdev {
+    top: 20%;
+    left: 70%;
   }
+
+  .yangon {
+    top: 15%;
+    left: 30%;
+  }
+
 }
