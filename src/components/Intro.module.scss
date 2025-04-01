@@ -7,7 +7,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: $moonrise;
+  background-color: $alabaster2;
   text-align: center;
   position: relative;
   // overflow: hidden;
@@ -16,24 +16,28 @@
     display: inline-block;
     transform-origin: center;
     perspective: 150px;
+    width: 500px;
+    line-height: 1;
 
     .name {
-      font-family: "Subjectivity-Black", sans-serif;
-      color: $aureolin;
+      font-family: "Montserrat Alternates", sans-serif;
+      color: $steel-blue;
       // font-size: 4.5rem;
       // font-size: calc(2.2rem + 2.5vw);
-      font-size: calc(5.2rem + 2.5vw);
+      font-size: calc(8.2rem + 2.5vw);
+      font-weight: 800;
       margin: 0;
       position: relative;
       z-index: 2;
     }
 
     .shadow {
-      font-family: "Subjectivity-Black", sans-serif;
+      font-family: "Montserrat Alternates", sans-serif;
       // font-size: 4.5rem;
       // font-size: calc(2.2rem + 2.5vw);
-      font-size: calc(5.2rem + 2.5vw);
-      color: rgba($moonstone, 0.9);
+      font-size: calc(8.2rem + 2.5vw);
+      font-weight: 800;
+      color: rgba($ruddy-blue, 0.6);
       position: absolute;
       bottom: -5px;
       left: 0;
@@ -48,8 +52,9 @@
   }
 
   .webdev {
-    top: 20%;
-    left: 70%;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .yangon {
