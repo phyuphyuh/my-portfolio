@@ -15,46 +15,64 @@
   .nameWrapper {
     display: inline-block;
     transform-origin: center;
-    perspective: 150px;
     width: 500px;
-    line-height: 1;
+    line-height: 0.8;
 
     .name {
       font-family: "Montserrat Alternates", sans-serif;
       color: $steel-blue;
       // font-size: 4.5rem;
       // font-size: calc(2.2rem + 2.5vw);
-      font-size: calc(8.2rem + 2.5vw);
+      font-size: calc(8.2rem + 3vw);
       font-weight: 800;
-      margin: 0;
       position: relative;
-      z-index: 2;
-    }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
-    .shadow {
-      font-family: "Montserrat Alternates", sans-serif;
-      // font-size: 4.5rem;
-      // font-size: calc(2.2rem + 2.5vw);
-      font-size: calc(8.2rem + 2.5vw);
-      font-weight: 800;
-      color: rgba($ruddy-blue, 0.6);
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      right: 0;
-      z-index: 1;
-      transform-origin: 0 100% 80px;
-      transform-style: preserve-3d;
-      filter: blur(3px);
-      opacity: 0.3;
-      pointer-events: none;
+      span:first-of-type {
+        position: relative;
+        display: block;
+      }
+
+      .shadowWrapper {
+        position: absolute;
+        top: -30px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        perspective: 300px;
+        z-index: -1;
+
+        .shadow {
+          font-size: inherit;
+          line-height: 0;
+          color: rgba($jet2, 0.4);
+          // position: absolute;
+          // top: -50px;
+          // left: 0;
+          // right: 0;
+          // transform-origin: 0 100% 80px;
+          transform-origin: bottom;
+          transform-style: preserve-3d;
+          perspective: 50px;
+          filter: blur(2px);
+          opacity: 0.3;
+          pointer-events: none;
+          transform: translateY(20px);
+        }
+      }
     }
   }
 
   .webdev {
     top: 80%;
     left: 50%;
-    transform: translate(-50%, -50%);
+
+    path {
+      stroke-width: 2.3px;
+    }
   }
 
   .yangon {

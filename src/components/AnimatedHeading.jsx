@@ -5,7 +5,7 @@ import styles from "./AnimatedHeading.module.scss";
 const AnimatedHeading = ({ letters, className }) => {
   const [key, setKey] = useState(0);
   const totalDuration = 0.4 + letters.length * 0.3;
-  const fadeOutDuration = totalDuration + 1.5;
+  const fadeOutDuration = totalDuration + 2.5;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -16,15 +16,15 @@ const AnimatedHeading = ({ letters, className }) => {
   }, [totalDuration, fadeOutDuration]);
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence propagate mode="wait">
       <motion.div
         key={key}
         className={`${styles.animatedText} ${className}`}
-        // initial="hidden"
-        // animate="visible"
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+        initial="hidden"
+        animate="visible"
+        // initial={{ opacity: 1 }}
+        // animate={{ opacity: 1 }}
+        // exit={{ opacity: 0 }}
         transition={{ duration: fadeOutDuration, ease: "easeInOut" }}
       >
         <svg xmlns="http://www.w3.org/2000/svg">
@@ -39,11 +39,11 @@ const AnimatedHeading = ({ letters, className }) => {
                 strokeLinejoin="round"
                 initial={{ strokeDasharray: "100%", strokeDashoffset: "100%" }}
                 animate={{ strokeDashoffset: 0 }}
-                exit={{ strokeOpacity: 0 }}
+                exit={{ strokeOpacity: 0, strokeDashoffset: "100%" }}
                 transition={{
                   duration: 0.4,
                   ease: "easeInOut",
-                  delay: 0.3 + index * 0.3,
+                  delay: 0.4 + index * 0.3,
                 }}
             />
           ))}

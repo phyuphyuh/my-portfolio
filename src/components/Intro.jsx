@@ -52,8 +52,31 @@ const Intro = () => {
           transform: `perspective(500px) rotateX(${rotation.y}deg) rotateY(${rotation.x}deg)`,
         }}
       >
-        <h2 className={styles.name}>Phyu Phyu</h2>
-        {hasMovedRef.current && (
+        {/* <h2 className={styles.name}>Phyu Phyu</h2> */}
+        <h2 className={styles.name}>
+          <span>
+            Phyu
+            {hasMovedRef.current && (
+              <span className={styles.shadowWrapper}>
+                <span className={styles.shadow} style={{ transform: `rotateX(${rotation.y}deg) scaleY(${shadowLength * 1.5}) skew(${rotation.x * 0.5}deg) translateX(${-(rotation.x)}px) translateY(${rotation.y}px)` }}>
+                  Phyu
+                </span>
+              </span>
+            )}
+          </span>
+          <span>
+            Phyu
+            {hasMovedRef.current && (
+              <span className={styles.shadowWrapper}>
+                <span className={styles.shadow} style={{ transform: `rotateX(${rotation.y}deg) scaleY(${shadowLength * 1.5}) skew(${rotation.x * 0.5}deg) translateX(${-(rotation.x)}px) translateY(${rotation.y}px)` }}>
+                  Phyu
+                </span>
+              </span>
+            )}
+          </span>
+        </h2>
+
+        {/* {hasMovedRef.current && (
           <div
             className={styles.shadow}
             style={{
@@ -62,7 +85,27 @@ const Intro = () => {
           >
             Phyu Phyu
           </div>
-        )}
+        )} */}
+        {/* {hasMovedRef.current && (
+          <div className={styles.shadowWrapper}>
+            <div
+              className={styles.shadow}
+              style={{
+                transform: `rotateX(${rotation.y}deg) scaleY(${shadowLength}) skew(${rotation.x * 0.5}deg)`,
+              }}
+            >
+              Phyu
+            </div>
+            <div
+              className={styles.shadow}
+              style={{
+                transform: `rotateX(${rotation.y}deg) scaleY(${shadowLength}) skew(${rotation.x * 0.5}deg)`,
+              }}
+            >
+              Phyu
+            </div>
+          </div>
+        )} */}
       </div>
       <ScatterImages containerRef={containerRef} />
       <AnimatedHeading letters={web_developer_paths} className={styles.webdev} />
