@@ -6,10 +6,9 @@ import { web_developer_paths } from "../svgPaths.js";
 import { yangon_mm_paths } from "../svgPaths.js";
 import styles from "./Intro.module.scss";
 
-const Intro = () => {
+const Intro = ({ containerRef }) => {
   const hasMovedRef = useRef(false);
   const frameId = useRef(null);
-  const containerRef = useRef(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [shadowLength, setShadowLength] = useState(0.5);
 
@@ -45,7 +44,7 @@ const Intro = () => {
   }, []);
 
   return (
-    <section className={styles.intro} ref={containerRef}>
+    <section className={styles.intro}>
       <div
         className={styles.nameWrapper}
         style={{
@@ -57,7 +56,18 @@ const Intro = () => {
             Phyu
             {hasMovedRef.current && (
               <span className={styles.shadowWrapper}>
-                <span className={styles.shadow} style={{ transform: `rotateX(${rotation.y}deg) scaleY(${shadowLength * 1.5}) skew(${rotation.x * 0.5}deg) translateX(${-(rotation.x)}px) translateY(${rotation.y}px)` }}>
+                <span
+                  className={styles.shadow}
+                  style={{
+                    transform: `
+                      rotateX(${rotation.y}deg)
+                      scaleY(${shadowLength * 1.5})
+                      skew(${rotation.x * 0.5}deg)
+                      translateX(${-(rotation.x)}px)
+                      translateY(${rotation.y}px)
+                    `
+                  }}
+                >
                   Phyu
                 </span>
               </span>
@@ -67,7 +77,18 @@ const Intro = () => {
             Phyu
             {hasMovedRef.current && (
               <span className={styles.shadowWrapper}>
-                <span className={styles.shadow} style={{ transform: `rotateX(${rotation.y}deg) scaleY(${shadowLength * 1.5}) skew(${rotation.x * 0.5}deg) translateX(${-(rotation.x)}px) translateY(${rotation.y}px)` }}>
+                <span
+                  className={styles.shadow}
+                  style={{
+                    transform: `
+                      rotateX(${rotation.y}deg)
+                      scaleY(${shadowLength * 1.5})
+                      skew(${rotation.x * 0.5}deg)
+                      translateX(${-(rotation.x)}px)
+                      translateY(${rotation.y}px)
+                    `
+                  }}
+                >
                   Phyu
                 </span>
               </span>

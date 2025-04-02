@@ -38,12 +38,29 @@ const AnimatedHeading = ({ letters, className }) => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 initial={{ strokeDasharray: "100%", strokeDashoffset: "100%" }}
-                animate={{ strokeDashoffset: 0 }}
-                exit={{ strokeOpacity: 0, strokeDashoffset: "100%" }}
-                transition={{
-                  duration: 0.4,
-                  ease: "easeInOut",
-                  delay: 0.4 + index * 0.3,
+                // animate={{ strokeDashoffset: 0 }}
+                // exit={{ strokeOpacity: 0, strokeDashoffset: "100%" }}
+                // transition={{
+                //   duration: 0.4,
+                //   ease: "easeInOut",
+                //   delay: 0.4 + index * 0.3,
+                // }}
+                animate={{
+                  strokeDashoffset: 0,
+                  transition: {
+                    duration: 0.4,
+                    ease: "easeInOut",
+                    delay: 0.4 + index * 0.3,
+                  },
+                }}
+                exit={{
+                  strokeDashoffset: "100%",
+                  strokeOpacity: 0,
+                  transition: {
+                    duration: 0.4,
+                    ease: "easeInOut",
+                    delay: 0.4 + (letters.length - 1 - index) * 0.3,
+                  },
                 }}
             />
           ))}
