@@ -10,9 +10,6 @@ const Nav = () => {
         <li className={styles.navItem}>
           <a href="#projects" className={styles.navLink}>Projects</a>
         </li>
-        <li className={styles.navItem}>
-          <a href="#contact" className={styles.navLink}>Contact</a>
-        </li>
       </ul>
     </nav>
   );
