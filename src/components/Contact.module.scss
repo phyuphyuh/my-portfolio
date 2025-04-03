@@ -17,14 +17,14 @@
     .tab {
       width: 200px;
       position: absolute;
-      left: 80px; // Adjust so it's inside the hidden part of the tab
+      left: 80px;
       top: 0;
       z-index: 100;
     }
 
     .contactList {
       position: absolute;
-      left: -90px; // Adjust so it's inside the hidden part of the tab
+      left: -90px;
       top: 150px;
       transform: translateY(-50%);
       list-style: none;
@@ -45,8 +45,8 @@
     }
   }
 
-  &:hover {
-    left: -80px; // Slide out on hover
-  }
+  // &:hover {
+  //   left: -83px;
+  // }
 
 }

@@ -1,4 +1,3 @@
-// import { motion } from "motion/react";
 import { useEffect, useState, useRef } from "react";
 import ScatterImages from './ScatterImages';
 import AnimatedHeading from './AnimatedHeading';
