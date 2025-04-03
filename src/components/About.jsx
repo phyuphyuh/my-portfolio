@@ -7,7 +7,7 @@ const About = () => {
       <div className={styles.aboutContent}>
         <h2 className={styles.aboutTitle}>About Me</h2>
         <p className={styles.aboutText}>
-          Sup
+          Hi! I'm Phyu Phyu, a full-stack developer with a passion for frontend. Trained in Tokyo. From Yangon.
         </p>
       </div>
     </section>

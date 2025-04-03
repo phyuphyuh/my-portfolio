@@ -7,7 +7,12 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: $alabaster2;
+  background: linear-gradient(
+    to bottom,
+    $ivory,
+    $alabaster,
+    $alabaster2,
+  );
   text-align: center;
   position: relative;
   // overflow: hidden;
@@ -76,7 +81,7 @@
   }
 
   .yangon {
-    top: 15%;
+    top: 25%;
     left: 30%;
   }
 

@@ -22,9 +22,6 @@ const AnimatedHeading = ({ letters, className }) => {
         className={`${styles.animatedText} ${className}`}
         initial="hidden"
         animate="visible"
-        // initial={{ opacity: 1 }}
-        // animate={{ opacity: 1 }}
-        // exit={{ opacity: 0 }}
         transition={{ duration: fadeOutDuration, ease: "easeInOut" }}
       >
         <svg xmlns="http://www.w3.org/2000/svg">
@@ -55,9 +52,8 @@ const AnimatedHeading = ({ letters, className }) => {
                 }}
                 exit={{
                   strokeDashoffset: "100%",
-                  strokeOpacity: 0,
                   transition: {
-                    duration: 0.4,
+                    duration: 0.2,
                     ease: "easeInOut",
                     delay: 0.4 + (letters.length - 1 - index) * 0.3,
                   },
