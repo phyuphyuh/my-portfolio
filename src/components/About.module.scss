@@ -3,10 +3,10 @@
 .about {
   width: 100%;
   height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: center;
+  // align-items: center;
   background: linear-gradient(
     to bottom,
     $alabaster2,
@@ -14,4 +14,20 @@
     $moonrise,
   );
 
+  .aboutContent {
+    position: relative;
+
+    .aboutContainer {
+      max-width: 700px;
+      width: 100%;
+      height: auto;
+    }
+
+    .aboutText {
+      position: absolute;
+      top: 20%;
+      left: 30%;
+      transform: translate(-50%, -50%);
+    }
+  }
 }

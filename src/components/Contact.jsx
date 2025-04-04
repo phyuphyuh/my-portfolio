@@ -10,7 +10,7 @@ const Contact = () => {
     <motion.div
       className={styles.contact}
       initial={{ left: '-130px'}}
-      whileHover={{ left: '-85px'}}
+      whileHover={{ left: '-84px'}}
       transition={{ type: 'spring', stiffness: 400, damping: 25 }}
     >
       <div className={styles.contactInner}>
@@ -22,21 +22,21 @@ const Contact = () => {
             whileHover={{ scale: 1.2, rotate: 10 }}
             transition={{ type: 'spring', stiffness: 300, damping: 10 }}
           >
-            <a href="https://github.com/phyuphyuh" target="_blank" className={styles.contactLink}><FontAwesomeIcon icon={faGithub} /></a>
+            <a href="https://github.com/phyuphyuh" target="_blank"><FontAwesomeIcon icon={faGithub} /></a>
           </motion.li>
           <motion.li
             className={styles.contactItem}
             whileHover={{ scale: 1.2, rotate: 10 }}
             transition={{ type: 'spring', stiffness: 300, damping: 10 }}
           >
-            <a href="https://www.linkedin.com/in/phyuphyuhlaing" target="_blank" className={styles.contactLink}><FontAwesomeIcon icon={faLinkedin} /></a>
+            <a href="https://www.linkedin.com/in/phyuphyuhlaing" target="_blank"><FontAwesomeIcon icon={faLinkedin} /></a>
           </motion.li>
           <motion.li
             className={styles.contactItem}
             whileHover={{ scale: 1.2, rotate: 10 }}
             transition={{ type: 'spring', stiffness: 300, damping: 10 }}
           >
-            <a href="mailto:phyuphyu.h27@gmail.com" className={styles.contactLink}><FontAwesomeIcon icon={faEnvelope} /></a>
+            <a href="mailto:phyuphyu.h27@gmail.com"><FontAwesomeIcon icon={faEnvelope} /></a>
           </motion.li>
         </ul>
       </div>

@@ -54,7 +54,7 @@ const AnimatedHeading = ({ letters, className }) => {
                   strokeDashoffset: "100%",
                   transition: {
                     duration: 0.2,
-                    ease: "easeInOut",
+                    ease: "easeOut",
                     delay: 0.4 + (letters.length - 1 - index) * 0.3,
                   },
                 }}

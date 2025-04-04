@@ -3,6 +3,8 @@ import Nav from './components/Nav';
 import Intro from './components/Intro';
 import About from './components/About';
 import Contact from './components/Contact';
+import "@fontsource/montserrat-alternates";
+import "@fontsource/montserrat-alternates/800.css";
 import './App.scss'
 
 function App() {
