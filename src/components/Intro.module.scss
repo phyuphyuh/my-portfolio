@@ -28,7 +28,7 @@
       color: $steel-blue;
       // font-size: 4.5rem;
       // font-size: calc(2.2rem + 2.5vw);
-      font-size: calc(8.2rem + 3vw);
+      font-size: calc(7rem + 4vw);
       font-weight: 800;
       position: relative;
       display: flex;
@@ -72,8 +72,9 @@
   }
 
   .webdev {
-    top: 80%;
+    top: 83%;
     left: 50%;
+    transform: translate(-50%, -50%);
 
     path {
       stroke-width: 2.3px;
@@ -82,7 +83,14 @@
 
   .yangon {
     top: 25%;
-    left: 30%;
+    left: 37%;
+    transform: translate(-50%, -50%);
+  }
+
+  .portfolio {
+    top: 25%;
+    left: 75%;
+    transform: translate(-50%, -50%);
   }
 
 }

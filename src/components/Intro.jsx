@@ -3,6 +3,7 @@ import ScatterImages from './ScatterImages';
 import AnimatedHeading from './AnimatedHeading';
 import { web_developer_paths } from "../svgPaths.js";
 import { yangon_mm_paths } from "../svgPaths.js";
+import { portfolio_paths } from "../svgPaths.js";
 import styles from "./Intro.module.scss";
 
 const Intro = ({ containerRef }) => {
@@ -98,6 +99,7 @@ const Intro = ({ containerRef }) => {
       <ScatterImages containerRef={containerRef} />
       <AnimatedHeading letters={web_developer_paths} className={styles.webdev} />
       <AnimatedHeading letters={yangon_mm_paths} className={styles.yangon} />
+      <AnimatedHeading letters={portfolio_paths} className={styles.portfolio} />
     </section>
   );
 };

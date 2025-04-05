@@ -21,8 +21,8 @@ const About = () => {
 
   const x = useTransform(
     scrollYProgress,
-    [0, 0.8],
-    width < 768 ? ["100vw", "0vw"] : ["100vw", "40vw"]
+    [0.2, 0.8],
+    width < 768 ? ["100vw", "5vw"] : ["100vw", "40vw"]
   );
 
   return (
@@ -55,7 +55,7 @@ const About = () => {
         </svg>
         <h2 className={styles.aboutTitle}>About Me</h2>
         <p className={styles.aboutText}>
-          Hi! I'm Phyu Phyu, a full-stack developer with a passion for frontend. Trained in Tokyo. From Yangon.
+          Hi! I'm Phyu Phyu, a full-stack developer with a passion for frontend — trained in Tokyo, from Yangon.
         </p>
       </motion.div>
     </section>

@@ -15,19 +15,25 @@
   );
 
   .aboutContent {
-    position: relative;
+
 
     .aboutContainer {
+      margin: 80px auto;
       max-width: 700px;
-      width: 100%;
+      width: 90%;
       height: auto;
+      position: relative;
     }
 
     .aboutText {
       position: absolute;
-      top: 20%;
-      left: 30%;
+      top: 30%;
+      left: 25%;
       transform: translate(-50%, -50%);
+      max-width: 600px;
+      font-family: 'ZTBrosOskon90s-Regular', sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.5;
     }
   }
 }

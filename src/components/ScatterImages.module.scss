@@ -11,37 +11,48 @@
 }
 
 .position1 {
-  top: 20%;
-  left: 50%;
+  top: 25%;
+  left: 17%;
   transform: translate(-50%, -50%);
 }
 
 .position2 {
-  top: 50%;
-  left: 20%;
+  top: 62%;
+  left: 33%;
   transform: translate(-50%, -50%);
 }
 
 .position3 {
-  top: 70%;
-  left: 70%;
+  top: 50%;
+  left: 75%;
   transform: translate(-50%, -50%);
 }
 
 .position4 {
-  top: 80%;
-  left: 35%;
+  top: 87%;
+  left: 42%;
   transform: translate(-50%, -50%);
 }
 
 .position5 {
-  top: 20%;
-  left: 85%;
+  top: 12%;
+  left: 83%;
   transform: translate(-50%, -50%);
 }
 
 .position6 {
-  top: 60%;
-  left: 85%;
+  top: 62%;
+  left: 58%;
   transform: translate(-50%, -50%);
+}
+
+@media (max-width: 768px) {
+  .scatterImg {
+    width: 80px;
+    height: 80px;
+  }
+  .largeImage {
+    width: 200px;
+    height: auto;
+  }
 }
