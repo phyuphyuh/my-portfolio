@@ -9,7 +9,14 @@ import pac from "../assets/pac.png";
 import matcha from "../assets/matcha.png";
 import styles from "./ScatterImages.module.scss";
 
-const images = [pp, mochi, muffin, milo, pac, matcha];
+const images = [
+  { src: pp, size: 'large' },
+  { src: mochi },
+  { src: muffin },
+  { src: milo },
+  { src: pac, size: 'small' },
+  { src: matcha, size: 'small' },
+];
 
 const ScatterImages = ({ containerRef }) => {
   const velocityX = useMotionValue(0);
@@ -54,11 +61,11 @@ const ScatterImages = ({ containerRef }) => {
       };
   }, [containerRef]);
 
-  return images.map((src, index) => (
+  return images.map(({ src, size }, index) => (
     <img
       key={index}
       src={src}
-      className={`${styles.scatterImg} ${styles[`position${index + 1}`]} ${index === 0 ? styles.largeImage : ''}`}
+      className={`${styles.scatterImg} ${styles[`position${index + 1}`]} ${size ? styles[size] : ''}`}
       alt="scatter"
     />
   ));

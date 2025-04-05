@@ -5,44 +5,49 @@
   position: absolute;
 }
 
-.largeImage {
-  width: 250px;
+.large {
+  width: 180px;
+  height: auto;
+}
+
+.small {
+  width: 80px;
   height: auto;
 }
 
 .position1 {
   top: 25%;
-  left: 17%;
+  left: 83%;
   transform: translate(-50%, -50%);
 }
 
 .position2 {
-  top: 62%;
-  left: 33%;
+  top: 12%;
+  left: 42%;
   transform: translate(-50%, -50%);
 }
 
 .position3 {
   top: 50%;
-  left: 75%;
+  left: 62%;
   transform: translate(-50%, -50%);
 }
 
 .position4 {
-  top: 87%;
-  left: 42%;
+  top: 62%;
+  left: 33%;
   transform: translate(-50%, -50%);
 }
 
 .position5 {
-  top: 12%;
-  left: 83%;
+  top: 25%;
+  left: 17%;
   transform: translate(-50%, -50%);
 }
 
 .position6 {
   top: 62%;
-  left: 58%;
+  left: 75%;
   transform: translate(-50%, -50%);
 }
 
@@ -51,8 +56,8 @@
     width: 80px;
     height: 80px;
   }
-  .largeImage {
-    width: 200px;
+  .large {
+    width: 140px;
     height: auto;
   }
 }
