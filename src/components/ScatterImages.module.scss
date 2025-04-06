@@ -15,25 +15,30 @@
   height: auto;
 }
 
+.xsmall {
+  width: 53px;
+  height: auto;
+}
+
+// .position1 {
+//   top: 15%;
+//   left: 92%;
+//   transform: translate(-50%, -50%);
+// }
+
 .position1 {
-  top: 25%;
-  left: 83%;
+  top: 75%;
+  left: 75%;
   transform: translate(-50%, -50%);
 }
 
 .position2 {
-  top: 12%;
-  left: 42%;
-  transform: translate(-50%, -50%);
-}
-
-.position3 {
   top: 50%;
   left: 62%;
   transform: translate(-50%, -50%);
 }
 
-.position4 {
+.position3 {
   top: 62%;
   left: 33%;
   transform: translate(-50%, -50%);
@@ -46,8 +51,8 @@
 }
 
 .position6 {
-  top: 62%;
-  left: 75%;
+  top: 12%;
+  left: 42%;
   transform: translate(-50%, -50%);
 }
 
@@ -61,3 +66,6 @@
     height: auto;
   }
 }
+
+// left: 8%, 17%, 25%, 33%, 42%, 50%, 58%, 67%, 75%, 83%, 92%
+// top: 12%, 25%, 37%, 50%, 62%, 75%, 87%

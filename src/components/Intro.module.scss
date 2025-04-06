@@ -4,7 +4,7 @@
   width: 100%;
   height: 100vh;
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   background: linear-gradient(
@@ -72,25 +72,24 @@
   }
 
   .webdev {
-    top: 83%;
+    top: 87%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    path {
-      stroke-width: 2.3px;
-    }
   }
 
   .yangon {
-    top: 87%;
-    left: 33%;
+    top: 12%;
+    left: 17%;
     transform: translate(-50%, -50%);
   }
 
   .portfolio {
-    top: 87%;
+    top: 25%;
     left: 75%;
     transform: translate(-50%, -50%);
   }
 
 }
+
+// left: 8%, 17%, 25%, 33%, 42%, 50%, 58%, 67%, 75%, 83%, 92%
+// top: 12%, 25%, 37%, 50%, 62%, 75%, 87%

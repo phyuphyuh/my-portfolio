@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import styles from "./Contact.module.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,12 +7,16 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import TabSVG from "../assets/contacttab5.svg";
 
 const Contact = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <motion.div
       className={styles.contact}
-      initial={{ left: '-130px'}}
+      initial={false}
+      animate={{ left: isOpen ? '-84px' : '-130px' }}
       whileHover={{ left: '-84px'}}
       transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+      onTap={() => setIsOpen((prev) => !prev)}
     >
       <div className={styles.contactInner}>
         <img className={styles.tab} src={TabSVG} alt="Contact Tab" />

@@ -2,20 +2,20 @@ import { animate, hover } from "motion";
 import { useMotionValue } from "motion/react";
 import { useEffect, useRef } from "react";
 import pp from "../assets/pp2.png";
-import mochi from "../assets/mochi.png";
-import muffin from "../assets/muffin.png";
-import milo from "../assets/milo.png";
+import mochi from "../assets/mochiedit.png";
+import muffin from "../assets/muffinedit.png";
+import milo from "../assets/milo2.png";
 import pac from "../assets/pac.png";
 import matcha from "../assets/matcha.png";
 import styles from "./ScatterImages.module.scss";
 
 const images = [
-  { src: pp, size: 'large' },
-  { src: mochi },
+  // { src: pp, size: 'large' },
+  { src: mochi, size: 'small' },
   { src: muffin },
-  { src: milo },
-  { src: pac, size: 'small' },
-  { src: matcha, size: 'small' },
+  { src: milo, size: 'xsmall' },
+  // { src: pac, size: 'small' },
+  // { src: matcha, size: 'small' },
 ];
 
 const ScatterImages = ({ containerRef }) => {

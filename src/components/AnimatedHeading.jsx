@@ -9,7 +9,7 @@ const AnimatedHeading = ({ letters, className }) => {
   const [key, setKey] = useState(0);
   const [wasInView, setWasInView] = useState(false);
 
-  const totalDuration = 0.1 + letters.length * 0.3;
+  const totalDuration = 0.2 + letters.length * 0.2;
   const fadeOutDuration = totalDuration + 1.5;
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const AnimatedHeading = ({ letters, className }) => {
   // }, [totalDuration, fadeOutDuration]);
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className={styles.animatedTextWrapper}>
       <AnimatePresence propagate mode="wait">
         {isInView && (
           <motion.div
@@ -45,10 +45,10 @@ const AnimatedHeading = ({ letters, className }) => {
                     d={d}
                     fill="transparent"
                     stroke="var(--lighter-jet)"
-                    strokeWidth="2"
+                    strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    initial={{ strokeDasharray: "100%", strokeDashoffset: "100%" }}
+                    initial={{ strokeDasharray: 800, strokeDashoffset: 800 }}
                     // animate={{ strokeDashoffset: 0 }}
                     // exit={{ strokeOpacity: 0, strokeDashoffset: "100%" }}
                     // transition={{
@@ -61,16 +61,16 @@ const AnimatedHeading = ({ letters, className }) => {
                       transition: {
                         duration: 0.4,
                         ease: "easeInOut",
-                        delay: 0.1 + index * 0.3,
+                        delay: 0.2 + index * 0.2,
                       },
                     }}
                     exit={{
-                      strokeDashoffset: "100%",
+                      strokeDashoffset: 800,
                       transition: {
                         duration: 0.1,
                         ease: "easeOut",
                         // delay: 0.1 + (letters.length - 1 - index) * 0.3,
-                        delay: 0.1,
+                        delay: 0.2,
                       },
                     }}
                 />

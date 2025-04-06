@@ -4,10 +4,11 @@
   position: fixed;
   top: 70%;
   left: -130px;
-  z-index: 100;
+  z-index: 500;
   background-color: transparent;
   text-align: center;
   font-size: 1.7rem;
+  pointer-events: auto;
 
   .contactInner {
     position: relative;
