@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useAnimation } from "motion/react";
-import pp from "../assets/pp2.png";
+import AnimatedHeading from './AnimatedHeading';
+import { me_paths } from "../svgPaths.js";
+import pp from "../assets/pp3small.png";
 import styles from "./About.module.scss";
 // import AboutSVG from "../assets/aboutcontainer3.svg";
 
@@ -35,21 +37,22 @@ const About = () => {
 
   const y = useTransform(
     scrollYProgress,
-    [0.3, 0.8],
-    ["0%", "-20%"]
+    [0.20, 0.3, 0.5],
+    ["120%", "0%", "-100%"]
   );
 
   const x = useTransform(
     scrollYProgress,
-    [0.3, 0.8],
-    ["0vw", "5vw"]
+    [0.10, 0.3, 0.5],
+    ["-5%", "5%", "0%"]
   );
 
-  const scale = useTransform(scrollYProgress, [0.3, 0.8], [0.8, 1.2]);
-  const rotate = useTransform(scrollYProgress, [0.3, 0.8, 1], [5, 10, 0]);
+  const scale = useTransform(scrollYProgress,  [0.10, 0.3, 0.5], [0.8, 1.2, 1]);
+  const rotate = useTransform(scrollYProgress,  [0.10, 0.3, 0.5], [10, 5, 0]);
 
   return (
     <section className={styles.about}>
+      <AnimatedHeading letters={me_paths} className={styles.me} viewBox="-2 -2 80 57" />
       <motion.div
         className={styles.aboutImg}
         whileHover="hover"
@@ -68,9 +71,10 @@ const About = () => {
                 d={d}
                 fill="transparent"
                 stroke="var(--lighter-jet)"
-                strokeWidth="0.7"
+                strokeWidth="1"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                vector-effect="non-scaling-stroke"
                 variants={{
                   initial: {
                     strokeDasharray: 300,
@@ -106,7 +110,6 @@ const About = () => {
       </motion.div>
       <motion.div
         className={styles.aboutContent}
-        style={{ x }}
       >
         {/* <img className={styles.aboutContainer} src={AboutSVG} /> */}
         {/* <svg
@@ -132,7 +135,10 @@ const About = () => {
         </svg> */}
         {/* <h2 className={styles.aboutTitle}>About Me</h2> */}
         <p className={styles.aboutText}>
-          Full-stack developer with a passion for frontend — trained in Tokyo, from Yangon.
+          Full-stack developer with a passion for frontend.
+        </p>
+        <p className={styles.aboutText}>
+          Trained in Tokyo. From Yangon.
         </p>
       </motion.div>
     </section>

@@ -2,15 +2,19 @@ import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "motion/react";
 import styles from "./AnimatedHeading.module.scss";
 
-const AnimatedHeading = ({ letters, className }) => {
+const AnimatedHeading = ({ letters, className, viewBox = "0 0 300 100" }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { margin: "20% 0px" });
+  const isInView = useInView(ref, { margin: "10% 0px", amount: "all" });
 
   const [key, setKey] = useState(0);
   const [wasInView, setWasInView] = useState(false);
 
-  const totalDuration = 0.2 + letters.length * 0.2;
+  const totalDuration = 0.1 + letters.length * 0.2;
   const fadeOutDuration = totalDuration + 1.5;
+
+  useEffect(() => {
+    setKey((prev) => prev + 1);
+  }, []);
 
   useEffect(() => {
     if (isInView && !wasInView) {
@@ -29,7 +33,7 @@ const AnimatedHeading = ({ letters, className }) => {
 
   return (
     <div ref={ref} className={styles.animatedTextWrapper}>
-      <AnimatePresence propagate mode="wait">
+      <AnimatePresence propagate mode="wait" initial={false}>
         {isInView && (
           <motion.div
             key={key}
@@ -38,14 +42,14 @@ const AnimatedHeading = ({ letters, className }) => {
             animate="visible"
             transition={{ duration: fadeOutDuration, ease: "easeInOut" }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox={viewBox}>
               {letters.map((d, index) => (
                 <motion.path
                     key={index}
                     d={d}
                     fill="transparent"
                     stroke="var(--lighter-jet)"
-                    strokeWidth="1.5"
+                    strokeWidth="1"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     initial={{ strokeDasharray: 800, strokeDashoffset: 800 }}
@@ -59,9 +63,9 @@ const AnimatedHeading = ({ letters, className }) => {
                     animate={{
                       strokeDashoffset: 0,
                       transition: {
-                        duration: 0.4,
+                        duration: 0.5,
                         ease: "easeInOut",
-                        delay: 0.2 + index * 0.2,
+                        delay: 0.1 + index * 0.2,
                       },
                     }}
                     exit={{
@@ -69,8 +73,8 @@ const AnimatedHeading = ({ letters, className }) => {
                       transition: {
                         duration: 0.1,
                         ease: "easeOut",
-                        // delay: 0.1 + (letters.length - 1 - index) * 0.3,
-                        delay: 0.2,
+                        delay: 0.1 + (letters.length - 1 - index) * 0.1,
+                        // delay: 0.2,
                       },
                     }}
                 />

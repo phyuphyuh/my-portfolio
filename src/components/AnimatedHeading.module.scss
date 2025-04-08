@@ -5,4 +5,11 @@
   transform: translate(-50%, -50%);
   z-index: 10;
   will-change: transform;
+  width: 200px;
+  height: auto;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
 }
