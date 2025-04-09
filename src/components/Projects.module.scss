@@ -9,4 +9,16 @@
     $tiffanyblue,
     $moonrise,
   );
+  display: flex;
+  justify-content: center;
+  align-items: start;
+
+
+  .title {
+    width: 150px;
+
+    path {
+      stroke-width: 2.5px;
+    }
+  }
 }

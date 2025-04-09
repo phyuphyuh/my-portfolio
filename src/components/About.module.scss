@@ -10,19 +10,21 @@
   );
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: start;
-  padding-top: 80px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 80px 0;
 
-  .me {
-    width: 50px;
+  .title {
+    width: 40px;
 
     path {
-      stroke-width: 2px;
+      stroke-width: 2.5px;
     }
   }
 
   .aboutImg {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,23 +56,21 @@
     }
   }
 
+  .fixedImg {
+    width: 180px;
+    height: auto;
+    z-index: 0;
+    pointer-events: none;
+  }
+
   .aboutContent {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    // .aboutContainer {
-    //   max-width: 700px;
-    //   width: 90%;
-    //   height: auto;
-    //   position: relative;
-    // }
 
     .aboutText {
       font-family: 'ZTBrosOskon90s-Regular', sans-serif;
