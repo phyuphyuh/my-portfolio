@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import ScatterImages from './ScatterImages';
 import AnimatedHeading from './AnimatedHeading';
-import { web_developer_paths } from "../svgPaths.js";
-import { yangon_mm_paths } from "../svgPaths.js";
-import { portfolio_paths } from "../svgPaths.js";
+import { web_developer_paths } from "../data/svgPaths.js";
+import { yangon_mm_paths } from "../data/svgPaths.js";
+import { portfolio_paths } from "../data/svgPaths.js";
 import styles from "./Intro.module.scss";
 
 const Intro = ({ containerRef }) => {

@@ -11,14 +11,49 @@
   );
   display: flex;
   justify-content: center;
-  align-items: start;
-
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 
   .title {
+    margin-top: 50px;
     width: 150px;
 
     path {
       stroke-width: 2.5px;
     }
+  }
+
+  .grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(12, 120px);
+    grid-template-rows: repeat(8, 120px);
+    gap: 1rem;
+    width: 100%;
+    // max-width: 1200px;
+    margin: auto;
+  }
+
+  .projectCard {
+    position: relative;
+    background: $ivory;
+    border: 1px solid $lighter-jet;
+    padding: 1rem;
+    cursor: pointer;
+    transform-origin: center;
+    user-select: none;
+  }
+
+  .scatteredCard {
+    position: absolute;
+    width: 350px;
+    max-width: 400px;
+    height: 200px;
+    background: $ivory;
+    border: 1px solid $lighter-jet;
+    padding: 0.5rem;
+    z-index: 20;
+    pointer-events: auto;
   }
 }

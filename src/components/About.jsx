@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "motion/react";
 import AnimatedHeading from './AnimatedHeading';
-import { me_paths } from "../svgPaths.js";
+import { me_paths } from "../data/svgPaths.js";
 import pp from "../assets/pp3small.png";
 import pp2 from "../assets/pp3small2.png";
 import styles from "./About.module.scss";
@@ -27,8 +27,8 @@ const borderPaths = [
 ]
 
 const About = () => {
-  const aboutRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: aboutRef, offset: ["start end", "end start"] });
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
   // const width = useWindowWidth();
 
   // const x = useTransform(
@@ -48,7 +48,7 @@ const About = () => {
   });
 
   return (
-    <section ref={aboutRef} className={styles.about}>
+    <section ref={sectionRef} className={styles.about}>
       <AnimatedHeading letters={me_paths} className={styles.title} viewBox="-2 -2 80 57" />
       <motion.div
         className={styles.aboutImg}
@@ -58,7 +58,7 @@ const About = () => {
           x: useTransform(scrollYProgress, [0.2, 0.3, 0.6], ["-10%", "0%", "5%"]),
           y: useTransform(scrollYProgress, [0.2, 0.3, 0.6], ["100%", "0%", "-150%"]),
           scale: useTransform(scrollYProgress, [0.2, 0.3, 0.6], [0.8, 1, 1.1]),
-          rotate: useTransform(scrollYProgress, [0.2, 0.3, 0.6], [15, 0, -10]),
+          rotate: useTransform(scrollYProgress, [0.25, 0.3, 0.6], [15, 0, -10]),
         }}
       >
         <div className={styles.aboutImgInner}>
@@ -76,7 +76,7 @@ const About = () => {
                 strokeWidth="1"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                vector-effect="non-scaling-stroke"
+                vectorEffect="non-scaling-stroke"
                 variants={{
                   initial: {
                     strokeDasharray: 300,
