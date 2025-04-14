@@ -8,28 +8,6 @@ import styles from "./Projects.module.scss";
 const gridCellWidth = 120;
 const gridCellHeight = 120;
 
-const baseMotionProps = {
-  drag: true,
-  dragMomentum: false,
-  dragConstraints: sectionRef,
-  dragElastic: 0.5,
-  initial: { scale: 0.8 },
-  animate: { scale: 1 },
-  exit: {
-    scale: 0.8,
-    top: initialCardPosition.y,
-    left: initialCardPosition.x,
-    rotate: initialCardPosition.rotate,
-    zIndex: 0,
-    transition: {
-      type: "spring",
-      stiffness: 300,
-      damping: 25,
-      mass: 0.8,
-    },
-  },
-};
-
 function getScatteredPositions(baseX, baseY, count) {
   return Array.from({ length: count }).map((_, i) => {
     const angle = Math.random() * 2 * Math.PI;
@@ -45,7 +23,7 @@ function getScatteredPositions(baseX, baseY, count) {
   });
 }
 
-const ScatteredCard = ({ idx, style, children }) => (
+const ScatteredCard = ({ idx, style, children, topCard, setTopCard, setIsDragging, baseMotionProps }) => (
   <motion.div
     key={idx}
     className={styles.scatteredCard}
@@ -66,7 +44,7 @@ const ScatteredCard = ({ idx, style, children }) => (
   </motion.div>
 );
 
-const ScatteredImage = ({ idx, img, style }) => (
+const ScatteredImage = ({ idx, img, style, topCard, setTopCard, setIsDragging, baseMotionProps }) => (
   <motion.img
     key={img}
     src={img}
@@ -173,6 +151,28 @@ const Projects = () => {
               rotate: 0,
             };
 
+            const baseMotionProps = {
+              drag: true,
+              dragMomentum: false,
+              dragConstraints: sectionRef,
+              dragElastic: 0.5,
+              initial: { scale: 0.8 },
+              animate: { scale: 1 },
+              exit: {
+                scale: 0.8,
+                top: initialCardPosition.y,
+                left: initialCardPosition.x,
+                rotate: initialCardPosition.rotate,
+                zIndex: 0,
+                transition: {
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 25,
+                  mass: 0.8,
+                },
+              },
+            };
+
             return (
               <>
               <ScatteredCard
@@ -182,6 +182,10 @@ const Projects = () => {
                   left: scatteredCards[0]?.x,
                   rotate: scatteredCards[0]?.rotate,
                 }}
+                topCard={topCard}
+                setTopCard={setTopCard}
+                setIsDragging={setIsDragging}
+                baseMotionProps={baseMotionProps}
               >
                 <strong>{hovered.name}</strong>
                 <p>{hovered.description}</p>
@@ -194,6 +198,10 @@ const Projects = () => {
                   left: scatteredCards[1]?.x,
                   rotate: scatteredCards[1]?.rotate,
                 }}
+                topCard={topCard}
+                setTopCard={setTopCard}
+                setIsDragging={setIsDragging}
+                baseMotionProps={baseMotionProps}
               >
                 <p>{hovered.techStack.join(", ")}</p>
               </ScatteredCard>
@@ -211,6 +219,10 @@ const Projects = () => {
                       left: scatter?.x,
                       rotate: scatter?.rotate,
                     }}
+                    topCard={topCard}
+                    setTopCard={setTopCard}
+                    setIsDragging={setIsDragging}
+                    baseMotionProps={baseMotionProps}
                   />
                 );
               })}
