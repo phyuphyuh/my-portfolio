@@ -76,17 +76,18 @@ const Projects = () => {
             onTouchStart={() => setActiveProject(project.id)}
           >
             <h3>{project.name}</h3>
+
           </motion.div>
         ))}
 
         <AnimatePresence>
           {activeProject && (() => {
             const hovered = projects.find(p => p.id === activeProject);
-            {/* const scattered = getScatteredPositions(
-              hovered.gridCol * gridCellWidth,
-              hovered.gridRow * gridCellHeight,
-              2 + hovered.images.length
-            ); */}
+            const initialCardPosition = {
+              x: (hovered.gridCol + hovered.gridColSpan / 2 - 1.6 ) * gridCellWidth,
+              y: (hovered.gridRow + hovered.gridRowSpan / 2 -1 ) * gridCellHeight,
+              rotate: 0,
+            };
 
             return (
               <>
@@ -102,7 +103,7 @@ const Projects = () => {
                     left: scatteredCards[0]?.x,
                     rotate: scatteredCards[0]?.rotate,
                     zIndex: topCard === 0 ? 100 : 1,
-                    position: "absolute"
+                    position: "absolute",
                   }}
                   onMouseEnter={() => setTopCard(0)}
                   onMouseLeave={() => setTopCard(null)}
@@ -110,9 +111,22 @@ const Projects = () => {
                   onTapCancel={() => setTopCard(null)}
                   onDragStart={() => setIsDragging(true)}
                   onDragEnd={() => setIsDragging(false)}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
+                  initial={{ scale: 0.8 }}
+                  animate={{ scale: 1 }}
+                  exit={{
+                    scale: 0.8,
+                    top: initialCardPosition.y,
+                    left: initialCardPosition.x,
+                    rotate: initialCardPosition.rotate,
+                    zIndex: 0,
+                    transition: {
+                      duration: 0.3,
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 25,
+                      mass: 0.8,
+                    },
+                  }}
                 >
                   <strong>{hovered.name}</strong>
                   <p>{hovered.description}</p>
@@ -130,7 +144,7 @@ const Projects = () => {
                     left: scatteredCards[1]?.x,
                     rotate: scatteredCards[1]?.rotate,
                     zIndex: topCard === 1 ? 100 : 1,
-                    position: "absolute"
+                    position: "absolute",
                   }}
                   onMouseEnter={() => setTopCard(1)}
                   onMouseLeave={() => setTopCard(null)}
@@ -138,9 +152,22 @@ const Projects = () => {
                   onTapCancel={() => setTopCard(null)}
                   onDragStart={() => setIsDragging(true)}
                   onDragEnd={() => setIsDragging(false)}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
+                  initial={{ scale: 0.8 }}
+                  animate={{ scale: 1 }}
+                  exit={{
+                    scale: 0.8,
+                    top: initialCardPosition.y,
+                    left: initialCardPosition.x,
+                    rotate: initialCardPosition.rotate,
+                    zIndex: 0,
+                    transition: {
+                      duration: 0.3,
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 25,
+                      mass: 0.8,
+                    },
+                  }}
                 >
                   <p>{hovered.techStack.join(", ")}</p>
                 </motion.div>
@@ -163,7 +190,7 @@ const Projects = () => {
                         left: scatter?.x,
                         rotate: scatter?.rotate,
                         zIndex: topCard === cardIdx ? 100 : 1,
-                        position: "absolute"
+                        position: "absolute",
                       }}
                       onMouseEnter={() => setTopCard(cardIdx)}
                       onMouseLeave={() => setTopCard(null)}
@@ -171,9 +198,22 @@ const Projects = () => {
                       onTapCancel={() => setTopCard(null)}
                       onDragStart={() => setIsDragging(true)}
                       onDragEnd={() => setIsDragging(false)}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0 }}
+                      initial={{ scale: 0.8 }}
+                      animate={{ scale: 1 }}
+                      exit={{
+                        scale: 0.8,
+                        top: initialCardPosition.y,
+                        left: initialCardPosition.x,
+                        rotate: initialCardPosition.rotate,
+                        zIndex: 0,
+                        transition: {
+                          duration: 0.3,
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 25,
+                          mass: 0.8,
+                        },
+                      }}
                     />
                   );
                 })}
