@@ -22,8 +22,8 @@ const projects = [
     images: ["/img1.png", "/img2.png"],
     gridRow: 5,
     gridCol: 7,
-    gridRowSpan: 2,
-    gridColSpan: 3,
+    gridRowSpan: 3,
+    gridColSpan: 2,
   }
 ];
 

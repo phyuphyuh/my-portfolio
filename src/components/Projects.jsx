@@ -8,13 +8,6 @@ import styles from "./Projects.module.scss";
 const gridCellWidth = 120;
 const gridCellHeight = 120;
 
-// function getScatteredPositions(baseX, baseY, count) {
-//   return Array.from({ length: count }).map(() => ({
-//     x: baseX + (Math.random() - 0.5) * 500,
-//     y: baseY + (Math.random() - 0.5) * 500,
-//     rotate: (Math.random() - 0.5) * 20,
-//   }));
-// }
 function getScatteredPositions(baseX, baseY, count) {
   return Array.from({ length: count }).map((_, i) => {
     const angle = Math.random() * 2 * Math.PI;
@@ -113,6 +106,8 @@ const Projects = () => {
                   }}
                   onMouseEnter={() => setTopCard(0)}
                   onMouseLeave={() => setTopCard(null)}
+                  onTapStart={() => setTopCard(0)}
+                  onTapCancel={() => setTopCard(null)}
                   onDragStart={() => setIsDragging(true)}
                   onDragEnd={() => setIsDragging(false)}
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -139,6 +134,8 @@ const Projects = () => {
                   }}
                   onMouseEnter={() => setTopCard(1)}
                   onMouseLeave={() => setTopCard(null)}
+                  onTapStart={() => setTopCard(0)}
+                  onTapCancel={() => setTopCard(null)}
                   onDragStart={() => setIsDragging(true)}
                   onDragEnd={() => setIsDragging(false)}
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -170,6 +167,8 @@ const Projects = () => {
                       }}
                       onMouseEnter={() => setTopCard(cardIdx)}
                       onMouseLeave={() => setTopCard(null)}
+                      onTapStart={() => setTopCard(0)}
+                      onTapCancel={() => setTopCard(null)}
                       onDragStart={() => setIsDragging(true)}
                       onDragEnd={() => setIsDragging(false)}
                       initial={{ opacity: 0, scale: 0.8 }}
