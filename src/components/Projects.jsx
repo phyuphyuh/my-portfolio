@@ -8,6 +8,28 @@ import styles from "./Projects.module.scss";
 const gridCellWidth = 120;
 const gridCellHeight = 120;
 
+const baseMotionProps = {
+  drag: true,
+  dragMomentum: false,
+  dragConstraints: sectionRef,
+  dragElastic: 0.5,
+  initial: { scale: 0.8 },
+  animate: { scale: 1 },
+  exit: {
+    scale: 0.8,
+    top: initialCardPosition.y,
+    left: initialCardPosition.x,
+    rotate: initialCardPosition.rotate,
+    zIndex: 0,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 25,
+      mass: 0.8,
+    },
+  },
+};
+
 function getScatteredPositions(baseX, baseY, count) {
   return Array.from({ length: count }).map((_, i) => {
     const angle = Math.random() * 2 * Math.PI;
@@ -23,6 +45,47 @@ function getScatteredPositions(baseX, baseY, count) {
   });
 }
 
+const ScatteredCard = ({ idx, style, children }) => (
+  <motion.div
+    key={idx}
+    className={styles.scatteredCard}
+    {...baseMotionProps}
+    style={{
+      ...style,
+      zIndex: topCard === idx ? 100 : 1,
+      position: "absolute",
+    }}
+    onMouseEnter={() => setTopCard(idx)}
+    onMouseLeave={() => setTopCard(null)}
+    onTapStart={() => setTopCard(idx)}
+    onTapCancel={() => setTopCard(null)}
+    onDragStart={() => setIsDragging(true)}
+    onDragEnd={() => setIsDragging(false)}
+  >
+    {children}
+  </motion.div>
+);
+
+const ScatteredImage = ({ idx, img, style }) => (
+  <motion.img
+    key={img}
+    src={img}
+    className={styles.scatteredCard}
+    {...baseMotionProps}
+    style={{
+      ...style,
+      zIndex: topCard === idx ? 100 : 1,
+      position: "absolute",
+    }}
+    onMouseEnter={() => setTopCard(idx)}
+    onMouseLeave={() => setTopCard(null)}
+    onTapStart={() => setTopCard(idx)}
+    onTapCancel={() => setTopCard(null)}
+    onDragStart={() => setIsDragging(true)}
+    onDragEnd={() => setIsDragging(false)}
+  />
+);
+
 const Projects = () => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -31,6 +94,7 @@ const Projects = () => {
   });
 
   const [activeProject, setActiveProject] = useState(null);
+  const [pendingProject, setPendingProject] = useState(null);
   const [scatteredCards, setScatteredCards] = useState([]);
   const [topCard, setTopCard] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -49,9 +113,29 @@ const Projects = () => {
     }
   }, [activeProject]);
 
+  useEffect(() => {
+    if (pendingProject !== null) {
+      const timeout = setTimeout(() => {
+        setActiveProject(pendingProject);
+        setPendingProject(null);
+      }, 400);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [pendingProject]);
+
   const handleMouseLeave = () => {
     if (!isDragging) {
       setActiveProject(null);
+    }
+  };
+
+  const handleHover = (projectId) => {
+    if (activeProject && activeProject !== projectId) {
+      setActiveProject(null);
+      setPendingProject(projectId);
+    } else {
+      setActiveProject(projectId);
     }
   };
 
@@ -72,8 +156,8 @@ const Projects = () => {
               rotate: `${(Math.random() - 0.5) * 6}deg`,
               zIndex: activeProject === project.id ? 10 : 1,
             }}
-            onMouseEnter={() => setActiveProject(project.id)}
-            onTouchStart={() => setActiveProject(project.id)}
+            onMouseEnter={() => handleHover(project.id)}
+            onTouchStart={() => handleHover(project.id)}
           >
             <h3>{project.name}</h3>
 
@@ -91,132 +175,45 @@ const Projects = () => {
 
             return (
               <>
-                <motion.div
-                  className={styles.scatteredCard}
-                  key="desc"
-                  drag
-                  dragMomentum={false}
-                  dragConstraints={sectionRef}
-                  dragElastic={0.5}
-                  style={{
-                    top: scatteredCards[0]?.y,
-                    left: scatteredCards[0]?.x,
-                    rotate: scatteredCards[0]?.rotate,
-                    zIndex: topCard === 0 ? 100 : 1,
-                    position: "absolute",
-                  }}
-                  onMouseEnter={() => setTopCard(0)}
-                  onMouseLeave={() => setTopCard(null)}
-                  onTapStart={() => setTopCard(0)}
-                  onTapCancel={() => setTopCard(null)}
-                  onDragStart={() => setIsDragging(true)}
-                  onDragEnd={() => setIsDragging(false)}
-                  initial={{ scale: 0.8 }}
-                  animate={{ scale: 1 }}
-                  exit={{
-                    scale: 0.8,
-                    top: initialCardPosition.y,
-                    left: initialCardPosition.x,
-                    rotate: initialCardPosition.rotate,
-                    zIndex: 0,
-                    transition: {
-                      duration: 0.3,
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 25,
-                      mass: 0.8,
-                    },
-                  }}
-                >
-                  <strong>{hovered.name}</strong>
-                  <p>{hovered.description}</p>
-                </motion.div>
+              <ScatteredCard
+                idx={0}
+                style={{
+                  top: scatteredCards[0]?.y,
+                  left: scatteredCards[0]?.x,
+                  rotate: scatteredCards[0]?.rotate,
+                }}
+              >
+                <strong>{hovered.name}</strong>
+                <p>{hovered.description}</p>
+              </ScatteredCard>
 
-                <motion.div
-                  className={styles.scatteredCard}
-                  key="tech"
-                  drag
-                  dragMomentum={false}
-                  dragConstraints={sectionRef}
-                  dragElastic={0.5}
-                  style={{
-                    top: scatteredCards[1]?.y,
-                    left: scatteredCards[1]?.x,
-                    rotate: scatteredCards[1]?.rotate,
-                    zIndex: topCard === 1 ? 100 : 1,
-                    position: "absolute",
-                  }}
-                  onMouseEnter={() => setTopCard(1)}
-                  onMouseLeave={() => setTopCard(null)}
-                  onTapStart={() => setTopCard(0)}
-                  onTapCancel={() => setTopCard(null)}
-                  onDragStart={() => setIsDragging(true)}
-                  onDragEnd={() => setIsDragging(false)}
-                  initial={{ scale: 0.8 }}
-                  animate={{ scale: 1 }}
-                  exit={{
-                    scale: 0.8,
-                    top: initialCardPosition.y,
-                    left: initialCardPosition.x,
-                    rotate: initialCardPosition.rotate,
-                    zIndex: 0,
-                    transition: {
-                      duration: 0.3,
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 25,
-                      mass: 0.8,
-                    },
-                  }}
-                >
-                  <p>{hovered.techStack.join(", ")}</p>
-                </motion.div>
+              <ScatteredCard
+                idx={1}
+                style={{
+                  top: scatteredCards[1]?.y,
+                  left: scatteredCards[1]?.x,
+                  rotate: scatteredCards[1]?.rotate,
+                }}
+              >
+                <p>{hovered.techStack.join(", ")}</p>
+              </ScatteredCard>
 
-                {hovered.images.map((img, idx) => {
-                  const cardIdx = 2 + idx;
-                  const scatter = scatteredCards[cardIdx];
-
-                  return (
-                    <motion.img
-                      key={img}
-                      src={img}
-                      drag
-                      dragMomentum={false}
-                      dragConstraints={sectionRef}
-                      dragElastic={0.5}
-                      className={styles.scatteredCard}
-                      style={{
-                        top: scatter?.y,
-                        left: scatter?.x,
-                        rotate: scatter?.rotate,
-                        zIndex: topCard === cardIdx ? 100 : 1,
-                        position: "absolute",
-                      }}
-                      onMouseEnter={() => setTopCard(cardIdx)}
-                      onMouseLeave={() => setTopCard(null)}
-                      onTapStart={() => setTopCard(0)}
-                      onTapCancel={() => setTopCard(null)}
-                      onDragStart={() => setIsDragging(true)}
-                      onDragEnd={() => setIsDragging(false)}
-                      initial={{ scale: 0.8 }}
-                      animate={{ scale: 1 }}
-                      exit={{
-                        scale: 0.8,
-                        top: initialCardPosition.y,
-                        left: initialCardPosition.x,
-                        rotate: initialCardPosition.rotate,
-                        zIndex: 0,
-                        transition: {
-                          duration: 0.3,
-                          type: "spring",
-                          stiffness: 300,
-                          damping: 25,
-                          mass: 0.8,
-                        },
-                      }}
-                    />
-                  );
-                })}
+              {hovered.images.map((img, idx) => {
+                const cardIdx = 2 + idx;
+                const scatter = scatteredCards[cardIdx];
+                return (
+                  <ScatteredImage
+                    key={img}
+                    idx={cardIdx}
+                    img={img}
+                    style={{
+                      top: scatter?.y,
+                      left: scatter?.x,
+                      rotate: scatter?.rotate,
+                    }}
+                  />
+                );
+              })}
               </>
             );
           })()}
