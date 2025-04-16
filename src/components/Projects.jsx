@@ -13,7 +13,8 @@ function getScatteredPositions(baseX, baseY, count) {
     const angle = Math.random() * 2 * Math.PI;
     // const radius = 220 + Math.random() * 100;
     // const radius = 180 + i * 60 + Math.random() * 40;
-    const radius = 220 + i * 10 + Math.random() * 60;
+    // const radius = 220 + i * 10 + Math.random() * 60;
+    const radius = 250 + i * 30 + Math.random() * 40;
 
     return {
       x: baseX + Math.cos(angle) * radius,
@@ -136,9 +137,24 @@ const Projects = () => {
             }}
             onMouseEnter={() => handleHover(project.id)}
             onTouchStart={() => handleHover(project.id)}
+            animate={
+              activeProject === project.id
+                ? { y: 0 }
+                : { y: [0, -8, 0]  }
+            }
+            transition={{
+              duration: 1.6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: Math.random(),
+            }}
           >
             <h3>{project.name}</h3>
-
+            <div className={styles.techStack}>
+              {project.techStack.map((tech, i) => (
+                <span key={i} className={styles.techBadge}>{tech}</span>
+              ))}
+            </div>
           </motion.div>
         ))}
 

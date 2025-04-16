@@ -6,6 +6,8 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 
 import "@fontsource/montserrat";
+import "@fontsource/montserrat/800.css";
+import "@fontsource/montserrat/600.css";
 import "@fontsource/montserrat-alternates";
 import "@fontsource/montserrat-alternates/800.css";
 import './App.scss'

@@ -40,7 +40,7 @@ const About = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useMotionValueEvent(scrollYProgress, "change", (value) => {
-    if (value >= 0.35) {
+    if (value >= 0.48) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
@@ -55,10 +55,10 @@ const About = () => {
         whileHover="hover"
         initial="initial"
         style={{
-          x: useTransform(scrollYProgress, [0.2, 0.3, 0.6], ["-10%", "0%", "5%"]),
-          y: useTransform(scrollYProgress, [0.2, 0.3, 0.6], ["100%", "0%", "-150%"]),
-          scale: useTransform(scrollYProgress, [0.2, 0.3, 0.6], [0.8, 1, 1.1]),
-          rotate: useTransform(scrollYProgress, [0.25, 0.3, 0.6], [15, 0, -10]),
+          x: useTransform(scrollYProgress, [0.3, 0.45, 0.65], ["-10%", "0%", "5%"]),
+          y: useTransform(scrollYProgress, [0.3, 0.45, 0.65], ["100%", "0%", "-150%"]),
+          scale: useTransform(scrollYProgress, [0.3, 0.45, 0.65], [0.8, 1, 1.1]),
+          rotate: useTransform(scrollYProgress, [0.35, 0.45, 0.65], [15, 0, -10]),
         }}
       >
         <div className={styles.aboutImgInner}>

@@ -1,10 +1,34 @@
 import { useEffect, useState, useRef } from "react";
 import ScatterImages from './ScatterImages';
 import AnimatedHeading from './AnimatedHeading';
-import { web_developer_paths } from "../data/svgPaths.js";
-import { yangon_mm_paths } from "../data/svgPaths.js";
-import { portfolio_paths } from "../data/svgPaths.js";
+import { web_developer_paths, yangon_mm_paths, portfolio_paths } from "../data/svgPaths.js";
 import styles from "./Intro.module.scss";
+
+const Shadow = ({ rotation, shadowLength, text }) => (
+  <span className={styles.shadowWrapper}>
+    <span
+      className={styles.shadow}
+      style={{
+        transform: `
+          rotateX(${rotation.y}deg)
+          scaleY(${shadowLength * 1.5})
+          skew(${rotation.x * 0.5}deg)
+          translateX(${-(rotation.x)}px)
+          translateY(${rotation.y}px)
+        `
+      }}
+    >
+      {text}
+    </span>
+  </span>
+);
+
+const NameWithShadow = ({ text, hasMovedRef, rotation, shadowLength }) => (
+  <span>
+    {text}
+    {hasMovedRef.current && <Shadow rotation={rotation} shadowLength={shadowLength} text={text} />}
+  </span>
+);
 
 const Intro = ({ containerRef }) => {
   const hasMovedRef = useRef(false);
@@ -43,6 +67,16 @@ const Intro = ({ containerRef }) => {
     };
   }, []);
 
+  const nameElements = ['Phyu', 'Phyu'].map((text, index) => (
+    <NameWithShadow
+      key={index}
+      text={text}
+      hasMovedRef={hasMovedRef}
+      rotation={rotation}
+      shadowLength={shadowLength}
+    />
+  ));
+
   return (
     <section className={styles.intro}>
       <div
@@ -52,48 +86,7 @@ const Intro = ({ containerRef }) => {
         }}
       >
         <h2 className={styles.name}>
-          <span>
-            Phyu
-            {hasMovedRef.current && (
-              <span className={styles.shadowWrapper}>
-                <span
-                  className={styles.shadow}
-                  style={{
-                    transform: `
-                      rotateX(${rotation.y}deg)
-                      scaleY(${shadowLength * 1.5})
-                      skew(${rotation.x * 0.5}deg)
-                      translateX(${-(rotation.x)}px)
-                      translateY(${rotation.y}px)
-                    `
-                  }}
-                >
-                  Phyu
-                </span>
-              </span>
-            )}
-          </span>
-          <span>
-            Phyu
-            {hasMovedRef.current && (
-              <span className={styles.shadowWrapper}>
-                <span
-                  className={styles.shadow}
-                  style={{
-                    transform: `
-                      rotateX(${rotation.y}deg)
-                      scaleY(${shadowLength * 1.5})
-                      skew(${rotation.x * 0.5}deg)
-                      translateX(${-(rotation.x)}px)
-                      translateY(${rotation.y}px)
-                    `
-                  }}
-                >
-                  Phyu
-                </span>
-              </span>
-            )}
-          </span>
+          {nameElements}
         </h2>
       </div>
       <ScatterImages containerRef={containerRef} />
