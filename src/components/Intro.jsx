@@ -44,6 +44,7 @@ const Intro = ({ containerRef }) => {
 
       cancelAnimationFrame(frameId.current);
       frameId.current = requestAnimationFrame(() => {
+        // Calculate rotation based on mouse position relative to the window center
         const { innerWidth: width, innerHeight: height } = window;
         const x = (e.clientX / width - 0.5) * 30;
         const y = (e.clientY / height - 0.5) * -30;

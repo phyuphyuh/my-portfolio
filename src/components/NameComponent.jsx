@@ -34,9 +34,7 @@ const NameComponent = ({ scrollYProgress }) => {
   const frameId = useRef(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [shadowLength, setShadowLength] = useState(0.5);
-  const [isHovered, setIsHovered] = useState(false);
-
-  const isNavMode = scrollYProgress.get() > 0.2;
+  const [isNavMode, setIsNavMode] = useState(false);
 
   const handleNameClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -59,6 +57,16 @@ const NameComponent = ({ scrollYProgress }) => {
     [0, 0.2, 0.22, 1],
     [1, 0.9, 1, 1]
   );
+
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.onChange(value => {
+      setIsNavMode(value > 0.2);
+    });
+
+    setIsNavMode(scrollYProgress.get() > 0.2);
+
+    return () => unsubscribe();
+  }, [scrollYProgress]);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -102,7 +110,7 @@ const NameComponent = ({ scrollYProgress }) => {
       window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(frameId.current);
     };
-  }, [scrollYProgress]);
+  }, [isNavMode]);
 
   const nameElements = ['Phyu', 'Phyu'].map((text, index) => (
     <NameWithShadow
@@ -124,8 +132,6 @@ const NameComponent = ({ scrollYProgress }) => {
         opacity: nameWrapperOpacity,
       }}
       onClick={handleNameClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       // whileHover={{
       //   scale: isNavMode ? 0.35 : 1.05,
       //   transition: { duration: 0.2 }

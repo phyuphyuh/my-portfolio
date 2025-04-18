@@ -39,15 +39,15 @@ const About = ({ scrollYProgress }) => {
 
   const aboutSectionY = useTransform(
     scrollYProgress,
-    [0.2, 0.4, 0.8, 1],
+    [0.2, 0.4, 0.9, 1],
     ["100vh", "0vh", "0vh", "-100vh"]
   );
 
-  const aboutSectionOpacity = useTransform(
-    scrollYProgress,
-    [0.2, 0.3, 0.7, 0.8],
-    [0, 1, 1, 0]
-  );
+  // const aboutSectionOpacity = useTransform(
+  //   scrollYProgress,
+  //   [0.2, 0.3, 0.7, 1],
+  //   [0, 1, 1, 0]
+  // );
 
   useMotionValueEvent(scrollYProgress, "change", (value) => {
     if (value >= 0.48) {
@@ -63,7 +63,7 @@ const About = ({ scrollYProgress }) => {
       className={styles.about}
       style={{
         y: aboutSectionY,
-        opacity: aboutSectionOpacity
+        // opacity: aboutSectionOpacity
       }}
     >
       <AnimatedHeading letters={me_paths} className={styles.title} viewBox="-2 -2 80 57" />
@@ -72,10 +72,10 @@ const About = ({ scrollYProgress }) => {
         whileHover="hover"
         initial="initial"
         style={{
-          x: useTransform(scrollYProgress, [0.3, 0.45, 0.65], ["-10%", "0%", "5%"]),
-          y: useTransform(scrollYProgress, [0.3, 0.45, 0.65], ["100%", "0%", "-150%"]),
-          scale: useTransform(scrollYProgress, [0.3, 0.45, 0.65], [0.8, 1, 1.1]),
-          rotate: useTransform(scrollYProgress, [0.35, 0.45, 0.65], [15, 0, -10]),
+          x: useTransform(scrollYProgress, [0.4, 0.45, 0.7, 0.85], ["-10%", "0%", "5%", "50%"]),
+          y: useTransform(scrollYProgress, [0.4, 0.45, 0.7, 0.85], ["200%", "0%", "-150%", "-300%"]),
+          scale: useTransform(scrollYProgress, [0.4, 0.45, 0.7, 0.85], [0.8, 1, 1.1, 0.8]),
+          rotate: useTransform(scrollYProgress, [0.4, 0.45, 0.7, 0.85], [15, 0, -10, -20]),
         }}
       >
         <div className={styles.aboutImgInner}>
