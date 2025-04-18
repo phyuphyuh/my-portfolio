@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from "react";
-import { motion, useScroll, useTransform, useMotionValueEvent } from "motion/react";
+import { motion, useTransform, useMotionValueEvent } from "motion/react";
 import AnimatedHeading from './AnimatedHeading';
 import { me_paths } from "../data/svgPaths.js";
-import pp from "../assets/pp3small.png";
-import pp2 from "../assets/pp3small2.png";
+import pp from "../assets/images/pp3small.png";
+import pp2 from "../assets/images/pp3small2.png";
 import styles from "./About.module.scss";
 // import AboutSVG from "../assets/aboutcontainer3.svg";
 
@@ -26,9 +26,9 @@ const borderPaths = [
   "M 1.3373845,74.726357 C 18.500485,74.837806 35.663587,74.949254 52.826687,75.060703",
 ]
 
-const About = () => {
+const About = ({ scrollYProgress }) => {
   const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+  const [isVisible, setIsVisible] = useState(false);
   // const width = useWindowWidth();
 
   // const x = useTransform(
@@ -37,7 +37,17 @@ const About = () => {
   //   width < 768 ? ["100vw", "5vw"] : ["100vw", "0vw"]
   // );
 
-  const [isVisible, setIsVisible] = useState(false);
+  const aboutSectionY = useTransform(
+    scrollYProgress,
+    [0.2, 0.4, 0.8, 1],
+    ["100vh", "0vh", "0vh", "-100vh"]
+  );
+
+  const aboutSectionOpacity = useTransform(
+    scrollYProgress,
+    [0.2, 0.3, 0.7, 0.8],
+    [0, 1, 1, 0]
+  );
 
   useMotionValueEvent(scrollYProgress, "change", (value) => {
     if (value >= 0.48) {
@@ -48,7 +58,14 @@ const About = () => {
   });
 
   return (
-    <section ref={sectionRef} className={styles.about}>
+    <motion.section
+      ref={sectionRef}
+      className={styles.about}
+      style={{
+        y: aboutSectionY,
+        opacity: aboutSectionOpacity
+      }}
+    >
       <AnimatedHeading letters={me_paths} className={styles.title} viewBox="-2 -2 80 57" />
       <motion.div
         className={styles.aboutImg}
@@ -123,7 +140,7 @@ const About = () => {
         className={styles.aboutContent}
       >
         <p className={styles.aboutText}>
-          Full-stack developer with a passion for frontend.
+          Full-stack developer with a passion for frontend and design.
         </p>
         <p className={styles.aboutText}>
           Trained in Tokyo. From Yangon.
@@ -132,7 +149,7 @@ const About = () => {
       <motion.div>
 
       </motion.div>
-    </section>
+    </motion.section>
   );
 };
 

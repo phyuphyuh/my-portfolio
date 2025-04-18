@@ -1,12 +1,11 @@
 import { animate, hover } from "motion";
 import { useMotionValue } from "motion/react";
 import { useEffect, useRef } from "react";
-import pp from "../assets/pp2.png";
-import mochi from "../assets/mochiedit.png";
-import muffin from "../assets/muffinedit.png";
-import milo from "../assets/milo2.png";
-import pac from "../assets/pac.png";
-import matcha from "../assets/matcha.png";
+import mochi from "../assets/images/mochiedit.png";
+import muffin from "../assets/images/muffinedit.png";
+import milo from "../assets/images/milo2.png";
+import pac from "../assets/images/pac.png";
+import matcha from "../assets/images/matcha.png";
 import styles from "./ScatterImages.module.scss";
 
 const images = [

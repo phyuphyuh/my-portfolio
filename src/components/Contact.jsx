@@ -4,7 +4,7 @@ import styles from "./Contact.module.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import TabSVG from "../assets/contacttab5.svg";
+import TabSVG from "../assets/images/contacttab5.svg";
 
 const Contact = () => {
   const [isOpen, setIsOpen] = useState(false);

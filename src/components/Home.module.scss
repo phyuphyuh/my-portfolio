@@ -1,0 +1,59 @@
+@use '../styles/global.scss' as *;
+
+.homeContainer {
+  position: relative;
+  width: 100%;
+  height: 300vh; // Adjust based on your content
+  overflow-x: hidden;
+}
+
+.fixedBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    $ivory,
+    $alabaster
+  );
+  z-index: 0;
+}
+
+.home {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    $ivory,
+    $alabaster,
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+
+  .webdev {
+    top: 87%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .yangon {
+    top: 12%;
+    left: 17%;
+    transform: translate(-50%, -50%);
+  }
+
+  .portfolio {
+    top: 25%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+  }
+
+}

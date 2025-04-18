@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import Nav from './components/Nav';
 import Intro from './components/Intro';
 import About from './components/About';
+import Home from './components/Home';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 
@@ -18,14 +19,15 @@ function App() {
   return (
     <>
       <div className="container" ref={containerRef}>
-        {/* <Nav /> */}
+        {/* <Nav />
         <Intro containerRef={containerRef} />
-        <About />
+        <About /> */}
+        <Home />
         <Projects />
       </div>
       {/* <Contact /> */}
     </>
-  )
-}
+  );
+};
 
 export default App

@@ -1,0 +1,68 @@
+@use '../styles/global.scss' as *;
+
+.nameWrapper {
+  display: inline-block;
+  width: 500px;
+  line-height: 0.8;
+  position: absolute;
+  z-index: 100;
+  transform-origin: center;
+
+  .nameRotationWrapper {
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+  }
+
+  &.navMode {
+    cursor: pointer;
+    position: fixed;
+
+    .name {
+      font-size: calc(3rem + 1vw);
+    }
+  }
+
+  .name {
+    font-family: "Montserrat Alternates", sans-serif;
+    color: $steel-blue;
+    font-size: calc(7rem + 4vw);
+    font-weight: 800;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: font-size 0.3s ease;
+
+    span:first-of-type {
+      position: relative;
+      display: block;
+    }
+
+    .shadowWrapper {
+      position: absolute;
+      // top: -50px;
+      top: min(-50px, -5vh);
+      left: 0;
+      width: 100%;
+      height: 100%;
+      perspective: 300px;
+      // perspective: calc(300px + 5vw);
+      z-index: -1;
+
+      .shadow {
+        font-size: inherit;
+        line-height: 0;
+        color: rgba($jet2, 0.3);
+        transform-origin: bottom;
+        transform-style: preserve-3d;
+        perspective: 50px;
+        filter: blur(2px);
+        opacity: 0.3;
+        pointer-events: none;
+        transform: translateY(20px);
+      }
+    }
+  }
+}
