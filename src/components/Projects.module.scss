@@ -1,67 +1,162 @@
 @use '../styles/global.scss' as *;
 
+// .projects {
+//   width: 100%;
+//   height: 200vh;
+//   background-color: $ivory;
+//   // background: linear-gradient(
+//   //   to bottom,
+//   //   $alabaster2,
+//   //   $tiffanyblue,
+//   //   $moonrise,
+//   // );
+//   // display: flex;
+//   // justify-content: center;
+//   // align-items: center;
+//   position: relative;
+//   // overflow: hidden;
+
+//   .title {
+//     width: 150px;
+//     top: 110px;
+//     left: 50%;
+//     z-index: 1000;
+
+//     path {
+//       stroke-width: 2.5px;
+//     }
+//   }
+
+//   .grid {
+//     margin: auto;
+//     padding-top: 80px;
+//     position: relative;
+//     display: grid;
+//     grid-template-columns: repeat(12, 120px);
+//     grid-template-rows: repeat(8, 120px);
+//     gap: 1rem;
+//     width: 100%;
+//     // max-width: 1200px;
+
+//     .projectCard {
+//       position: relative;
+//       background: $ivory;
+//       border: 1px solid $lighter-jet;
+//       padding: 1rem;
+//       cursor: pointer;
+//       transform-origin: center;
+//       user-select: none;
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: center;
+//       align-items: center;
+//       box-shadow: 0 0 5px rgba($jet2, 0.3);
+//       transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+//       h3 {
+//         font-family: "Montserrat", sans-serif;
+//         font-size: 2.5rem;
+//         line-height: 1.2;
+//         color: rgba($steel-blue, 0.7);
+//         margin: 0;
+//         text-align: center;
+//         font-weight: 800;
+
+//       }
+
+//       .techStack {
+//         display: flex;
+//         flex-wrap: wrap;
+//         justify-content: center;
+//         gap: 0.4rem;
+//         margin-top: 0.5rem;
+//       }
+
+//       .techBadge {
+//         background-color: $lapis;
+//         color: $ivory;
+//         font-family: "Montserrat", sans-serif;
+//         font-size: 0.75rem;
+//         padding: 0.3rem 0.6rem;
+//         border-radius: 10px;
+//         font-weight: 600;
+//         white-space: nowrap;
+//       }
+//     }
+
+//     .scatteredCard {
+//       position: absolute;
+//       width: 350px;
+//       max-width: 400px;
+//       height: 200px;
+//       background: $ivory;
+//       border: 1px solid $lighter-jet;
+//       padding: 0.5rem;
+//       z-index: 20;
+//       pointer-events: auto;
+//       cursor: grab;
+
+//       &:active {
+//         cursor: grabbing;
+//       }
+//     }
+//   }
+// }
+
 .projects {
   width: 100%;
   height: 200vh;
-  background-color: $ivory;
-  // background: linear-gradient(
-  //   to bottom,
-  //   $alabaster2,
-  //   $tiffanyblue,
-  //   $moonrise,
-  // );
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
+  margin-top: -30vh;
+  background: linear-gradient(
+    to bottom,
+    $warmwhite,
+    $skymistblue,
+    $sagemist,
+  );
   position: relative;
-  // overflow: hidden;
+  overflow: visible;
 
   .title {
     width: 150px;
     top: 110px;
     left: 50%;
-    z-index: 1000;
+    z-index: 50;
+    position: relative;
 
     path {
       stroke-width: 2.5px;
     }
   }
 
-  .grid {
-    margin: auto;
-    padding-top: 80px;
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(12, 120px);
-    grid-template-rows: repeat(8, 120px);
-    gap: 1rem;
+  .projectsList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 180px;
+    margin: 0 auto;
     width: 100%;
-    // max-width: 1200px;
+    max-width: 800px;
+    gap: 4rem;
+    z-index: 10;
+    position: relative;
 
-    .projectCard {
-      position: relative;
-      background: $ivory;
-      border: 1px solid $lighter-jet;
-      padding: 1rem;
+    .projectTitle {
+      text-align: center;
       cursor: pointer;
-      transform-origin: center;
-      user-select: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 0 5px rgba($jet2, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 1rem;
+      border-radius: 4px;
+      transition: transform 0.3s ease;
 
       h3 {
         font-family: "Montserrat", sans-serif;
         font-size: 2.5rem;
         line-height: 1.2;
-        color: rgba($steel-blue, 0.7);
+        color: rgba($goldernoat, 0.9);
         margin: 0;
         text-align: center;
         font-weight: 800;
-
+        transition: color 0.3s ease;
       }
 
       .techStack {
@@ -73,32 +168,59 @@
       }
 
       .techBadge {
-        background-color: $lapis;
-        color: $ivory;
+        background-color: transparent;
+        color: $mutedclay;
         font-family: "Montserrat", sans-serif;
         font-size: 0.75rem;
-        padding: 0.3rem 0.6rem;
-        border-radius: 10px;
+        padding: 0.25rem 0.6rem;
+        border-radius: 12px;
+        border: 1px solid $mutedclay;
         font-weight: 600;
         white-space: nowrap;
       }
     }
+  }
 
-    .scatteredCard {
-      position: absolute;
-      width: 350px;
-      max-width: 400px;
-      height: 200px;
-      background: $ivory;
-      border: 1px solid $lighter-jet;
-      padding: 0.5rem;
-      z-index: 20;
-      pointer-events: auto;
-      cursor: grab;
+  .scatteredCard {
+    position: absolute;
+    width: 350px;
+    max-width: 400px;
+    height: auto;
+    min-height: 200px;
+    background: $ivory;
+    border: 1px solid $lighter-jet;
+    padding: 1rem;
+    z-index: 100;
+    pointer-events: auto;
+    cursor: grab;
+    box-shadow: 0 4px 8px rgba($jet2, 0.2);
+    transform-origin: center center;
 
-      &:active {
-        cursor: grabbing;
-      }
+    &:active {
+      cursor: grabbing;
+      box-shadow: 0 6px 12px rgba($jet2, 0.3);
+    }
+
+    strong {
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.5rem;
+      color: $jet2;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    p {
+      font-family: "Montserrat", sans-serif;
+      font-size: 1rem;
+      color: $lighter-jet;
+      line-height: 1.5;
+    }
+
+    &[src] {
+      object-fit: contain;
+      background-color: $ivory;
+      width: 100%;
+      height: auto;
     }
   }
 }

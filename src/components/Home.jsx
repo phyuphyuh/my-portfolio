@@ -16,20 +16,35 @@ const Home = () => {
   });
 
   return (
-    <div ref={containerRef} className={styles.homeContainer}>
-      <div className={styles.fixedBackground}></div>
+    <section ref={containerRef} className={styles.home}>
+      <div className={styles.homeBackground}></div>
 
-      <section className={styles.home}>
+      <div className={styles.homeContent}>
         <NameComponent scrollYProgress={scrollYProgress} />
 
-        <ScatterImages containerRef={containerRef} />
-        <AnimatedHeading letters={web_developer_paths} className={styles.webdev} />
-        <AnimatedHeading letters={yangon_mm_paths} className={styles.yangon} />
-        <AnimatedHeading letters={portfolio_paths} className={styles.portfolio} />
+        <ScatterImages containerRef={containerRef} scrollYProgress={scrollYProgress} />
+        <AnimatedHeading
+          sectionRef={containerRef}
+          letters={web_developer_paths}
+          className={styles.webdev}
+          inViewOptions={{ margin: "-15% 0px", amount: 0.1}}
+        />
+        <AnimatedHeading
+          sectionRef={containerRef}
+          letters={yangon_mm_paths}
+          className={styles.yangon}
+          inViewOptions={{ margin: "-15% 0px", amount: 0.1 }}
+        />
+        <AnimatedHeading
+          sectionRef={containerRef}
+          letters={portfolio_paths}
+          className={styles.portfolio}
+          inViewOptions={{ margin: "-15% 0px", amount: 0.1 }}
+        />
 
         <About scrollYProgress={scrollYProgress} />
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

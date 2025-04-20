@@ -43,12 +43,6 @@ const About = ({ scrollYProgress }) => {
     ["100vh", "0vh", "0vh", "-100vh"]
   );
 
-  // const aboutSectionOpacity = useTransform(
-  //   scrollYProgress,
-  //   [0.2, 0.3, 0.7, 1],
-  //   [0, 1, 1, 0]
-  // );
-
   useMotionValueEvent(scrollYProgress, "change", (value) => {
     if (value >= 0.48) {
       setIsVisible(true);
@@ -63,10 +57,15 @@ const About = ({ scrollYProgress }) => {
       className={styles.about}
       style={{
         y: aboutSectionY,
-        // opacity: aboutSectionOpacity
       }}
     >
-      <AnimatedHeading letters={me_paths} className={styles.title} viewBox="-2 -2 80 57" />
+      <AnimatedHeading
+        sectionRef={sectionRef}
+        letters={me_paths}
+        className={styles.title}
+        viewBox="-2 -2 80 57"
+        inViewOptions={{ margin: "-10% 0px", amount: 0.7 }}
+      />
       <motion.div
         className={styles.aboutImg}
         whileHover="hover"

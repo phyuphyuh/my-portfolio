@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { motion, useTransform } from 'motion/react';
+import { motion, useTransform, useMotionValueEvent } from 'motion/react';
 import styles from './NameComponent.module.scss';
 
 const Shadow = ({ rotation, shadowLength, text }) => (
@@ -58,15 +58,13 @@ const NameComponent = ({ scrollYProgress }) => {
     [1, 0.9, 1, 1]
   );
 
+  useMotionValueEvent(scrollYProgress, "change", (value) => {
+    setIsNavMode(value > 0.2);
+  });
+
   useEffect(() => {
-    const unsubscribe = scrollYProgress.onChange(value => {
-      setIsNavMode(value > 0.2);
-    });
-
     setIsNavMode(scrollYProgress.get() > 0.2);
-
-    return () => unsubscribe();
-  }, [scrollYProgress]);
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e) => {

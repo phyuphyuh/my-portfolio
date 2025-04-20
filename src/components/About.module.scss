@@ -3,11 +3,17 @@
 .about {
   width: 100%;
   height: 100vh;
-  background-color: none;
+  background-color: transparent;
   // background: linear-gradient(
   //   to bottom,
   //   $alabaster,
   //   $alabaster2,
+  // );
+  // background: linear-gradient(
+  //   to bottom,
+  //   $alabaster2,
+  //   $tiffanyblue,
+  //   $moonrise,
   // );
   position: relative;
   display: flex;

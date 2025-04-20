@@ -2,9 +2,17 @@ import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "motion/react";
 import styles from "./AnimatedHeading.module.scss";
 
-const AnimatedHeading = ({ letters, className, viewBox = "0 0 300 100" }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { margin: "10% 0px", amount: "all" });
+const AnimatedHeading = ({
+  letters,
+  className,
+  viewBox = "0 0 300 100",
+  sectionRef,
+  inViewOptions = { margin: "10% 0px", amount: "all" },
+}) => {
+
+  const internalRef = useRef(null);
+  const targetRef = sectionRef || internalRef;
+  const isInView = useInView(targetRef, inViewOptions);
 
   const [key, setKey] = useState(0);
   const [wasInView, setWasInView] = useState(false);
@@ -32,7 +40,7 @@ const AnimatedHeading = ({ letters, className, viewBox = "0 0 300 100" }) => {
   // }, [totalDuration, fadeOutDuration]);
 
   return (
-    <div ref={ref} className={styles.animatedTextWrapper}>
+    <div ref={sectionRef ? undefined : internalRef} className={styles.animatedTextWrapper}>
       <AnimatePresence propagate mode="wait" initial={false}>
         {isInView && (
           <motion.div
