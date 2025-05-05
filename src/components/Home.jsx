@@ -27,19 +27,19 @@ const Home = () => {
           sectionRef={containerRef}
           letters={web_developer_paths}
           className={styles.webdev}
-          inViewOptions={{ margin: "-15% 0px", amount: 0.1}}
+          inViewOptions={{ margin: "-15% 0px", amount: 0.3 }}
         />
         <AnimatedHeading
           sectionRef={containerRef}
           letters={yangon_mm_paths}
           className={styles.yangon}
-          inViewOptions={{ margin: "-15% 0px", amount: 0.1 }}
+          inViewOptions={{ margin: "-15% 0px", amount: 0.3 }}
         />
         <AnimatedHeading
           sectionRef={containerRef}
           letters={portfolio_paths}
           className={styles.portfolio}
-          inViewOptions={{ margin: "-15% 0px", amount: 0.1 }}
+          inViewOptions={{ margin: "-15% 0px", amount: 0.3 }}
         />
 
         <About scrollYProgress={scrollYProgress} />

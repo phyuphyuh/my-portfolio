@@ -4,24 +4,12 @@
   width: 100%;
   height: 100vh;
   background-color: transparent;
-  // background: linear-gradient(
-  //   to bottom,
-  //   $alabaster,
-  //   $alabaster2,
-  // );
-  // background: linear-gradient(
-  //   to bottom,
-  //   $alabaster2,
-  //   $tiffanyblue,
-  //   $moonrise,
-  // );
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   padding-top: 50px;
-  // padding: 80px 0;
 
   .title {
     width: 40px;
@@ -31,59 +19,233 @@
     }
   }
 
-  .aboutImg {
+  .aboutContainer {
+    width: min(80%, 1200px);
+    height: 80vh;
+    z-index: 0;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    cursor: none;
+    --x: 50%;
+    --y: 50%;
+    --shadow-x: 0px;
+    --shadow-y: 0px;
+    --shadow-blur: 2px;
+    --shadow-opacity: 0.2;
+    --shadow-color: #{rgba($softcharcoal, var(--shadow-opacity))};
+    perspective: 2000px;
+    transform-style: preserve-3d;
 
-    .aboutImgInner {
-      position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: var(--y);
+      left: var(--x);
       width: 200px;
-      height: auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      height: 200px;
+      background: radial-gradient(
+        circle,
+        rgba($lightkhaki, 0.5) 0%,
+        rgba($dutch, 0.3) 30%,
+        rgba($vanilla, 0) 70%
+      );
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: overlay;
+      z-index: 20;
     }
 
     .borderSvg {
       position: absolute;
-      top: -15px;
-      left: -20px;
       width: 100%;
-      height: auto;
-      z-index: 10;
-      pointer-events: none;
+      height: 100%;
+      top: 20px;
+      left: 0;
     }
 
-    img {
-      margin: 0;
-      width: 200px;
-      height: auto;
+    .aboutContent {
+      position: relative;
+      width: 75%;
+      height: 75%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: min(2vw, 20px);
+
+      .aboutDesc {
+        font-family: 'ZTBrosOskon90s-Regular', sans-serif;
+        font-weight: 500;
+        font-size: clamp(1.1rem, 0.9rem + 0.9vw, 1.8rem);
+        line-height: 1.2;
+        color: rgba($alabaster2, 0.5);
+        // background: linear-gradient(115deg, rgba(#2F2B2A, 0.85) 40%, #A9523A,	#D4C6A8 );
+        // -webkit-background-clip: text;
+        // -webkit-text-fill-color: transparent;
+      }
+
+      .aboutText {
+        font-family: 'ZTBrosOskon90s-Regular', sans-serif;
+        font-weight: 500;
+        font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2.4rem);
+        line-height: 1.2;
+        color: $scriptwhite;
+        background-image: url('../assets/images/sky4.jpg');
+        background-size: 200%;
+        background-position: 0% 50%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: animate-background 5s infinite alternate linear;
+      }
+
+      @keyframes animate-background {
+        0% {
+            background-position: 0 50%;
+        }
+        100% {
+            background-position: 100% 50%;
+        }
+      }
+    }
+
+    .shadowOverlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 75%;
+      height: 75%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: min(2vw, 20px);
+      pointer-events: none;
+      z-index: 15;
+
+      mask-image: radial-gradient(
+        circle 100px at var(--overlay-x, 50%) var(--overlay-y, 50%),
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.7) 40%,
+        rgba(0, 0, 0, 0) 70%
+      );
+      mask-repeat: no-repeat;
+      mask-size: cover;
+      -webkit-mask-image: radial-gradient(
+        circle 100px at var(--overlay-x, 50%) var(--overlay-y, 50%),
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.7) 40%,
+        rgba(0, 0, 0, 0) 70%
+      );
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-size: cover;
+
+
+      .shadowText {
+        font-family: 'ZTBrosOskon90s-Regular', sans-serif;
+        font-weight: 500;
+        font-size: clamp(1.1rem, 0.9rem + 0.9vw, 1.8rem);
+        line-height: 1.2;
+        color: rgba($scriptwhite, 1);
+        text-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-color);
+        transform: translateZ(-10px);
+
+        .aboutText {
+          font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2.4rem);
+        }
+      }
     }
   }
 
-  .fixedImg {
+  @media (max-width: 768px) {
+    .aboutContainer {
+      width: 90%;
+
+      .aboutContent, .shadowOverlay {
+        width: 80%;
+        height: 80%;
+
+        .aboutText {
+          font-size:  clamp(1.2rem, 1rem + 1vw, 2.2rem);
+        }
+
+        .aboutDesc, .shadowText {
+          font-size: clamp(1rem, 0.8rem + 0.8vw, 1.6rem);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .aboutContainer {
+      width: 95%;
+
+      .aboutContent, .shadowOverlay {
+        width: 85%;
+        height: 85%;
+        padding: min(1.5vw, 15px);
+
+        .aboutText {
+          font-size: clamp(1.1rem, 0.9rem + 0.9vw, 2rem);
+        }
+
+        .aboutDesc, .shadowText {
+          font-size: clamp(0.9rem, 0.7rem + 0.7vw, 1.4rem)
+        }
+      }
+    }
+  }
+
+  .aboutImg {
     width: 200px;
     height: auto;
-    margin-left: 10px;
-    margin-top: 20px;
-    z-index: 0;
-    pointer-events: none;
   }
 
-  .aboutContent {
-    width: 100%;
-    height: auto;
-    text-align: center;
 
-    .aboutText {
-      font-family: 'ZTBrosOskon90s-Regular', sans-serif;
-      font-weight: 500;
-      font-size: 1.2rem;
-      line-height: 1.2;
-      color: $lighter-jet;
-    }
-  }
+  // .aboutImg {
+  //   position: absolute;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   z-index: 1000;
+
+  //   .aboutImgInner {
+  //     position: relative;
+  //     width: 200px;
+  //     height: auto;
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //   }
+
+    // .borderSvg {
+    //   position: absolute;
+    //   top: -15px;
+    //   left: -20px;
+    //   width: 100%;
+    //   height: auto;
+    //   z-index: 10;
+    //   pointer-events: none;
+    // }
+
+  //   img {
+  //     margin: 0;
+  //     width: 200px;
+  //     height: auto;
+  //   }
+  // }
+
+  // .fixedImg {
+  //   width: 200px;
+  //   height: auto;
+  //   margin-left: 10px;
+  //   margin-top: 20px;
+  //   z-index: 0;
+  //   pointer-events: none;
+  // }
+
+
 }

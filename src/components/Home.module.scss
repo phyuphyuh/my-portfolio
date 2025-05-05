@@ -13,15 +13,33 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  // background: linear-gradient(
-  //   to bottom,
-  //   $ivory,
-  //   $alabaster,
-  //   $alabaster2,
-  //   $tiffanyblue,
-  //   $moonrise
-  // );
-  background: $warmwhite;
+  background:
+    linear-gradient(
+      to right,
+      rgba(45, 59, 64, 0.2) 0%,
+      rgba(76, 122, 122, 0) 70%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba($lightkhaki, 0.5) 0%,
+      rgba($vanilla, 0.4) 15%,
+      rgba($lightkhaki, 0.3) 35%,
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at top left,
+      rgba($mytrle, 0.6) 0%,
+      rgba($cambridgeblue, 0.3) 30%,
+      transparent 80%
+    ),
+    linear-gradient(
+      180deg,
+      $cambridgeblue2 0%,
+      $moonstone2 25%,
+      $cambridgeblue3 50%,
+      $greenash 70%,
+      $dutch 100%
+  );
   z-index: 0;
 }
 

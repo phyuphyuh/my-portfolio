@@ -1,3 +1,5 @@
+import img1 from "../assets/images/img1.png";
+
 const projects = [
   {
     id: 1,
@@ -6,11 +8,7 @@ const projects = [
     url: "https://watchlist-pp-b1b5f2bf4594.herokuapp.com/lists",
     github: "https://github.com/phyuphyuh/rails-watch-list",
     techStack: ["Ruby on Rails", "PostgreSQL", "Turbo (Hotwire)", "Stimulus.js", "Bootstrap", "Lodash", "Heroku"],
-    images: ["/img1.png", "/img2.png"],
-    gridRow: 2,
-    gridCol: 3,
-    gridRowSpan: 2,
-    gridColSpan: 3,
+    images: [img1, img1, img1, img1],
   },
   {
     id: 2,
@@ -20,10 +18,6 @@ const projects = [
     github: "https://github.com/phyuphyuh/rails-watch-list",
     techStack: ["Rails", "PostgreSQL"],
     images: ["/img1.png", "/img2.png"],
-    gridRow: 5,
-    gridCol: 7,
-    gridRowSpan: 3,
-    gridColSpan: 2,
   }
 ];
 

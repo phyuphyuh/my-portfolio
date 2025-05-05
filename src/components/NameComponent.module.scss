@@ -26,7 +26,7 @@
 
   .name {
     font-family: "Montserrat Alternates", sans-serif;
-    color: $dustyblue;
+    color: $scriptwhite;
     font-size: calc(7rem + 4vw);
     font-weight: 800;
     position: relative;
@@ -55,7 +55,7 @@
       .shadow {
         font-size: inherit;
         line-height: 0;
-        color: rgba($mutedclay, 0.3);
+        color: rgba($softcharcoal, 0.3);
         transform-origin: bottom;
         transform-style: preserve-3d;
         perspective: 50px;

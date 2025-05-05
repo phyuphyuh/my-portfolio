@@ -1,7 +1,9 @@
 import { useEffect, useState, useRef } from "react";
-import { motion, useTransform, useMotionValueEvent } from "motion/react";
+import { motion, useTransform, useMotionValueEvent, useSpring } from "motion/react";
 import AnimatedHeading from './AnimatedHeading';
 import { me_paths } from "../data/svgPaths.js";
+import { about_path } from "../data/svgPaths.js";
+import me from "../assets/images/mee.png";
 import pp from "../assets/images/pp3small.png";
 import pp2 from "../assets/images/pp3small2.png";
 import styles from "./About.module.scss";
@@ -19,16 +21,34 @@ const useWindowWidth = () => {
   return width;
 };
 
-const borderPaths = [
-  "m 1.1702114,3.1762882 c 0,18.8905558 0,37.7811108 0.027862,49.8175708 0.027862,12.036461 0.083587,17.218826 0.1393109,22.40119",
-  "M 2.3404228,2.0060767 C 15.881441,1.3373844 29.422457,0.66869226 37.864698,0.27862174 c 8.44224,-0.39007051 11.7857,-0.50151919 13.95895,-0.33434575 2.173251,0.16717344 3.176289,0.61296788 4.179327,1.05876231",
-  "m 56.337321,3.5106342 c 0,4.903743 0,9.8074858 0,20.3672508 0,10.559765 0,26.775551 -0.02786,36.638761 -0.02786,9.86321 -0.08359,13.373845 -0.334347,14.683367 -0.25076,1.309522 -0.696554,0.417934 -1.142349,-0.473656",
-  "M 1.3373845,74.726357 C 18.500485,74.837806 35.663587,74.949254 52.826687,75.060703",
-]
+// const borderPaths = [
+//   "m 1.1702114,3.1762882 c 0,18.8905558 0,37.7811108 0.027862,49.8175708 0.027862,12.036461 0.083587,17.218826 0.1393109,22.40119",
+//   "M 2.3404228,2.0060767 C 15.881441,1.3373844 29.422457,0.66869226 37.864698,0.27862174 c 8.44224,-0.39007051 11.7857,-0.50151919 13.95895,-0.33434575 2.173251,0.16717344 3.176289,0.61296788 4.179327,1.05876231",
+//   "m 56.337321,3.5106342 c 0,4.903743 0,9.8074858 0,20.3672508 0,10.559765 0,26.775551 -0.02786,36.638761 -0.02786,9.86321 -0.08359,13.373845 -0.334347,14.683367 -0.25076,1.309522 -0.696554,0.417934 -1.142349,-0.473656",
+//   "M 1.3373845,74.726357 C 18.500485,74.837806 35.663587,74.949254 52.826687,75.060703",
+// ]
+
+const aboutContentText = (
+  <>
+    Massive foodie. Life rookie. Cat lady. Precocious baby. Coffee sipper. Awkward yapper. Aspiring baker. Chocolate lover. Anxious zillennial. Go-to material.
+    Creating. Coding. Learning. Googling. Building. Exploring. Designing. Debugging. Obsessing. Scaling. Refactoring. Pushing. Panicking. Deploying.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam veniam non inventor e adipisci esse perspiciatis mollitia quam! In incidunt eos labore ratione animi maiores nemo.
+    <span className={styles.aboutText}>
+      &nbsp;Full-stack developer with a passion for frontend and design.&nbsp;
+    </span>
+    <span className={styles.aboutText}>
+      &nbsp;Trained in Tokyo. From Yangon.&nbsp;
+    </span>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam veniam non inventore adipisci esse perspiciatis mollitia quam! In incidunt eos labore ratione animi maiores nemo. Quo quis eius officia in.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis, voluptatem ducimus vel illo laboriosam? Ipsum, quae obcaecati eligendi, vero maxime eveniet omnis animi voluptate quaerat accusantium consequatur, ut ipsam!
+  </>
+);
 
 const About = ({ scrollYProgress }) => {
   const sectionRef = useRef(null);
+  const aboutContainerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+
   // const width = useWindowWidth();
 
   // const x = useTransform(
@@ -51,6 +71,58 @@ const About = ({ scrollYProgress }) => {
     }
   });
 
+  const handleMouseMove = (e) => {
+    const container = aboutContainerRef.current;
+    if (!container) return;
+
+    // Get container dimensions
+    const containerRect = container.getBoundingClientRect();
+    const x = e.clientX - containerRect.left;
+    const y = e.clientY - containerRect.top;
+
+    // Set flashlight position
+    container.style.setProperty("--x", `${x}px`);
+    container.style.setProperty("--y", `${y}px`);
+
+    // Find the shadowOverlay element
+    const shadowOverlay = container.querySelector('.shadowOverlay');
+    if (shadowOverlay) {
+      const shadowRect = shadowOverlay.getBoundingClientRect();
+
+      // Calculate mouse position relative to shadowOverlay
+      const shadowX = e.clientX - shadowRect.left;
+      const shadowY = e.clientY - shadowRect.top;
+
+      // Set these as custom properties on the shadowOverlay
+      shadowOverlay.style.setProperty("--overlay-x", `${shadowX}px`);
+      shadowOverlay.style.setProperty("--overlay-y", `${shadowY}px`);
+    }
+
+    // Perspective calculation
+    const centerX = containerRect.width / 2;
+    const centerY = containerRect.height / 2;
+
+    // Calculate distance from center
+    const distanceFromCenterX = (x - centerX) / centerX;
+    const distanceFromCenterY = (y - centerY) / centerY;
+
+    // Calculate perspective factor - stronger at edges
+    const distanceFromCenter = Math.sqrt(distanceFromCenterX**2 + distanceFromCenterY**2);
+    const perspectiveFactor = Math.min(distanceFromCenter * 1.5, 1);
+
+    const shadowDistanceX = -distanceFromCenterX * 25 * perspectiveFactor;
+    const shadowDistanceY = -distanceFromCenterY * 25 * perspectiveFactor;
+
+    container.style.setProperty("--shadow-x", `${shadowDistanceX}px`);
+    container.style.setProperty("--shadow-y", `${shadowDistanceY}px`);
+
+    const shadowBlur = 2 + (distanceFromCenter * 2);
+    container.style.setProperty("--shadow-blur", `${shadowBlur}px`);
+
+    const shadowOpacity = 0.5 + (distanceFromCenter * 0.3);
+    container.style.setProperty("--shadow-opacity", shadowOpacity.toFixed(2));
+  };
+
   return (
     <motion.section
       ref={sectionRef}
@@ -59,14 +131,55 @@ const About = ({ scrollYProgress }) => {
         y: aboutSectionY,
       }}
     >
-      <AnimatedHeading
+      {/* <AnimatedHeading
         sectionRef={sectionRef}
         letters={me_paths}
         className={styles.title}
         viewBox="-2 -2 80 57"
         inViewOptions={{ margin: "-10% 0px", amount: 0.7 }}
-      />
+      /> */}
+
       <motion.div
+        ref={aboutContainerRef}
+        className={styles.aboutContainer}
+        onMouseMove={handleMouseMove}
+        style={{
+          y: useTransform(scrollYProgress, [0.2, 0.4, 0.8, 1], ["100%", "0%", "-100%", "-200%"]),
+          scale: useTransform(scrollYProgress, [0.2, 0.4, 0.8], [0, 1, 1.3]),
+        }}
+      >
+        {/* <svg
+          className={styles.borderSvg}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 140 90"
+        >
+          <g transform="translate(-49.724753,-41.190831)">
+            <path
+              d={about_path}
+              fill="transparent"
+              stroke="var(--scriptwhite)"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              vectorEffect="non-scaling-stroke"
+            />
+          </g>
+        </svg> */}
+
+        <div className={styles.aboutContent}>
+          <p className={styles.aboutDesc}>{aboutContentText}</p>
+        </div>
+
+        <div className={`${styles.shadowOverlay} shadowOverlay`}>
+          <p className={styles.shadowText}>{aboutContentText}</p>
+        </div>
+      </motion.div>
+      {/* <img
+        src={pp}
+        alt="Me"
+        className={styles.aboutImg}
+      /> */}
+      {/* <motion.div
         className={styles.aboutImg}
         whileHover="hover"
         initial="initial"
@@ -76,9 +189,9 @@ const About = ({ scrollYProgress }) => {
           scale: useTransform(scrollYProgress, [0.4, 0.45, 0.7, 0.85], [0.8, 1, 1.1, 0.8]),
           rotate: useTransform(scrollYProgress, [0.4, 0.45, 0.7, 0.85], [15, 0, -10, -20]),
         }}
-      >
-        <div className={styles.aboutImgInner}>
-          <svg
+      > */}
+        {/* <div className={styles.aboutImgInner}> */}
+          {/* <svg
             className={styles.borderSvg}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="-1 -1 58 77"
@@ -109,8 +222,8 @@ const About = ({ scrollYProgress }) => {
                 }}
               />
             ))}
-          </svg>
-          <motion.img
+          </svg> */}
+          {/* <motion.img
             src={pp}
             alt="Me"
             variants={{
@@ -125,8 +238,8 @@ const About = ({ scrollYProgress }) => {
             }}
           />
         </div>
-      </motion.div>
-      <motion.img
+      </motion.div> */}
+      {/* <motion.img
         className={styles.fixedImg}
         src={pp2}
         alt="Me"
@@ -134,20 +247,8 @@ const About = ({ scrollYProgress }) => {
           visibility: isVisible ? "visible" : "hidden",
           opacity: isVisible ? 1 : 0,
         }}
-      />
-      <div
-        className={styles.aboutContent}
-      >
-        <p className={styles.aboutText}>
-          Full-stack developer with a passion for frontend and design.
-        </p>
-        <p className={styles.aboutText}>
-          Trained in Tokyo. From Yangon.
-        </p>
-      </div>
-      <motion.div>
+      /> */}
 
-      </motion.div>
     </motion.section>
   );
 };
