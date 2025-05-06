@@ -55,6 +55,10 @@
       transform: translate(-50%, -50%);
       mix-blend-mode: overlay;
       z-index: 20;
+
+      @media (max-width: 1024px) {
+        display: none;
+      }
     }
 
     .borderSvg {
@@ -70,20 +74,59 @@
       width: 75%;
       height: 75%;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      overflow: visible;
       padding: min(2vw, 20px);
 
-      .aboutDesc {
+      .aboutMain {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+      }
+
+      .imageWrapper {
+        width: clamp(120px, 20%, 180px);
+        margin: 1.5rem auto;
+
+        .aboutImg {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          transition: all 0.2s ease;
+        }
+      }
+
+      .aboutDetailsContainer {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        height: 100%;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
+        // align-items: center;
+        z-index: 5;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .aboutDetails {
         font-family: 'ZTBrosOskon90s-Regular', sans-serif;
         font-weight: 500;
         font-size: clamp(1.1rem, 0.9rem + 0.9vw, 1.8rem);
         line-height: 1.2;
         color: rgba($alabaster2, 0.5);
-        // background: linear-gradient(115deg, rgba(#2F2B2A, 0.85) 40%, #A9523A,	#D4C6A8 );
-        // -webkit-background-clip: text;
-        // -webkit-text-fill-color: transparent;
+        @media (max-width: 1024px) {
+          color: rgba($alabaster2, 1);
+        }
       }
 
       .aboutText {
@@ -119,9 +162,10 @@
       width: 75%;
       height: 75%;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      overflow: visible;
       padding: min(2vw, 20px);
       pointer-events: none;
       z-index: 15;
@@ -143,6 +187,48 @@
       -webkit-mask-repeat: no-repeat;
       -webkit-mask-size: cover;
 
+      @media (max-width: 1024px) {
+        display: none;
+      }
+
+      .aboutMain {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+      }
+
+      .imageWrapper {
+        width: clamp(120px, 20%, 180px);
+        margin: 1.5rem auto;
+
+        .aboutImg {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          text-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-color);
+          transform: translateZ(-10px);
+        }
+      }
+
+      .aboutDetailsContainer {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        height: 100%;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
+        // align-items: center;
+        z-index: 5;
+        padding: 2rem;
+        text-align: center;
+      }
 
       .shadowText {
         font-family: 'ZTBrosOskon90s-Regular', sans-serif;
@@ -169,11 +255,16 @@
         height: 80%;
 
         .aboutText {
-          font-size:  clamp(1.2rem, 1rem + 1vw, 2.2rem);
+          font-size:  clamp(1.3rem, 1.1rem + 1.2vw, 2.3rem);
         }
 
         .aboutDesc, .shadowText {
-          font-size: clamp(1rem, 0.8rem + 0.8vw, 1.6rem);
+          font-size: clamp(1.1rem, 0.9rem + 0.9vw, 1.7rem);
+        }
+
+        .imageWrapper {
+          width: clamp(100px, 25%, 160px);
+          margin: 1rem auto;
         }
       }
     }
@@ -188,22 +279,13 @@
         height: 85%;
         padding: min(1.5vw, 15px);
 
-        .aboutText {
-          font-size: clamp(1.1rem, 0.9rem + 0.9vw, 2rem);
-        }
-
-        .aboutDesc, .shadowText {
-          font-size: clamp(0.9rem, 0.7rem + 0.7vw, 1.4rem)
+        .imageWrapper {
+          width: clamp(80px, 40%, 140px);
         }
       }
     }
   }
-
-  .aboutImg {
-    width: 200px;
-    height: auto;
-  }
-
+}
 
   // .aboutImg {
   //   position: absolute;
@@ -246,6 +328,3 @@
   //   z-index: 0;
   //   pointer-events: none;
   // }
-
-
-}

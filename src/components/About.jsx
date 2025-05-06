@@ -28,22 +28,6 @@ const useWindowWidth = () => {
 //   "M 1.3373845,74.726357 C 18.500485,74.837806 35.663587,74.949254 52.826687,75.060703",
 // ]
 
-const aboutContentText = (
-  <>
-    Massive foodie. Life rookie. Cat lady. Precocious baby. Coffee sipper. Awkward yapper. Aspiring baker. Chocolate lover. Anxious zillennial. Go-to material.
-    Creating. Coding. Learning. Googling. Building. Exploring. Designing. Debugging. Obsessing. Scaling. Refactoring. Pushing. Panicking. Deploying.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam veniam non inventor e adipisci esse perspiciatis mollitia quam! In incidunt eos labore ratione animi maiores nemo.
-    <span className={styles.aboutText}>
-      &nbsp;Full-stack developer with a passion for frontend and design.&nbsp;
-    </span>
-    <span className={styles.aboutText}>
-      &nbsp;Trained in Tokyo. From Yangon.&nbsp;
-    </span>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam veniam non inventore adipisci esse perspiciatis mollitia quam! In incidunt eos labore ratione animi maiores nemo. Quo quis eius officia in.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum veritatis, voluptatem ducimus vel illo laboriosam? Ipsum, quae obcaecati eligendi, vero maxime eveniet omnis animi voluptate quaerat accusantium consequatur, ut ipsam!
-  </>
-);
-
 const About = ({ scrollYProgress }) => {
   const sectionRef = useRef(null);
   const aboutContainerRef = useRef(null);
@@ -61,6 +45,36 @@ const About = ({ scrollYProgress }) => {
     scrollYProgress,
     [0.2, 0.4, 0.9, 1],
     ["100vh", "0vh", "0vh", "-100vh"]
+  );
+
+  const aboutContainerScale = useTransform(
+    scrollYProgress,
+    [0.2, 0.4, 0.8],
+    [0, 1, 1.3]
+  );
+
+  const mainTextY = useTransform(
+    scrollYProgress,
+    [0.2, 0.4, 0.6, 0.8],
+    ["0%", "0%", "0%", "0%"]
+  );
+
+  const detailsY = useTransform(
+    scrollYProgress,
+    [0.3, 0.5, 0.7, 0.9],
+    ["100%", "0%", "0%", "-30%"]
+  );
+
+  const mainScale = useTransform(
+    scrollYProgress,
+    [0.2, 0.4, 0.6, 0.8],
+    [0.8, 1, 1.1, 1.2]
+  );
+
+  const detailsOpacity = useTransform(
+    scrollYProgress,
+    [0.3, 0.45, 0.7],
+    [0, 1, 1]
   );
 
   useMotionValueEvent(scrollYProgress, "change", (value) => {
@@ -138,14 +152,17 @@ const About = ({ scrollYProgress }) => {
         viewBox="-2 -2 80 57"
         inViewOptions={{ margin: "-10% 0px", amount: 0.7 }}
       /> */}
-
+      {/* <img
+        src={pp}
+        alt="Me"
+        className={styles.aboutImg}
+      /> */}
       <motion.div
         ref={aboutContainerRef}
         className={styles.aboutContainer}
         onMouseMove={handleMouseMove}
         style={{
-          y: useTransform(scrollYProgress, [0.2, 0.4, 0.8, 1], ["100%", "0%", "-100%", "-200%"]),
-          scale: useTransform(scrollYProgress, [0.2, 0.4, 0.8], [0, 1, 1.3]),
+          scale: aboutContainerScale,
         }}
       >
         {/* <svg
@@ -167,18 +184,82 @@ const About = ({ scrollYProgress }) => {
         </svg> */}
 
         <div className={styles.aboutContent}>
-          <p className={styles.aboutDesc}>{aboutContentText}</p>
+          <motion.div
+            className={styles.aboutMain}
+            style={{
+              y: mainTextY,
+              scale: mainScale,
+            }}
+          >
+            <p className={styles.aboutText}>
+              &nbsp;Full-stack developer with a passion for frontend and design.&nbsp;
+            </p>
+            <p className={styles.aboutText}>
+              &nbsp;Trained in Tokyo. From Yangon.&nbsp;
+            </p>
+
+            <div className={styles.imageWrapper}>
+              <img src={pp} alt="Me" className={styles.aboutImg} />
+            </div>
+          </motion.div>
+
+          <motion.div
+            className={styles.aboutDetailsContainer}
+            style={{
+              y: detailsY,
+              opacity: detailsOpacity,
+            }}
+          >
+            <p className={styles.aboutDetails}>
+              Massive foodie. Life rookie. Cat lady. Precocious baby. Coffee sipper. Awkward yapper. Aspiring baker. City walker.  Anxious zillennial. Go-to material. Shower singer. Sky gazer. Expert navigator. Professional procrastinator.
+              Creating. Coding. Learning. Googling. Building. Exploring. Designing. Debugging. Obsessing. Scaling. Refactoring. Pushing. Panicking. Deploying.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam veniam non inventor e adipisci esse perspiciatis mollitia quam! In incidunt eos labore ratione animi maiores nemo.
+            </p>
+          </motion.div>
         </div>
 
         <div className={`${styles.shadowOverlay} shadowOverlay`}>
-          <p className={styles.shadowText}>{aboutContentText}</p>
+          <motion.div
+            className={styles.aboutMain}
+            style={{
+              y: mainTextY,
+              scale: mainScale,
+              zIndex: 10
+            }}
+          >
+            <div className={styles.shadowText}>
+              <p className={styles.aboutText}>
+                &nbsp;Full-stack developer with a passion for frontend and design.&nbsp;
+              </p>
+              <p className={styles.aboutText}>
+                &nbsp;Trained in Tokyo. From Yangon.&nbsp;
+              </p>
+            </div>
+
+            <div className={styles.imageWrapper}>
+              <img src={pp} alt="Me" className={styles.aboutImg} />
+            </div>
+          </motion.div>
+
+          <motion.div
+            className={styles.aboutDetailsContainer}
+            style={{
+              y: detailsY,
+              opacity: detailsOpacity,
+              zIndex: 5
+            }}
+          >
+            <div className={styles.shadowText}>
+              <p className={styles.aboutDetails}>
+                Massive foodie. Life rookie. Cat lady. Precocious baby. Coffee sipper. Awkward yapper. Aspiring baker. City walker.  Anxious zillennial. Go-to material. Shower singer. Sky gazer. Expert navigator. Professional procrastinator.
+                Creating. Coding. Learning. Googling. Building. Exploring. Designing. Debugging. Obsessing. Scaling. Refactoring. Pushing. Panicking. Deploying.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam veniam non inventor e adipisci esse perspiciatis mollitia quam! In incidunt eos labore ratione animi maiores nemo.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </motion.div>
-      {/* <img
-        src={pp}
-        alt="Me"
-        className={styles.aboutImg}
-      /> */}
+
       {/* <motion.div
         className={styles.aboutImg}
         whileHover="hover"
