@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useScroll } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import styles from './Home.module.scss';
 import NameComponent from './NameComponent';
 import About from "./About";
@@ -15,9 +15,15 @@ const Home = () => {
     offset: ["start start", "end end"]
   });
 
+  const dimmedOpacity = useTransform(scrollYProgress, [0.2, 1], [0, 1]);
+
   return (
     <section ref={containerRef} className={styles.home}>
-      <div className={styles.homeBackground}></div>
+      <div className={`${styles.homeBackground} ${styles.bgDefault}`} />
+      <motion.div
+        className={`${styles.homeBackground} ${styles.bgDimmed}`}
+        style={{ opacity: dimmedOpacity }}
+      />
 
       <div className={styles.homeContent}>
         <NameComponent scrollYProgress={scrollYProgress} />

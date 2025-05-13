@@ -13,6 +13,10 @@
   left: 0;
   width: 100%;
   height: 100vh;
+  z-index: 0;
+}
+
+.bgDefault {
   background:
     linear-gradient(
       to right,
@@ -41,6 +45,49 @@
       $dutch 100%
   );
   z-index: 0;
+}
+
+.bgDimmed {
+  background:
+    linear-gradient(
+      to right,
+      rgba(45, 59, 64, 0.2) 0%,
+      rgba(76, 122, 122, 0) 70%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(#F6D49B, 0.3) 0%,
+      rgba(#469BB1, 0.2) 15%,
+      rgba(#7BB7C7, 0.3) 30%,
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at top left,
+      rgba(#2E3B59, 0.4) 0%,
+      rgba(#4D6680, 0.3) 30%,
+      transparent 80%
+    ),
+    linear-gradient(
+      180deg,
+      $cambridgeblue2 0%,
+      $moonstone2 25%,
+      $cambridgeblue3 50%,
+      $greenash 70%,
+      $dutch 100%
+    ),
+    radial-gradient(
+      ellipse at top,
+      #469BB1,
+      #7BB7C7,
+      transparent
+    ),
+    radial-gradient(
+      ellipse at bottom,
+      #2E3B59,
+      transparent
+    );
+    z-index: 1;
+    will-change: opacity;
 }
 
 .homeContent {

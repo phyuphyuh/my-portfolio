@@ -28,6 +28,12 @@ const useWindowWidth = () => {
 //   "M 1.3373845,74.726357 C 18.500485,74.837806 35.663587,74.949254 52.826687,75.060703",
 // ]
 
+const aboutDetails = (
+  <p className={styles.aboutDetails}>
+    Massive foodie. Life rookie. Cat lady. Precocious baby. Coffee sipper. Hardcore shipper. Shadow dweller. Book dabbler. Aspiring baker. City walker. Anxious zillennial. Go-to material. Shower singer. Sky gazer. Master escapist. Neurotic perfectionist. Aisle roamer. Flannel wearer. Expert navigator. Yadom collector. Designated snapper. Awkward yapper.
+  </p>
+);
+
 const About = ({ scrollYProgress }) => {
   const sectionRef = useRef(null);
   const aboutContainerRef = useRef(null);
@@ -43,14 +49,14 @@ const About = ({ scrollYProgress }) => {
 
   const aboutSectionY = useTransform(
     scrollYProgress,
-    [0.2, 0.4, 0.9, 1],
+    [0.1, 0.4, 0.9, 1],
     ["100vh", "0vh", "0vh", "-100vh"]
   );
 
   const aboutContainerScale = useTransform(
     scrollYProgress,
     [0.2, 0.4, 0.8],
-    [0, 1, 1.3]
+    [0, 1, 1.1]
   );
 
   const mainTextY = useTransform(
@@ -61,8 +67,8 @@ const About = ({ scrollYProgress }) => {
 
   const detailsY = useTransform(
     scrollYProgress,
-    [0.3, 0.5, 0.7, 0.9],
-    ["100%", "0%", "0%", "-30%"]
+    [0.3, 0.55, 0.7, 0.9],
+    ["150%", "0%", "-80%", "-100%"]
   );
 
   const mainScale = useTransform(
@@ -210,11 +216,7 @@ const About = ({ scrollYProgress }) => {
               opacity: detailsOpacity,
             }}
           >
-            <p className={styles.aboutDetails}>
-              Massive foodie. Life rookie. Cat lady. Precocious baby. Coffee sipper. Awkward yapper. Aspiring baker. City walker.  Anxious zillennial. Go-to material. Shower singer. Sky gazer. Expert navigator. Professional procrastinator.
-              Creating. Coding. Learning. Googling. Building. Exploring. Designing. Debugging. Obsessing. Scaling. Refactoring. Pushing. Panicking. Deploying.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam veniam non inventor e adipisci esse perspiciatis mollitia quam! In incidunt eos labore ratione animi maiores nemo.
-            </p>
+            {aboutDetails}
           </motion.div>
         </div>
 
@@ -250,11 +252,7 @@ const About = ({ scrollYProgress }) => {
             }}
           >
             <div className={styles.shadowText}>
-              <p className={styles.aboutDetails}>
-                Massive foodie. Life rookie. Cat lady. Precocious baby. Coffee sipper. Awkward yapper. Aspiring baker. City walker.  Anxious zillennial. Go-to material. Shower singer. Sky gazer. Expert navigator. Professional procrastinator.
-                Creating. Coding. Learning. Googling. Building. Exploring. Designing. Debugging. Obsessing. Scaling. Refactoring. Pushing. Panicking. Deploying.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam veniam non inventor e adipisci esse perspiciatis mollitia quam! In incidunt eos labore ratione animi maiores nemo.
-              </p>
+              {aboutDetails}
             </div>
           </motion.div>
         </div>

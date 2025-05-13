@@ -21,7 +21,7 @@
 
   .aboutContainer {
     width: min(80%, 1200px);
-    height: 80vh;
+    height: 100vh;
     z-index: 0;
     position: absolute;
     display: flex;
@@ -100,6 +100,7 @@
           height: auto;
           object-fit: cover;
           transition: all 0.2s ease;
+          // filter: grayscale(0.2) sepia(0.1);
         }
       }
 
@@ -123,7 +124,7 @@
         font-weight: 500;
         font-size: clamp(1.1rem, 0.9rem + 0.9vw, 1.8rem);
         line-height: 1.2;
-        color: rgba($alabaster2, 0.5);
+        color: rgba($alabaster2, 0.2);
         @media (max-width: 1024px) {
           color: rgba($alabaster2, 1);
         }
