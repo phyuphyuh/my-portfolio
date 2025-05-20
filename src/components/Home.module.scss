@@ -56,15 +56,15 @@
     ),
     radial-gradient(
       circle at bottom right,
-      rgba(#F6D49B, 0.3) 0%,
-      rgba(#469BB1, 0.2) 15%,
-      rgba(#7BB7C7, 0.3) 30%,
+      rgba($amber, 0.3) 0%,
+      rgba($sky, 0.2) 15%,
+      rgba($cyan, 0.3) 30%,
       transparent 55%
     ),
     radial-gradient(
       circle at top left,
-      rgba(#2E3B59, 0.4) 0%,
-      rgba(#4D6680, 0.3) 30%,
+      rgba($twilight, 0.4) 0%,
+      rgba($indigo, 0.3) 30%,
       transparent 80%
     ),
     linear-gradient(
@@ -77,13 +77,13 @@
     ),
     radial-gradient(
       ellipse at top,
-      #469BB1,
-      #7BB7C7,
+      $sky,
+      $cyan,
       transparent
     ),
     radial-gradient(
       ellipse at bottom,
-      #2E3B59,
+      $twilight,
       transparent
     );
     z-index: 1;

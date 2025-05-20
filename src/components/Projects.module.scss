@@ -1,17 +1,134 @@
 @use '../styles/global.scss' as *;
 
 .projects {
-  width: 100%;
+  width: 100vw;
   min-height: 200vh;
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(#D4C6A8, 0.7),
-    #F0B87A,
-    #A9523A,
+    rgba($cyan, 0.7),
+    $sky,
+    $indigo,
+    $twilight,
   );
   padding: 4rem 0 8rem;
-  margin-top: -60vh;
+  margin-top: -40vh;
   position: relative;
   overflow: visible;
+  z-index: 500;
+
+  .sectionTitle {
+    text-align: center;
+    margin-bottom: 6rem;
+    width: 150px;
+    top: 110px;
+    left: 50%;
+    z-index: 1000;
+
+    path {
+      stroke-width: 2.5px;
+    }
+  }
+
+  .projectsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 90%;
+    margin: 10vh auto 0;
+    padding: 4rem 2rem;
+    text-align: center;
+
+    .projectRow {
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      padding: 1rem 0;
+      background-color: rgba(255, 255, 255, 0.02);
+      border-radius: 10px;
+
+      // &:hover {
+      //   h3 {
+      //     text-shadow:
+      //       0 0 8px rgba($scriptwhite, 0.8),
+      //       0 0 10px rgba($amber, 0.6),
+      //       0 0 12px rgba($vanilla, 0.4);
+      //   }
+      // }
+
+      .projectHeader {
+        h3 {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 700;
+          font-size: 2rem;
+          margin-bottom: 0.5rem;
+          color: $scriptwhite;
+        }
+
+        .techStack {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+
+          .techBadge {
+            background: rgba(255, 255, 255, 0.1);
+            color: $scriptwhite;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 5px;
+            white-space: nowrap;
+          }
+        }
+      }
+
+
+      .projectDetails {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        color: $scriptwhite;
+
+        .description {
+          font-size: 1rem;
+        }
+
+        .imgContainerWrapper {
+          width: 100%;
+          overflow-x: auto;
+          overscroll-behavior-x: contain;
+          -webkit-overflow-scrolling: touch;
+          position: relative;
+
+          .imgContainer {
+            width: max-content;
+            display: flex;
+            gap: 0.7rem;
+            padding-bottom: 0.5rem;
+            cursor: grab;
+
+            img {
+              width: 320px;
+              height: auto;
+              border-radius: 10px;
+              flex-shrink: 0;
+              transition: transform 0.2s ease;
+
+              &:hover {
+                transform: scale(1.05);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4) 40%, transparent);
+    margin: 1rem 0;
+  }
 }

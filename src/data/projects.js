@@ -8,16 +8,16 @@ const projects = [
     url: "https://watchlist-pp-b1b5f2bf4594.herokuapp.com/lists",
     github: "https://github.com/phyuphyuh/rails-watch-list",
     techStack: ["Ruby on Rails", "PostgreSQL", "Turbo (Hotwire)", "Stimulus.js", "Bootstrap", "Lodash", "Heroku"],
-    images: [img1, img1, img1, img1],
+    images: [img1, img1, img1, img1, img1, img1],
   },
   {
     id: 2,
     name: "SelfShelf",
     description: "Create your own shelf showcasing your fav films, books, and music!",
-    url: "https://watchlist-pp-b1b5f2bf4594.herokuapp.com/lists",
+    url: "https://www.selfshelf.me/",
     github: "https://github.com/phyuphyuh/rails-watch-list",
-    techStack: ["Rails", "PostgreSQL"],
-    images: ["/img1.png", "/img2.png"],
+    techStack: ["Rails", "PostgreSQL", "Javascript", "Stimulus.js", "SCSS", "HTML", "GitHub", "Heroku"],
+    images: [img1, img1, img1, img1],
   }
 ];
 

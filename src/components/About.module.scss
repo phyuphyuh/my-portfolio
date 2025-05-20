@@ -71,8 +71,8 @@
 
     .aboutContent {
       position: relative;
-      width: 75%;
-      height: 75%;
+      width: 85%;
+      height: 85%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -89,18 +89,44 @@
         align-items: center;
         width: 100%;
         text-align: center;
+
+        .aboutText {
+          font-family: 'ZTBrosOskon90s-Regular', serif;
+          font-weight: 400;
+          font-size: clamp(1.2rem, 1.2rem + 1.2vw, 2rem);
+          line-height: 1.2;
+          color: $scriptwhite;
+          background-image: url('../assets/images/sky4.jpg');
+          background-size: 200%;
+          background-position: 0% 50%;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: animate-background 5s infinite alternate linear;
+        }
+
+        @keyframes animate-background {
+          0% {
+              background-position: 0 50%;
+          }
+          100% {
+              background-position: 100% 50%;
+          }
+        }
       }
 
       .imageWrapper {
-        width: clamp(120px, 20%, 180px);
+        width: clamp(100px, 15%, 160px);
         margin: 1.5rem auto;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
 
         .aboutImg {
           width: 100%;
           height: auto;
           object-fit: cover;
           transition: all 0.2s ease;
-          // filter: grayscale(0.2) sepia(0.1);
         }
       }
 
@@ -110,47 +136,42 @@
         top: 0;
         left: 0;
         height: 100%;
-        // display: flex;
-        // flex-direction: column;
-        // justify-content: center;
-        // align-items: center;
         z-index: 5;
         padding: 2rem;
         text-align: center;
-      }
 
-      .aboutDetails {
-        font-family: 'ZTBrosOskon90s-Regular', sans-serif;
-        font-weight: 500;
-        font-size: clamp(1.1rem, 0.9rem + 0.9vw, 1.8rem);
-        line-height: 1.2;
-        color: rgba($alabaster2, 0.2);
-        @media (max-width: 1024px) {
-          color: rgba($alabaster2, 1);
+        // .aboutDetails {
+        //   font-family: 'ZTBrosOskon90s-Regular', serif;
+        //   font-weight: 400;
+        //   font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem);
+        //   line-height: 1.2;
+        //   color: rgba($alabaster2, 0.2);
+        //   @media (max-width: 1024px) {
+        //     color: rgba($alabaster2, 1);
+        //   }
+        // }
+
+        .descLayer {
+          pointer-events: none;
         }
-      }
 
-      .aboutText {
-        font-family: 'ZTBrosOskon90s-Regular', sans-serif;
-        font-weight: 500;
-        font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2.4rem);
-        line-height: 1.2;
-        color: $scriptwhite;
-        background-image: url('../assets/images/sky4.jpg');
-        background-size: 200%;
-        background-position: 0% 50%;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: animate-background 5s infinite alternate linear;
-      }
+        .descPair {
+          display: flex;
+          flex-direction: column;
+          gap: 0.2rem;
+          text-align: center;
+          font-family: 'ZTBrosOskon90s-Regular', serif;
+          color: $scriptwhite;
+          width: max-content;
 
-      @keyframes animate-background {
-        0% {
-            background-position: 0 50%;
-        }
-        100% {
-            background-position: 100% 50%;
+          .descTop, .descBottom {
+            margin: 0;
+            white-space: nowrap;
+          }
+
+          .descBottom {
+            margin-left: 2.5rem;
+          }
         }
       }
     }
@@ -160,8 +181,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 75%;
-      height: 75%;
+      width: 85%;
+      height: 85%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -204,15 +225,16 @@
       }
 
       .imageWrapper {
-        width: clamp(120px, 20%, 180px);
+        width: clamp(120px, 15%, 180px);
         margin: 1.5rem auto;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
 
         .aboutImg {
           width: 100%;
           height: auto;
           object-fit: cover;
-          text-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-color);
-          transform: translateZ(-10px);
         }
       }
 
@@ -222,26 +244,44 @@
         top: 0;
         left: 0;
         height: 100%;
-        // display: flex;
-        // flex-direction: column;
-        // justify-content: center;
-        // align-items: center;
         z-index: 5;
         padding: 2rem;
         text-align: center;
+
+        .descLayer {
+          pointer-events: none;
+        }
+
+        .descPair {
+          display: flex;
+          flex-direction: column;
+          gap: 0.2rem;
+          text-align: center;
+          width: max-content;
+
+          p {
+            margin: 0;
+            white-space: nowrap;
+            font-family: 'ZTBrosOskon90s-Regular', serif;
+            color: rgba($scriptwhite, 1);
+            text-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-color);
+            transform: translateZ(-10px);
+          }
+
+          .descBottom {
+            margin-left: 2.5rem;
+          }
+        }
       }
 
       .shadowText {
-        font-family: 'ZTBrosOskon90s-Regular', sans-serif;
-        font-weight: 500;
-        font-size: clamp(1.1rem, 0.9rem + 0.9vw, 1.8rem);
-        line-height: 1.2;
+        font-family: 'ZTBrosOskon90s-Regular', serif;
         color: rgba($scriptwhite, 1);
         text-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-color);
         transform: translateZ(-10px);
 
         .aboutText {
-          font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2.4rem);
+          font-size: clamp(1.2rem, 1.2rem + 1vw, 2rem);
         }
       }
     }
