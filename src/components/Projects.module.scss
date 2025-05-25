@@ -2,17 +2,15 @@
 
 .projects {
   width: 100vw;
-  min-height: 200vh;
+  min-height: 150vh;
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba($cyan, 0.7),
-    $sky,
-    $indigo,
-    $twilight,
+    $pearl,
+    #e7c1c4,
   );
   padding: 4rem 0 8rem;
-  margin-top: -40vh;
+  margin-top: -30vh;
   position: relative;
   overflow: visible;
   z-index: 500;
@@ -30,105 +28,198 @@
     }
   }
 
-  .projectsList {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 90%;
-    margin: 10vh auto 0;
-    padding: 4rem 2rem;
-    text-align: center;
+  .projectsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: min-content;
+    grid-auto-flow: dense;
+    gap: 0.5rem;
+    width: 100%;
+    margin: 4rem auto;
+    padding: 2rem;
 
-    .projectRow {
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      padding: 1rem 0;
-      background-color: rgba(255, 255, 255, 0.02);
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    .projectCard {
+      position: relative;
+      background: rgba($scriptwhite, 0.05);
       border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow:
+        0 10px 30px -15px rgba($softcharcoal, 0.5),
+        0 0 1px rgba($scriptwhite, 0.2);
+      backdrop-filter: blur(5px);
+      min-height: 300px;
+      will-change: transform, grid-column, grid-row;
 
-      // &:hover {
-      //   h3 {
-      //     text-shadow:
-      //       0 0 8px rgba($scriptwhite, 0.8),
-      //       0 0 10px rgba($amber, 0.6),
-      //       0 0 12px rgba($vanilla, 0.4);
-      //   }
-      // }
+      .cardContent {
+        width: 100%;
+        height: 100%;
+        padding: 1.5rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
 
-      .projectHeader {
-        h3 {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 700;
-          font-size: 2rem;
-          margin-bottom: 0.5rem;
-          color: $scriptwhite;
+      .hoverImageContainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 1;
+
+        .hoverImage {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
         }
+      }
 
+      .textContent {
+        position: relative;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
+        // align-items: center;
+        // height: 100%;
+        // width: 100%;
+        z-index: 5;
+        transition: transform 0.3s ease;
+      }
+
+      .cardTitle {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin: 0 0 0.8rem;
+        color: $scriptwhite;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba($softcharcoal, 0.3);
+        width: 100%;
+        transition: text-shadow 0.3s ease;
+      }
+
+      .techStack {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-bottom: 0.8rem;
+        transition: transform 0.3s ease;
+
+        .techBadge {
+          background: rgba($scriptwhite, 0.15);
+          color: $fledgrau;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 0.9rem;
+          padding: 0.2rem 0.5rem;
+          border-radius: 4px;
+          white-space: nowrap;
+          box-shadow: 0 4px 6px -1px rgba($softcharcoal, 0.2);
+          backdrop-filter: blur(4px);
+          transition: all 0.3s ease;
+        }
+      }
+
+      &:hover:not(.expanded) {
+        .textContent {
+          transform: translateY(-3px) scale(1.1);
+        }
+        .cardTitle {
+          text-shadow: 0px 10px 20px rgba($softcharcoal, 0.5);
+        }
         .techStack {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          align-items: center;
-          gap: 0.5rem;
+          transform: translateY(-3px) scale(1.05);
 
           .techBadge {
-            background: rgba(255, 255, 255, 0.1);
-            color: $scriptwhite;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            padding: 0.3rem 0.6rem;
-            border-radius: 5px;
-            white-space: nowrap;
+            box-shadow:
+              0 4px 8px -2px rgba($softcharcoal, 0.3),
+              0 2px 10px -3px rgba($softcharcoal, 0.2);
           }
         }
       }
 
+      &.expanded {
+        grid-column: span 2;
+        grid-row: span 2;
+        z-index: 50;
+        background: rgba($scriptwhite, 0.1);
+        box-shadow:
+          0 25px 50px -12px rgba($softcharcoal, 0.7),
+          0 0 1px rgba($scriptwhite, 0.3);
 
-      .projectDetails {
-        margin-top: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        color: $scriptwhite;
-
-        .description {
-          font-size: 1rem;
+        .techStack .techBadge {
+          font-size: 0.7rem;
         }
 
-        .imgContainerWrapper {
+        @media (max-width: 768px) {
+          grid-column: span 1;
+          grid-row: span 1;
+        }
+      }
+
+      // Expanded card
+      .imageContainer {
+        width: 100%;
+        min-height: 200px;
+        margin: 1rem 0;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px -4px rgba($softcharcoal, 0.3);
+
+        img {
           width: 100%;
-          overflow-x: auto;
-          overscroll-behavior-x: contain;
-          -webkit-overflow-scrolling: touch;
-          position: relative;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
 
-          .imgContainer {
-            width: max-content;
-            display: flex;
-            gap: 0.7rem;
-            padding-bottom: 0.5rem;
-            cursor: grab;
+      .description {
+        color: rgba($fledgrau, 0.9);
+        font-family: 'ZTBrosOskon90s-Regular', serif;
+        font-size: 1.3rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
 
-            img {
-              width: 320px;
-              height: auto;
-              border-radius: 10px;
-              flex-shrink: 0;
-              transition: transform 0.2s ease;
+      .links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: auto;
 
-              &:hover {
-                transform: scale(1.05);
-              }
-            }
+        .projectLink {
+          font-family: 'ZTBrosOskon90s-Regular', serif;
+          font-size: 1rem;
+          text-decoration: none;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          color: $mytrle;
+          padding: 0.6rem 1.2rem;
+          border-radius: 8px;
+          box-shadow: 0 4px 6px rgba($softcharcoal, 0.1);
+          transition: all 0.3s ease;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba($softcharcoal, 0.2);
           }
         }
       }
     }
-  }
-
-  .divider {
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4) 40%, transparent);
-    margin: 1rem 0;
   }
 }

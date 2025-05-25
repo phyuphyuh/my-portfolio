@@ -31,7 +31,7 @@ const useWindowWidth = () => {
 
 const aboutDetails = (
   <p className={styles.aboutDetails}>
-    Massive foodie. Life rookie. Cat lady. Precocious baby. Coffee sipper. Hardcore shipper. Shadow dweller. Book dabbler. Aspiring baker. City walker. Anxious zillennial. Go-to material. Shower singer. Sky gazer. Master escapist. Neurotic perfectionist. Perennial bloomer. Aisle roamer. Expert navigator. Chapstick collector. Designated snapper. Awkward yapper.
+    Massive foodie. Life rookie. Cat lady. Precocious baby. Coffee sipper. Hardcore shipper. Shadow dweller. Book dabbler. Aspiring baker. City walker. Anxious zillennial. Go-to material. Shower singer. Sky gazer. Master escapist. Neurotic perfectionist. Perennial bloomer. Aisle roamer. Expert navigator. Chapstick collector.
   </p>
 );
 
@@ -50,7 +50,7 @@ const About = ({ scrollYProgress }) => {
 
   const aboutSectionY = useTransform(
     scrollYProgress,
-    [0.1, 0.4, 0.9, 1],
+    [0.1, 0.3, 0.9, 1],
     ["100vh", "0vh", "0vh", "-100vh"]
   );
 
@@ -80,25 +80,25 @@ const About = ({ scrollYProgress }) => {
 
   const detailsOpacity = useTransform(
     scrollYProgress,
-    [0.3, 0.45, 0.7],
+    [0.3, 0.40, 0.7],
     [0, 1, 1]
   );
 
   const frontLayerY = useTransform(
     scrollYProgress,
-    [0.3, 0.9],
+    [0.30, 0.9],
     ["0%", "-50%"]
   );
 
   const middleLayerY = useTransform(
     scrollYProgress,
-    [0.3, 0.9],
+    [0.30, 0.9],
     ["0%", "-70%"]
   );
 
   const backLayerY = useTransform(
     scrollYProgress,
-    [0.3, 0.9],
+    [0.35, 0.9],
     ["0%", "-90%"]
   );
 
@@ -106,13 +106,14 @@ const About = ({ scrollYProgress }) => {
     {
       y: frontLayerY,
       pairs: [
-        { top: "Massive foodie", bottom: "Life rookie", position: { top: '60%', left: '20%' } },
-        { top: "Coffee sipper", bottom: "Hardcore shipper", position: { top: '5%', left: '75%' } },
+        { top: "Massive foodie", bottom: "Life rookie", position: { top: '65%', left: '15%' } },
+        { top: "Anxious zillennial", bottom: "Go-to material", position: { top: '5%', left: '75%' } },
       ],
       style: {
-        fontSize: "clamp(1.4rem, 1.2rem + 1vw, 1.8rem)",
+        // fontSize: "clamp(1.4rem, 1.2rem + 1vw, 1.8rem)",
+        fontSize: "clamp(1rem, 1rem + 1vw, 1.4rem)",
         zIndex: 3,
-        opacity: 0.7
+        opacity: 0.6,
       }
     },
     {
@@ -123,24 +124,26 @@ const About = ({ scrollYProgress }) => {
         { top: "Aspiring baker", bottom: "City walker", position: { top: '35%', left: '10%' } }
       ],
       style: {
-        fontSize: "clamp(1.2rem, 1rem + 1vw, 1.6rem)",
+        // fontSize: "clamp(1.2rem, 1rem + 1vw, 1.6rem)",
+        fontSize: "clamp(0.8rem, 0.8rem + 1vw, 1.2rem)",
         zIndex: 2,
-        opacity: 0.5
+        opacity: 0.4,
       }
     },
     {
       y: backLayerY,
       pairs: [
-        { top: "Anxious zillennial", bottom: "Go-to material", position: { top: '80%', left: '40%' } },
+        { top: "Coffee sipper", bottom: "Hardcore shipper", position: { top: '80%', left: '40%' } },
         { top: "Shower singer", bottom: "Sky gazer", position: { top: '50%', left: '85%' } },
         { top: "Master escapist", bottom: "Neurotic perfectionist", position: { top: '35%', left: '60%' } },
         { top: "Perennial bloomer", bottom: "Aisle roamer", position: { top: '20%', left: '10%' } },
         { top: "Expert Navigator", bottom: "Chapstick collector", position: { top: '90%', left: '5%' } },
       ],
       style: {
-        fontSize: "clamp(1rem, 0.8rem + 1vw, 1.4rem)",
+        // fontSize: "clamp(1rem, 0.8rem + 1vw, 1.4rem)",
+        fontSize: "clamp(0.6rem, 0.6rem + 1vw, 1rem)",
         zIndex: 1,
-        opacity: 0.3
+        opacity: 0.3,
       }
     }
   ];

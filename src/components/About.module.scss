@@ -96,6 +96,7 @@
           font-size: clamp(1.2rem, 1.2rem + 1.2vw, 2rem);
           line-height: 1.2;
           color: $scriptwhite;
+          // -webkit-text-stroke: 0.2px $scriptwhite;
           background-image: url('../assets/images/sky4.jpg');
           background-size: 200%;
           background-position: 0% 50%;
@@ -161,8 +162,13 @@
           gap: 0.2rem;
           text-align: center;
           font-family: 'ZTBrosOskon90s-Regular', serif;
-          color: $scriptwhite;
+          letter-spacing: -0.02em;
           width: max-content;
+          color: $vanilla;
+
+          @media (max-width: 1024px) {
+            color: rgba($vanilla, 1);
+          }
 
           .descTop, .descBottom {
             margin: 0;
@@ -263,6 +269,7 @@
             margin: 0;
             white-space: nowrap;
             font-family: 'ZTBrosOskon90s-Regular', serif;
+            letter-spacing: -0.02em;
             color: rgba($scriptwhite, 1);
             text-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-color);
             transform: translateZ(-10px);
