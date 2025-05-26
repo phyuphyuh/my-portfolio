@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import { motion, useTransform, useScroll, useInView } from "motion/react";
+import { useState, useRef, useEffect, useMemo } from "react";
+import { motion, useTransform, useScroll } from "motion/react";
 import AnimatedHeading from './AnimatedHeading';
 import projects from "../data/projects.js";
 import { projects_paths } from "../data/svgPaths.js";
@@ -8,9 +8,7 @@ import styles from "./Projects.module.scss";
 const ProjectCard = ({ project, isExpanded, setExpandedId, scrollYProgress, index }) => {
   const cardRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
-  // const [viewportWidth, setViewportWidth] = useState(
-  //   typeof window !== 'undefined' ? window.innerWidth : 1200
-  // );
+  // const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
 
   // Calculate row and column indices
   const rowIndex = Math.floor(index / 4); // 4 columns
@@ -36,46 +34,50 @@ const ProjectCard = ({ project, isExpanded, setExpandedId, scrollYProgress, inde
   //   slideDistance = viewportWidth * 0.5;
   // }
 
-  // - First card in each row is static
-  let initialX = 0;
-  let initialY = 0;
+  const { initialX, initialY, startProgress, endProgress } = useMemo(() => {
+    // - First card in each row is static
+    let initialX = 0;
+    let initialY = 0;
 
-  if (colIndex === 1 || colIndex === 2) {
-    // Second and third cards - slide in from right
-    initialX = 350;
-    initialY = 0;
-  } else if (colIndex === 3) {
-    // Fourth card - slide in from below
-    initialX = 0;
-    initialY = 550;
-  }
+    if (colIndex === 1 || colIndex === 2) {
+      // Second and third cards - slide in from right
+      initialX = 350;
+      initialY = 0;
+    } else if (colIndex === 3) {
+      // Fourth card - slide in from below
+      initialX = 0;
+      initialY = 550;
+    }
 
-  // Calculate staggered timing for each card in the row
-  let startProgress, endProgress;
+    // Calculate staggered timing for each card in the row
+    let startProgress, endProgress;
 
-  // Base starting point for the row
-  const rowStartPoint = 0.20 + (rowIndex * 0.15);
-  // let rowStartPoint;
-  // if (viewportWidth <= 1024) {
-  //   rowStartPoint = 0.20 + (rowIndex * 0.15); // Start earlier on mobile/tablet
-  // } else {
-  //   rowStartPoint = 0.25 + (rowIndex * 0.15);
-  // }
+    // Base starting point for the row
+    const rowStartPoint = 0.20 + (rowIndex * 0.15);
+    // let rowStartPoint;
+    // if (viewportWidth <= 1024) {
+    //   rowStartPoint = 0.20 + (rowIndex * 0.15); // Start earlier on mobile/tablet
+    // } else {
+    //   rowStartPoint = 0.25 + (rowIndex * 0.15);
+    // }
 
-  if (colIndex === 0) {
-    startProgress = rowStartPoint;
-    endProgress = rowStartPoint + 0.05;
-  } else if (colIndex === 1) {
-    startProgress = rowStartPoint;
-    endProgress = rowStartPoint + 0.1;
-  } else if (colIndex === 2) {
-    startProgress = rowStartPoint + 0.05;
-    endProgress = rowStartPoint + 0.15;
-  } else if (colIndex === 3) {
-    // Fourth card - wait for third card to get in place
-    startProgress = rowStartPoint + 0.1;
-    endProgress = rowStartPoint + 0.2;
-  }
+    if (colIndex === 0) {
+      startProgress = rowStartPoint;
+      endProgress = rowStartPoint + 0.05;
+    } else if (colIndex === 1) {
+      startProgress = rowStartPoint;
+      endProgress = rowStartPoint + 0.1;
+    } else if (colIndex === 2) {
+      startProgress = rowStartPoint + 0.05;
+      endProgress = rowStartPoint + 0.15;
+    } else if (colIndex === 3) {
+      // Fourth card - wait for third card to get in place
+      startProgress = rowStartPoint + 0.1;
+      endProgress = rowStartPoint + 0.2;
+    }
+
+    return { initialX, initialY, startProgress, endProgress };
+  }, [rowIndex, colIndex]);
 
   const x = useTransform(
     scrollYProgress,

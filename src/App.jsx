@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useScroll } from 'motion/react';
 import Nav from './components/Nav';
 import Intro from './components/Intro';
 import About from './components/About';
@@ -16,6 +17,7 @@ import './App.scss'
 
 function App() {
   const containerRef = useRef(null);
+  const { scrollYProgress: globalScrollProgress } = useScroll();
 
   return (
     <>
@@ -26,6 +28,7 @@ function App() {
         <Home />
         <Projects />
       </div>
+      <Nav scrollYProgress={globalScrollProgress} />
       {/* <Contact /> */}
     </>
   );
