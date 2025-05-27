@@ -36,6 +36,7 @@ const Nav = ({ scrollYProgress }) => {
   const [activeSection, setActiveSection] = useState('home');
   const [navOpacity, setNavOpacity] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [nameAlignment, setNameAlignment] = useState({ top: 0, left: 0 });
 
   const viewportHeight = window.innerHeight;
   const isMobile = windowWidth <= 768;
@@ -81,6 +82,40 @@ const Nav = ({ scrollYProgress }) => {
     };
   }, []);
 
+  useEffect(() => {
+    const checkNamePosition = () => {
+      // Check if position data is available
+      if (window.nameComponentPosition && nameWrapperRef.current) {
+
+        const navBarElement = nameWrapperRef.current.closest(`.${styles.navBar}`);
+        if (!navBarElement) return;
+
+        const navBarRect = navBarElement.getBoundingClientRect();
+
+        console.log("Position data:", {
+          nameComponentTop: window.nameComponentPosition.top,
+          navBarTop: navBarRect.top,
+          difference: window.nameComponentPosition.top - navBarRect.top
+        });
+
+        const alignTop = window.nameComponentPosition.top - navBarRect.top - window.nameComponentPosition.height - 5;
+
+        setNameAlignment({ top: alignTop });
+      }
+    };
+
+    // Check when nav becomes visible
+    const checkInterval = setInterval(checkNamePosition, 100);
+
+    // Also check on scroll
+    window.addEventListener('scroll', checkNamePosition);
+
+    // Clean up
+    return () => {
+      clearInterval(checkInterval);
+      window.removeEventListener('scroll', checkNamePosition);
+    };
+  }, [navOpacity]);
 
   const scrollToSection = (section) => {
     let targetPosition = 0;
@@ -107,7 +142,7 @@ const Nav = ({ scrollYProgress }) => {
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const visibilityThreshold = isMobile ? 0.10 : 0.18;
-    const fadeStartThreshold = isMobile ? 0.07 : 0.15;
+    const fadeStartThreshold = isMobile ? 0.07 : 0.14;
 
     if (latest >= visibilityThreshold) {
       setNavOpacity(1);
@@ -149,6 +184,10 @@ const Nav = ({ scrollYProgress }) => {
           ref={nameWrapperRef}
           className={styles.navNameWrapper}
           onClick={() => scrollToSection('home')}
+          style={{
+            marginTop: `${nameAlignment.top}px`,
+            transform: `scale(0.3)`
+          }}
         >
           <div
             className={styles.nameRotationWrapper}

@@ -35,6 +35,7 @@ const NameComponent = ({ scrollYProgress }) => {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [shadowLength, setShadowLength] = useState(0.5);
   const [isNavMode, setIsNavMode] = useState(false);
+  const [hasSentPosition, setHasSentPosition] = useState(false);
 
   const handleNameClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -54,8 +55,8 @@ const NameComponent = ({ scrollYProgress }) => {
 
   const nameWrapperOpacity = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.22, 1],
-    [1, 0.9, 1, 1]
+    [0, 0.17, 1],
+    [1, 1, 0]
   );
 
   useMotionValueEvent(scrollYProgress, "change", (value) => {
@@ -109,6 +110,51 @@ const NameComponent = ({ scrollYProgress }) => {
       cancelAnimationFrame(frameId.current);
     };
   }, [isNavMode]);
+
+  useEffect(() => {
+    const sendPositionToNav = () => {
+      if (!nameWrapperRef.current || !isNavMode || hasSentPosition) return;
+
+      // Get position once it's in nav mode
+      const rect = nameWrapperRef.current.getBoundingClientRect();
+
+      // Store position data in a global that Nav can access
+      window.nameComponentPosition = {
+        top: rect.top,
+        left: rect.left,
+        width: rect.width,
+        height: rect.height,
+        scale: nameWrapperScale.get()
+      };
+
+      setHasSentPosition(true);
+    };
+
+    // Check position after scrolling or when mode changes
+    if (isNavMode) {
+      setTimeout(sendPositionToNav, 300);
+    } else {
+      setHasSentPosition(false);
+    }
+
+    const handleScroll = () => {
+      if (isNavMode && !hasSentPosition) {
+        sendPositionToNav();
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isNavMode, hasSentPosition, nameWrapperScale]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setHasSentPosition(false); // Reset position on resize
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const nameElements = ['Phyu', 'Phyu'].map((text, index) => (
     <NameWithShadow

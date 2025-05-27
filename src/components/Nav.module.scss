@@ -2,7 +2,7 @@
 
 .navContainer {
   position: fixed;
-  top: -13px;
+  top: 0;
   left: 0;
   width: 100%;
   height: auto;
@@ -31,18 +31,21 @@
     align-items: center;
     padding: 0 5vw;
     z-index: 2;
-    // margin-top: -13px;
     // transform: translateY(-1.75vh);
 
+    // @media (max-width: 480px) {
+    //   transform: translateY(0vh);
+    // }
+
     .navNameWrapper {
+      position: relative;
       display: inline-block;
       width: auto;
       line-height: 0.8;
       cursor: pointer;
       pointer-events: auto;
-      position: relative;
       transform-origin: center;
-      transform: scale(0.3);
+      // transform: scale(0.3);
 
       .nameRotationWrapper {
         width: 100%;
