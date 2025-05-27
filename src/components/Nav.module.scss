@@ -98,43 +98,43 @@
       position: absolute;
       right: 5vw;
       display: flex;
+      justify-content: flex-end;
       gap: 2rem;
 
       @media (max-width: 480px) {
         gap: 0;
-        right: 1vw;
       }
 
       .navLink {
         background: transparent;
         border: none;
-        color: rgba(255, 255, 255, 0.7);
-        font-family: "Montserrat", sans-serif;
-        font-size: 1rem;
-        padding: 0rem 1rem;
+        color: rgba($scriptwhite, 0.7);
+        font-family: "ZTBrosOskon90s-Regular", sans-serif;
+        font-size: clamp(1rem, 1rem + 1vw, 1.5rem);
+        padding: 0rem 0.3rem;
         cursor: pointer;
         pointer-events: auto;
         transition: color 0.3s ease, transform 0.2s ease;
 
         &:hover {
-          color: white;
+          color: $scriptwhite;
           transform: translateY(-2px);
         }
 
         &.active {
-          color: white;
-          font-weight: 600;
+          color: $scriptwhite;
+          font-weight: 500;
           position: relative;
 
           &:after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -3px;
             left: 50%;
             transform: translateX(-50%);
-            width: 20px;
-            height: 3px;
-            background-color: white;
+            width: 25px;
+            height: 1px;
+            background-color: $vanilla;
           }
         }
       }

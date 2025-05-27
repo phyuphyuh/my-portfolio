@@ -10,18 +10,6 @@ import pp2 from "../assets/images/pp3small2.png";
 import styles from "./About.module.scss";
 // import AboutSVG from "../assets/aboutcontainer3.svg";
 
-const useWindowWidth = () => {
-  const [width, setWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return width;
-};
-
 // const borderPaths = [
 //   "m 1.1702114,3.1762882 c 0,18.8905558 0,37.7811108 0.027862,49.8175708 0.027862,12.036461 0.083587,17.218826 0.1393109,22.40119",
 //   "M 2.3404228,2.0060767 C 15.881441,1.3373844 29.422457,0.66869226 37.864698,0.27862174 c 8.44224,-0.39007051 11.7857,-0.50151919 13.95895,-0.33434575 2.173251,0.16717344 3.176289,0.61296788 4.179327,1.05876231",
@@ -29,24 +17,10 @@ const useWindowWidth = () => {
 //   "M 1.3373845,74.726357 C 18.500485,74.837806 35.663587,74.949254 52.826687,75.060703",
 // ]
 
-const aboutDetails = (
-  <p className={styles.aboutDetails}>
-    Massive foodie. Life rookie. Cat lady. Precocious baby. Coffee sipper. Hardcore shipper. Shadow dweller. Book dabbler. Aspiring baker. City walker. Anxious zillennial. Go-to material. Shower singer. Sky gazer. Master escapist. Neurotic perfectionist. Perennial bloomer. Aisle roamer. Expert navigator. Chapstick collector.
-  </p>
-);
-
 const About = ({ scrollYProgress }) => {
   const sectionRef = useRef(null);
   const aboutContainerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
-
-  // const width = useWindowWidth();
-
-  // const x = useTransform(
-  //   scrollYProgress,
-  //   [0.3, 0.8],
-  //   width < 768 ? ["100vw", "5vw"] : ["100vw", "0vw"]
-  // );
 
   const aboutSectionY = useTransform(
     scrollYProgress,
@@ -113,7 +87,7 @@ const About = ({ scrollYProgress }) => {
         // fontSize: "clamp(1.4rem, 1.2rem + 1vw, 1.8rem)",
         fontSize: "clamp(1rem, 1rem + 1vw, 1.4rem)",
         zIndex: 3,
-        opacity: 0.6,
+        opacity: "var(--layer1-opacity)",
       }
     },
     {
@@ -127,23 +101,24 @@ const About = ({ scrollYProgress }) => {
         // fontSize: "clamp(1.2rem, 1rem + 1vw, 1.6rem)",
         fontSize: "clamp(0.8rem, 0.8rem + 1vw, 1.2rem)",
         zIndex: 2,
-        opacity: 0.4,
+        opacity: "var(--layer2-opacity)",
       }
     },
     {
       y: backLayerY,
       pairs: [
         { top: "Coffee sipper", bottom: "Hardcore shipper", position: { top: '80%', left: '40%' } },
-        { top: "Shower singer", bottom: "Sky gazer", position: { top: '50%', left: '85%' } },
+        { top: "Flannel wearer", bottom: "Mint bearer", position: { top: '50%', left: '85%' } },
         { top: "Master escapist", bottom: "Neurotic perfectionist", position: { top: '35%', left: '60%' } },
-        { top: "Perennial bloomer", bottom: "Aisle roamer", position: { top: '20%', left: '10%' } },
+        { top: "Shower singer", bottom: "Sky gazer", position: { top: '20%', left: '10%' } },
         { top: "Expert Navigator", bottom: "Chapstick collector", position: { top: '90%', left: '5%' } },
+        { top: "Perennial bloomer", bottom: "Aisle roamer", position: { top: '80%', left: '80%' } },
       ],
       style: {
         // fontSize: "clamp(1rem, 0.8rem + 1vw, 1.4rem)",
         fontSize: "clamp(0.6rem, 0.6rem + 1vw, 1rem)",
         zIndex: 1,
-        opacity: 0.3,
+        opacity: "var(--layer3-opacity)",
       }
     }
   ];

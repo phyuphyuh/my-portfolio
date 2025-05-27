@@ -7,7 +7,7 @@ const projects = [
     description: "create lists of your favorite films, write reviews for the movies in them, and share yourself in film!",
     url: "https://watchlist-pp-b1b5f2bf4594.herokuapp.com/lists",
     github: "https://github.com/phyuphyuh/rails-watch-list",
-    techStack: ["Ruby on Rails", "PostgreSQL", "Turbo (Hotwire)", "Stimulus.js", "Bootstrap", "Lodash", "Heroku"],
+    techStack: ["Ruby on Rails", "PostgreSQL", "Turbo (Hotwire)", "Stimulus.js", "Bootstrap", "Lodash", "GitHub", "Heroku"],
     images: [img1, img1, img1, img1, img1, img1],
   },
   {
@@ -43,7 +43,7 @@ const projects = [
     description: "create lists of your favorite films, write reviews for the movies in them, and share yourself in film!",
     url: "https://watchlist-pp-b1b5f2bf4594.herokuapp.com/lists",
     github: "https://github.com/phyuphyuh/rails-watch-list",
-    techStack: ["React", "Motion", "SCSS", "Vite"],
+    techStack: ["React", "Vite", "Motion", "SCSS Modules", "Github", "Vercel"],
     images: [img1, img1, img1, img1, img1, img1],
   },
   {
@@ -61,7 +61,7 @@ const projects = [
     description: "Create your own shelf showcasing your fav films, books, and music!",
     url: "https://www.selfshelf.me/",
     github: "https://github.com/phyuphyuh/rails-watch-list",
-    techStack: ["Rails", "PostgreSQL", "Javascript", "Stimulus.js", "SCSS", "HTML", "GitHub", "Heroku"],
+    techStack: ["Javascript", "Stimulus.js", "SCSS", "HTML", "GitHub", "Heroku"],
     images: [img1, img1, img1, img1],
   },
   {
