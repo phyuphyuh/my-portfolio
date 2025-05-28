@@ -159,11 +159,27 @@ const ProjectCard = ({ project, isExpanded, setExpandedId, scrollYProgress, inde
 
         {isExpanded && (
           <motion.div layout className={styles.expandedContent}>
-            <div className={styles.imageContainer}>
-              <img
-                src={project.images[0]}
-                alt={project.name}
-              />
+            <div className={styles.mediaContainer}>
+              {project.video ? (
+                <video
+                  src={project.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="none"
+                  className={styles.projectVideo}
+                />
+              ) : (
+                project.images.map((img, index) => (
+                  <img
+                    key={index}
+                    src={img}
+                    alt={`${project.name} image ${index + 1}`}
+                    className={styles.projectImage}
+                  />
+                ))
+              )}
             </div>
 
             <p className={styles.description}>
@@ -230,7 +246,7 @@ const Projects = () => {
         letters={projects_paths}
         className={styles.sectionTitle}
         viewBox="0 0 300 60"
-        inViewOptions={{ margin: "-5% 0px", amount: 0.3 }}
+        inViewOptions={{ margin: "-5% 0px", amount: window.innerWidth <= 768 ? 0.1 : 0.4 }}
       />
 
       <motion.div

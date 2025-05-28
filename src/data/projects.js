@@ -1,4 +1,8 @@
+import { video } from "motion/react-client";
 import img1 from "../assets/images/img1.png";
+
+import wagonRaceImg from "../assets/images/wagonrace.png";
+import wagonRace from "../assets/videos/wagonrace.mp4";
 
 const projects = [
   {
@@ -59,10 +63,11 @@ const projects = [
     id: 7,
     name: "Wagon Race",
     description: "Create your own shelf showcasing your fav films, books, and music!",
-    url: "https://www.selfshelf.me/",
-    github: "https://github.com/phyuphyuh/rails-watch-list",
-    techStack: ["Javascript", "Stimulus.js", "SCSS", "HTML", "GitHub", "Heroku"],
-    images: [img1, img1, img1, img1],
+    url: "https://phyuphyuh.github.io/Wagon-Race/",
+    github: "https://github.com/phyuphyuh/Wagon-Race",
+    techStack: ["Javascript", "HTML", "CSS", "Github Pages"],
+    images: [wagonRaceImg],
+    video: wagonRace,
   },
   {
     id: 8,
