@@ -156,8 +156,12 @@
           0 25px 50px -12px rgba($softcharcoal, 0.7),
           0 0 1px rgba($scriptwhite, 0.3);
 
-        .techStack .techBadge {
-          font-size: 0.7rem;
+        .techStack {
+          gap: 0.3rem;
+
+          .techBadge {
+            font-size: 0.7rem;
+          }
         }
 
         @media (max-width: 768px) {
@@ -168,26 +172,108 @@
 
       // Expanded card
       .mediaContainer {
+        position: relative;
         width: 100%;
-        min-height: 200px;
+        height: auto;
+        max-height: 400px;
         margin: 1rem 0;
         overflow: hidden;
         border-radius: 10px;
         box-shadow: 0 8px 16px -4px rgba($softcharcoal, 0.3);
 
-        .projectVideo, .projectImage {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+        .mediaScroller {
+          display: flex;
+          overflow-x: auto;
+          overflow-y: hidden;
+          scroll-snap-type: x mandatory;
+          scrollbar-width: none; // Firefox
+          -ms-overflow-style: none; //IE and Edge
+          height: calc(100% + 17px);
+
+          &::-webkit-scrollbar {
+            display: none; // Chrome, Safari, and Opera
+          }
+
+          .projectVideo, .projectImage {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            scroll-snap-align: start;
+          }
+        }
+
+        .navArrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba($scriptwhite, 0.7);
+          border: none;
+          border-radius: 50%;
+          width: 30px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          z-index: 10;
+          box-shadow: 0 2px 6px rgba($softcharcoal, 0.2);
+          opacity: 0.6;
+          transition: opacity 0.2s ease;
+
+          &:hover {
+            opacity: 1;
+          }
+
+          svg {
+            width: 20px;
+            height: 20px;
+            stroke: $softcharcoal;
+          }
+
+          &.navPrev {
+            left: 10px;
+          }
+
+          &.navNext {
+            right: 10px;
+          }
+        }
+      }
+
+      .imageIndicators {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 12px;
+
+        .indicator {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: rgba($scriptwhite, 0.5);
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          transition: transform 0.2s ease, background-color 0.2s ease;
+
+          &.active {
+            background-color: $vanilla;
+            transform: scale(1.2);
+          }
+
+          &:hover {
+            background-color: rgba($vanilla, 0.8);
+          }
         }
       }
 
       .description {
-        color: rgba($fledgrau, 0.9);
+        color: $fledgrau;
         font-family: 'ZTBrosOskon90s-Regular', serif;
         font-size: 1.3rem;
         line-height: 1.5;
-        margin-bottom: 1.5rem;
+        margin: 1.5rem 0;
         text-align: center;
       }
 
@@ -200,6 +286,7 @@
         .projectLink {
           font-family: 'ZTBrosOskon90s-Regular', serif;
           font-size: 1rem;
+          font-weight: 600;
           text-decoration: none;
           text-transform: uppercase;
           letter-spacing: 0.5px;

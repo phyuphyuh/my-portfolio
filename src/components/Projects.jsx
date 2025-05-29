@@ -7,8 +7,10 @@ import styles from "./Projects.module.scss";
 
 const ProjectCard = ({ project, isExpanded, setExpandedId, scrollYProgress, index }) => {
   const cardRef = useRef(null);
+  const imgScrollerRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   // const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Calculate row and column indices
   const rowIndex = Math.floor(index / 4); // 4 columns
@@ -95,6 +97,75 @@ const ProjectCard = ({ project, isExpanded, setExpandedId, scrollYProgress, inde
     setExpandedId(isExpanded ? null : project.id);
   };
 
+  // Image scrolling logic
+  // Scroll to next/previous image
+  const scrollImages = (direction) => {
+    if (!imgScrollerRef.current || !project.images) return;
+
+    const scroller = imgScrollerRef.current;
+    const imageWidth = scroller.children[0].clientWidth;
+
+    let newIndex;
+    if (direction === 'next') {
+      newIndex = Math.min(currentImageIndex + 1, project.images.length - 1);
+    } else {
+      newIndex = Math.max(currentImageIndex - 1, 0);
+    }
+
+    const scrollAmount = (imageWidth) * newIndex;
+    scroller.scrollTo({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+
+    setCurrentImageIndex(newIndex);
+  };
+
+  // Scroll to specific image
+  const scrollToImage = (index) => {
+    if (!imgScrollerRef.current || !project.images) return;
+
+    const scroller = imgScrollerRef.current;
+    const imageWidth = scroller.children[0].clientWidth;
+
+    const scrollAmount = (imageWidth) * index;
+    scroller.scrollTo({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+
+    setCurrentImageIndex(index);
+  };
+
+  // Update current index to manual scrolling
+  useEffect(() => {
+    const scroller = imgScrollerRef.current;
+    if (!scroller || !project.images || project.images.length <= 1) return;
+
+    const handleScroll = () => {
+      const imageWidth = scroller.children[0].clientWidth;
+      const scrollPosition = scroller.scrollLeft;
+      const newIndex = Math.round(scrollPosition / imageWidth);
+
+      if (newIndex !== currentImageIndex) {
+        setCurrentImageIndex(newIndex);
+      }
+    };
+
+    scroller.addEventListener('scroll', handleScroll);
+
+    return () => {
+      scroller.removeEventListener('scroll', handleScroll);
+    };
+  }, [currentImageIndex, project.images]);
+
+  // Reset current image index when card expands/collapses
+  useEffect(() => {
+    if (!isExpanded) {
+      setCurrentImageIndex(0);
+    }
+  }, [isExpanded]);
+
   return (
     <motion.div
       ref={cardRef}
@@ -160,27 +231,75 @@ const ProjectCard = ({ project, isExpanded, setExpandedId, scrollYProgress, inde
         {isExpanded && (
           <motion.div layout className={styles.expandedContent}>
             <div className={styles.mediaContainer}>
-              {project.video ? (
-                <video
-                  src={project.video}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="none"
-                  className={styles.projectVideo}
-                />
-              ) : (
-                project.images.map((img, index) => (
-                  <img
-                    key={index}
-                    src={img}
-                    alt={`${project.name} image ${index + 1}`}
-                    className={styles.projectImage}
-                  />
-                ))
+              {project.images && project.images.length > 1 && (
+                <>
+                  <button
+                    className={`${styles.navArrow} ${styles.navPrev}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      scrollImages('prev');
+                    }}
+                    aria-label="Previous image"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                  </button>
+
+                  <button
+                    className={`${styles.navArrow} ${styles.navNext}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      scrollImages('next');
+                    }}
+                    aria-label="Next image"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </button>
+                </>
               )}
+
+              <div className={styles.mediaScroller} ref={imgScrollerRef}>
+                {project.video ? (
+                  <video
+                    src={project.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="none"
+                    className={styles.projectVideo}
+                  />
+                ) : (
+                  project.images.map((img, index) => (
+                    <img
+                      key={index}
+                      src={img}
+                      alt={`${project.name} image ${index + 1}`}
+                      className={styles.projectImage}
+                    />
+                  ))
+                )}
+              </div>
             </div>
+
+            {project.images && project.images.length > 1 && (
+              <div className={styles.imageIndicators}>
+                {project.images.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`${styles.indicator} ${currentImageIndex === index ? styles.active : ''}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      scrollToImage(index);
+                    }}
+                    aria-label={`Go to image ${index + 1}`}
+                  />
+                ))}
+              </div>
+            )}
 
             <p className={styles.description}>
               {project.description}
