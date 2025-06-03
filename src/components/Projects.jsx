@@ -302,7 +302,9 @@ const ProjectCard = ({ project, isExpanded, setExpandedId, scrollYProgress, inde
             )}
 
             <p className={styles.description}>
-              {project.description}
+              {project.description.before}
+              <span>{project.description.highlight}</span>
+              {project.description.after}
             </p>
 
             <div className={styles.links}>
