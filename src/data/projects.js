@@ -1,5 +1,7 @@
-import { video } from "motion/react-client";
 import img1 from "../assets/images/img1.png";
+import weather1 from "../assets/images/weather1.png";
+import weather2 from "../assets/images/weather2.png";
+import weather3 from "../assets/images/weather3.png";
 
 import wagonRaceImg from "../assets/images/wagonrace.png";
 import wagonRace from "../assets/videos/wagonrace.mp4";
@@ -15,7 +17,7 @@ const projects = [
     },
     url: "https://watchlist-pp-b1b5f2bf4594.herokuapp.com/",
     github: "https://github.com/phyuphyuh/rails-watch-list",
-    techStack: ["Ruby on Rails", "PostgreSQL", "Turbo (Hotwire)", "Stimulus.js", "Bootstrap", "TMDB API", "Heroku"],
+    techStack: ["Ruby on Rails", "PostgreSQL", "Turbo (Hotwire)", "Stimulus", "Bootstrap", "TMDB API", "Heroku"],
     images: [img1, img1, img1, img1, img1, img1],
   },
   {
@@ -28,7 +30,7 @@ const projects = [
     },
     url: "https://www.selfshelf.me/",
     github: "https://github.com/phyuphyuh/SelfShelf",
-    techStack: ["Ruby on Rails", "PostgreSQL", "Stimulus.js", "Bootstrap", "Devise", "TMDB API", "Spotify API", "Google Books API", "Heroku", "Git/GitHub"],
+    techStack: ["Ruby on Rails", "PostgreSQL", "Stimulus", "Bootstrap", "Devise", "TMDB API", "Spotify API", "Google Books API", "Heroku", "Git/GitHub"],
     images: [img1],
   },
   {
@@ -41,17 +43,22 @@ const projects = [
     },
     url: "https://art-classes-22f38858df0a.herokuapp.com/",
     github: "https://github.com/phyuphyuh/art_classes",
-    techStack: ["Ruby on Rails", "PostgreSQL", "Bootstrap", "Stimulus.js", "Devise", "Mapbox API", "Heroku", "Git/GitHub"],
+    techStack: ["Ruby on Rails", "PostgreSQL", "Bootstrap", "Stimulus", "Devise", "Mapbox API", "Heroku", "Git/GitHub"],
     images: [img1, img1, img1, img1, img1, img1],
   },
   {
     id: 4,
-    name: "Task Manager",
-    description: "Create your own shelf showcasing your fav films, books, and music!",
-    url: "https://www.selfshelf.me/",
-    github: "https://github.com/phyuphyuh/rails-watch-list",
-    techStack: ["Rails", "PostgreSQL", "Javascript", "Stimulus.js", "SCSS", "HTML", "GitHub", "Heroku"],
-    images: [img1, img1, img1, img1],
+    name: "Wagon Race",
+    description: {
+      before: "Race to the finish in this two-player game built with vanilla JavaScript. ",
+      highlight: "Wagon Race",
+      after: " highlights core DOM manipulation and keyboard event handling for real-time player interaction."
+    },
+    url: "https://phyuphyuh.github.io/Wagon-Race/",
+    github: "https://github.com/phyuphyuh/Wagon-Race",
+    techStack: ["JavaScript", "HTML", "CSS", "Github Pages"],
+    images: [wagonRaceImg],
+    video: wagonRace,
   },
   {
     id: 5,
@@ -66,22 +73,14 @@ const projects = [
   },
   {
     id: 6,
-    name: "Wagon Race",
-    description: "Create your own shelf showcasing your fav films, books, and music!",
-    url: "https://phyuphyuh.github.io/Wagon-Race/",
-    github: "https://github.com/phyuphyuh/Wagon-Race",
-    techStack: ["Javascript", "HTML", "CSS", "Github Pages"],
-    images: [wagonRaceImg],
-    video: wagonRace,
-  },
-  {
-    id: 8,
-    name: "React Bridge Player",
-    description: "Create your own shelf showcasing your fav films, books, and music!",
-    url: "https://www.selfshelf.me/",
-    github: "https://github.com/phyuphyuh/rails-watch-list",
-    techStack: ["Rails", "PostgreSQL", "Javascript", "Stimulus.js", "SCSS", "HTML", "GitHub", "Heroku"],
-    images: [img1, img1, img1, img1],
+    name: "Weather App",
+    description: {
+      before: "Get real-time forecasts in style with this responsive weather app built using React and powered by the OpenWeatherMap API. Search for any city or allow location access for local weather updates, switch between metric and imperial units, and enjoy automatic theme changes based on time of day. Weather data is cached in local storage to optimize performance and reduce API calls.",
+    },
+    url: "https://phyuphyuh.github.io/react-weather-app/",
+    github: "https://github.com/phyuphyuh/react-weather-app",
+    techStack: ["React", "Tailwind CSS", "OpenWeatherMap API", "Vite", "GitHub Pages"],
+    images: [weather1, weather2, weather3],
   }
 ];
 
