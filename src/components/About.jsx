@@ -61,19 +61,19 @@ const About = ({ scrollYProgress }) => {
   const frontLayerY = useTransform(
     scrollYProgress,
     [0.30, 0.9],
-    ["0%", "-50%"]
+    ["0%", "-70%"]
   );
 
   const middleLayerY = useTransform(
     scrollYProgress,
     [0.30, 0.9],
-    ["0%", "-70%"]
+    ["0%", "-85%"]
   );
 
   const backLayerY = useTransform(
     scrollYProgress,
     [0.35, 0.9],
-    ["0%", "-90%"]
+    ["0%", "-100%"]
   );
 
   const layers = [
@@ -177,7 +177,7 @@ const About = ({ scrollYProgress }) => {
     container.style.setProperty("--shadow-x", `${shadowDistanceX}px`);
     container.style.setProperty("--shadow-y", `${shadowDistanceY}px`);
 
-    const shadowBlur = 2 + (distanceFromCenter * 2);
+    const shadowBlur = 2 + (distanceFromCenter * 1);
     container.style.setProperty("--shadow-blur", `${shadowBlur}px`);
 
     const shadowOpacity = 0.5 + (distanceFromCenter * 0.3);

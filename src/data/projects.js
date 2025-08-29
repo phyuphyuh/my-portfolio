@@ -75,7 +75,7 @@ const projects = [
     id: 6,
     name: "Weather App",
     description: {
-      before: "Get real-time forecasts in style with this responsive weather app built using React and powered by the OpenWeatherMap API. Search for any city or allow location access for local weather updates, switch between metric and imperial units, and enjoy automatic theme changes based on time of day. Weather data is cached in local storage to optimize performance and reduce API calls.",
+      before: "Get real-time forecasts instantly with this responsive weather app built using React and powered by the OpenWeatherMap API. Search for any city or allow location access for local weather updates, switch between metric and imperial units, and enjoy automatic theme changes based on time of day. Weather data is temporarily cached in local storage to optimize performance and reduce API calls.",
     },
     url: "https://phyuphyuh.github.io/react-weather-app/",
     github: "https://github.com/phyuphyuh/react-weather-app",

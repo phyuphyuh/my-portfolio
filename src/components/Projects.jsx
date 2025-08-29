@@ -198,17 +198,10 @@ const ProjectCard = ({ project, isExpanded, setExpandedId, scrollYProgress, inde
             className={styles.hoverImageContainer}
             style={{
               opacity: isHovered ? 0.8 : 0,
-              transition: 'opacity 0.3s'
+              transition: 'opacity 0.3s',
+              backgroundImage: isHovered ? `url(${project.images[0]})` : 'none',
             }}
-          >
-            {isHovered && (
-              <img
-                src={project.images[0]}
-                alt={`${project.name} preview`}
-                className={styles.hoverImage}
-              />
-            )}
-          </div>
+          />
         )}
 
         <motion.div
