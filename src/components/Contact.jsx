@@ -42,8 +42,8 @@ const Contact = () => {
                 />
               </g>
             </svg>
+            <img className={`${styles.cat} ${styles.milo}`} src={milo} alt="Milo the cat" />
           </a>
-          <img className={`${styles.cat} ${styles.milo}`} src={milo} alt="Milo the cat" />
         </div>
 
         <div className={styles.github}>
@@ -65,8 +65,8 @@ const Contact = () => {
                 />
               </g>
             </svg>
+            <img className={`${styles.cat} ${styles.fifi}`} src={fifi} alt="fifi the cat" />
           </a>
-          <img className={`${styles.cat} ${styles.fifi}`} src={fifi} alt="fifi the cat" />
         </div>
 
         <div className={styles.linkedin}>
@@ -88,8 +88,8 @@ const Contact = () => {
                 />
               </g>
             </svg>
+            <img className={`${styles.cat} ${styles.chichi}`} src={chichi} alt="chichi the cat" />
           </a>
-          <img className={`${styles.cat} ${styles.chichi}`} src={chichi} alt="chichi the cat" />
         </div>
       </div>
     </div>
