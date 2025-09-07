@@ -1,50 +1,186 @@
 @use '../styles/global.scss' as *;
 
 .contact {
-  position: fixed;
-  top: 70%;
-  left: -130px;
-  z-index: 500;
-  background-color: transparent;
-  text-align: center;
-  font-size: 1.7rem;
-  pointer-events: auto;
+  background-color: $alabaster2;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  display: none;
+  z-index: 1;
+  transition: opacity 0.6s ease;
 
-  .contactInner {
-    position: relative;
+  &.visible {
+    display: block;
+  }
+
+  .contactLinks {
+    padding-top: 200px;
+    width: 100%;
     display: flex;
+    justify-content: center;
     align-items: center;
 
-    .tab {
-      width: 100px;
-      position: absolute;
-      left: 80px;
-      top: 0;
-      z-index: 100;
+    .email {
+      position: relative;
+      cursor: pointer;
+      &:hover {
+        .milo {
+          transform: translateY(8px) translateX(8px);
+        }
+
+        .emailSVG {
+          path {
+            stroke: $lapis;
+          }
+        }
+      }
+
+      .emailSVG {
+        position: absolute;
+        bottom: 20px;
+        left: 40px;
+        width: 160px;
+        cursor: pointer;
+        transform: rotate(40deg);
+      }
+
+      .milo {
+        position: absolute;
+        bottom: 20px;
+        left: 50px;
+        width: 150px;
+        height: auto;
+        transition: transform 0.3s ease;
+      }
     }
 
-    .contactList {
-      position: absolute;
-      left: -90px;
-      top: 90px;
-      transform: translateY(-50%);
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 400px;
-      z-index: 105;
-
-      .contactItem {
-        margin: 8px 0;
-
-        a {
-          text-decoration: none;
-          color: $lapis;
+    .github {
+      position: relative;
+      cursor: pointer;
+      &:hover {
+        .fifi {
+          transform: scale(0.95) translateX(10px);
         }
+
+        .githubSVG {
+          path {
+            stroke: $lapis;
+          }
+        }
+      }
+
+      .githubSVG {
+        position: absolute;
+        bottom: 50px;
+        left: -140px;
+        width: 50px;
+        cursor: pointer;
+        transform: rotate(-90deg);
+      }
+
+      .fifi {
+        position: absolute;
+        bottom: 10px;
+        left: -200px;
+        width: 80px;
+        height: auto;
+        transition: transform 0.3s ease;
+      }
+    }
+
+    .linkedin {
+      position: relative;
+      cursor: pointer;
+      &:hover {
+        .chichi {
+          transform: translateX(20px) translateY(10px) rotate(3deg);
+        }
+
+        .linkedinSVG {
+          path {
+            stroke: $lapis;
+          }
+        }
+      }
+
+      .linkedinSVG {
+        position: absolute;
+        bottom: 75px;
+        left: 0px;
+        width: 50px;
+        cursor: pointer;
+        transform: rotate(40deg);
+      }
+
+      .chichi {
+        position: absolute;
+        bottom: -10px;
+        left: -110px;
+        width: 200px;
+        height: auto;
+        transition: transform 0.3s ease;
+      }
+    }
+
+    .cat {
+      pointer-events: none;
+    }
+
+
+    @media (max-width: 768px) {
+      .cat {
+        transform: scale(0.7);
       }
     }
   }
+
+
+  // position: fixed;
+  // top: 70%;
+  // left: -130px;
+  // z-index: 500;
+  // background-color: transparent;
+  // text-align: center;
+  // font-size: 1.7rem;
+  // pointer-events: auto;
+
+  // .contactInner {
+  //   position: relative;
+  //   display: flex;
+  //   align-items: center;
+
+  //   .tab {
+  //     width: 100px;
+  //     position: absolute;
+  //     left: 80px;
+  //     top: 0;
+  //     z-index: 100;
+  //   }
+
+  //   .contactList {
+  //     position: absolute;
+  //     left: -90px;
+  //     top: 90px;
+  //     transform: translateY(-50%);
+  //     list-style: none;
+  //     display: flex;
+  //     flex-direction: column;
+  //     align-items: center;
+  //     width: 400px;
+  //     z-index: 105;
+
+  //     .contactItem {
+  //       margin: 8px 0;
+
+  //       a {
+  //         text-decoration: none;
+  //         color: $lapis;
+  //       }
+  //     }
+  //   }
+  // }
 
   // &:hover {
   //   left: -83px;

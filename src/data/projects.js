@@ -6,6 +6,12 @@ import weather3 from "../assets/images/weather3.png";
 import wagonRaceImg from "../assets/images/wagonrace.png";
 import wagonRace from "../assets/videos/wagonrace.mp4";
 
+import aiPlaylist1 from "../assets/images/ai-playlist-1.png";
+import aiPlaylist2 from "../assets/images/ai-playlist-2.png";
+import aiPlaylist3 from "../assets/images/ai-playlist-3.png";
+import aiPlaylist4 from "../assets/images/ai-playlist-4.png";
+
+
 const projects = [
   {
     id: 1,
@@ -68,7 +74,7 @@ const projects = [
     },
     url: "https://watchlist-pp-b1b5f2bf4594.herokuapp.com/lists",
     github: "https://github.com/phyuphyuh/rails-watch-list",
-    techStack: ["React", "Motion", "SCSS Modules", "Vite", "Vercel"],
+    techStack: ["React", "Vite", "SCSS Modules", "Motion", "Vercel"],
     images: [img1, img1, img1, img1, img1, img1],
   },
   {
@@ -79,8 +85,21 @@ const projects = [
     },
     url: "https://phyuphyuh.github.io/react-weather-app/",
     github: "https://github.com/phyuphyuh/react-weather-app",
-    techStack: ["React", "Tailwind CSS", "OpenWeatherMap API", "Vite", "GitHub Pages"],
+    techStack: ["React", "Vite", "Tailwind CSS", "OpenWeatherMap API", "GitHub Pages"],
     images: [weather1, weather2, weather3],
+  },
+  {
+    id: 7,
+    name: "AI Playlist Generator",
+    description: {
+      before: "Create personalized music playlists with AI in seconds using ",
+      highlight: "AI Playlist Generator",
+      after: ". Powered by OpenAI's GPT-4o-mini, the app generates tailored song lists from any niche or broad request, then fetches corresponding YouTube videos via the YouTube Data API v3. The results are compiled into an interactive, instantly playable playlist with a custom media player featuring playback controls and progress tracking. Built with Vercel serverless functions for secure API key handling.",
+    },
+    url: "https://ai-playlist-xi.vercel.app",
+    github: "https://github.com/phyuphyuh/ai-playlist",
+    techStack: ["React", "Typescript", "Vite", "Tailwind CSS", "react-youtube", "OpenAI API", "Youtube Data API v3", "Vercel (Serverless Functions + Hosting)"],
+    images: [aiPlaylist1, aiPlaylist2, aiPlaylist3, aiPlaylist4],
   }
 ];
 

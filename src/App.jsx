@@ -29,7 +29,7 @@ function App() {
         <Projects />
       </div>
       <Nav scrollYProgress={globalScrollProgress} />
-      {/* <Contact /> */}
+      <Contact />
     </>
   );
 };

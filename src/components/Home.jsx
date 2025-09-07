@@ -5,7 +5,7 @@ import NameComponent from './NameComponent';
 import About from "./About";
 import ScatterImages from './ScatterImages';
 import AnimatedHeading from './AnimatedHeading';
-import { web_developer_paths, yangon_mm_paths, portfolio_paths, me_paths } from '../data/svgPaths.js';
+import { web_developer_paths, yangon_mm_paths, portfolio_paths, email_paths } from '../data/svgPaths.js';
 
 const Home = () => {
   const containerRef = useRef(null);
@@ -47,6 +47,16 @@ const Home = () => {
           className={styles.portfolio}
           inViewOptions={{ margin: "-15% 0px", amount: 0.3 }}
         />
+
+        <a href="mailto:phyuphyu.h27@gmail.com">
+          <AnimatedHeading
+            sectionRef={containerRef}
+            letters={email_paths}
+            className={styles.email}
+            viewBox="0 0 100 100"
+            inViewOptions={{ margin: "-15% 0px", amount: 0.3 }}
+          />
+        </a>
 
         <About scrollYProgress={scrollYProgress} />
       </div>

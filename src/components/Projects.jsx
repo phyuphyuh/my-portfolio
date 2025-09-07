@@ -359,8 +359,8 @@ const Projects = () => {
         sectionRef={sectionRef}
         letters={projects_paths}
         className={styles.sectionTitle}
-        viewBox="0 0 300 60"
-        inViewOptions={{ margin: "-5% 0px", amount: window.innerWidth <= 768 ? 0.1 : 0.4 }}
+        viewBox="0 0 110 200"
+        inViewOptions={{ margin: "-5% 0px", amount: window.innerWidth <= 768 ? 0.1 : 0.3 }}
       />
 
       <motion.div
