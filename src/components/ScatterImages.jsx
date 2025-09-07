@@ -4,8 +4,6 @@ import { useEffect, useRef } from "react";
 import mochi from "../assets/images/mochiedit.png";
 import muffin from "../assets/images/muffinedit.png";
 import milo from "../assets/images/milo2.png";
-import pac from "../assets/images/pac.png";
-import matcha from "../assets/images/matcha.png";
 import styles from "./ScatterImages.module.scss";
 
 const images = [

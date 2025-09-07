@@ -2,7 +2,7 @@
 
 .projects {
   width: 100vw;
-  min-height: 150vh;
+  min-height: 120vh;
   background: linear-gradient(
     to bottom,
     transparent,
@@ -89,8 +89,8 @@
         pointer-events: none;
         z-index: 1;
         background-size: contain;
-        background-position: top;
-        background-repeat: repeat;
+        background-position: center;
+        background-repeat: no-repeat;
       }
 
       .textContent {
@@ -174,7 +174,7 @@
 
           .techBadge {
             font-size: 1rem;
-            color: $mytrle;
+            color: $lapis;
           }
         }
 
@@ -273,12 +273,12 @@
           transition: transform 0.2s ease, background-color 0.2s ease;
 
           &.active {
-            background-color: $vanilla;
+            background-color: $ashblue;
             transform: scale(1.2);
           }
 
           &:hover {
-            background-color: rgba($vanilla, 0.8);
+            background-color: rgba($ashblue, 0.8);
           }
         }
       }
@@ -313,7 +313,7 @@
           text-decoration: none;
           text-transform: uppercase;
           letter-spacing: 0.5px;
-          color: $sky;
+          color: $mytrle;
           padding: 0.6rem 1.2rem;
           border-radius: 8px;
           box-shadow: 0 4px 6px rgba($softcharcoal, 0.1);

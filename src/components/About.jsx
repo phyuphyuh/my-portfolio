@@ -4,7 +4,7 @@ import AnimatedHeading from './AnimatedHeading';
 import { about_path } from "../data/svgPaths.js";
 // import me from "../assets/images/me1.jpg";
 // import me2 from "../assets/images/me2.jpg";
-import pp from "../assets/images/pp3small.png";
+// import pp from "../assets/images/pp3small.png";
 import pp2 from "../assets/images/pp3small2.png";
 import styles from "./About.module.scss";
 // import AboutSVG from "../assets/aboutcontainer3.svg";
