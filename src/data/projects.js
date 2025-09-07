@@ -1,4 +1,10 @@
 import img1 from "../assets/images/img1.png";
+import watchlist1 from "../assets/images/watchlist1.png";
+import watchlist2 from "../assets/images/watchlist2.png";
+import watchlist3 from "../assets/images/watchlist3.png";
+import watchlist4 from "../assets/images/watchlist4.png";
+import watchlist5 from "../assets/images/watchlist5.png";
+
 import weather1 from "../assets/images/weather1.png";
 import weather2 from "../assets/images/weather2.png";
 import weather3 from "../assets/images/weather3.png";
@@ -24,7 +30,7 @@ const projects = [
     url: "https://watchlist-pp-b1b5f2bf4594.herokuapp.com/",
     github: "https://github.com/phyuphyuh/rails-watch-list",
     techStack: ["Ruby on Rails", "PostgreSQL", "Turbo (Hotwire)", "Stimulus", "Bootstrap", "TMDB API", "Heroku"],
-    images: [img1, img1, img1, img1, img1, img1],
+    images: [watchlist1, watchlist2, watchlist3, watchlist4, watchlist5],
   },
   {
     id: 2,
@@ -37,7 +43,7 @@ const projects = [
     url: "https://www.selfshelf.me/",
     github: "https://github.com/phyuphyuh/SelfShelf",
     techStack: ["Ruby on Rails", "PostgreSQL", "Stimulus", "Bootstrap", "Devise", "TMDB API", "Spotify API", "Google Books API", "Heroku", "Git/GitHub"],
-    images: [img1],
+    images: [img1, img1, img1],
   },
   {
     id: 3,
@@ -50,7 +56,7 @@ const projects = [
     url: "https://art-classes-22f38858df0a.herokuapp.com/",
     github: "https://github.com/phyuphyuh/art_classes",
     techStack: ["Ruby on Rails", "PostgreSQL", "Bootstrap", "Stimulus", "Devise", "Mapbox API", "Heroku", "Git/GitHub"],
-    images: [img1, img1, img1, img1, img1, img1],
+    images: [img1, img1, img1],
   },
   {
     id: 4,
@@ -72,8 +78,8 @@ const projects = [
     description: {
       before: "Step into my journey as a web developer through this interactive portfolio created with React. Featuring clean aesthetics and thoughtful animations, the site offers an engaging experience that invites exploration.",
     },
-    url: "https://watchlist-pp-b1b5f2bf4594.herokuapp.com/lists",
-    github: "https://github.com/phyuphyuh/rails-watch-list",
+    url: "https://phyuphyuh.me/",
+    github: "https://github.com/phyuphyuh/my-portfolio",
     techStack: ["React", "Vite", "SCSS Modules", "Motion", "Vercel"],
     images: [img1, img1, img1, img1, img1, img1],
   },

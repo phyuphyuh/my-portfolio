@@ -100,10 +100,9 @@ const About = ({ scrollYProgress }) => {
       y: backLayerY,
       pairs: [
         { top: "Coffee sipper", bottom: "Hardcore shipper", position: { top: '80%', left: '40%' } },
-        { top: "Flannel wearer", bottom: "Whim weaver", position: { top: '95%', left: '5%' } },
+        { top: "Expert navigator", bottom: "Passionate creator", position: { top: '95%', left: '5%' } },
         { top: "Master escapist", bottom: "Neurotic perfectionist", position: { top: '35%', left: '60%' } },
         { top: "Shower singer", bottom: "Sky gazer", position: { top: '5%', left: '10%' } },
-        { top: "Expert navigator", bottom: "Chapstick collector", position: { top: '95%', left: '90%' } },
         { top: "Perennial bloomer", bottom: "Aisle roamer", position: { top: '80%', left: '80%' } },
         { top: "Designated snapper", bottom: "Anemic napper", position: { top: '25%', left: '85%' } },
         { top: "Shy snob", bottom: "Stylish slob", position: { top: '80%', left: '0%' } },
