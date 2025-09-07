@@ -13,7 +13,7 @@ const Contact = () => {
   const [visible, setVisible] = useState(false);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest > 0.85) setVisible(true);
+    if (latest > 0.80) setVisible(true);
     else setVisible(false);
   })
 
