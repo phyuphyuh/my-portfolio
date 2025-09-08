@@ -273,12 +273,12 @@
           transition: transform 0.2s ease, background-color 0.2s ease;
 
           &.active {
-            background-color: $ashblue;
+            background-color: $vanilla;
             transform: scale(1.2);
           }
 
           &:hover {
-            background-color: rgba($ashblue, 0.8);
+            background-color: rgba($goldernoat, 0.8);
           }
         }
       }
@@ -294,7 +294,7 @@
         span {
           font-family: "Montserrat", sans-serif;
           font-size: 1rem;
-          color: $moonstone2;
+          color: $cambridgeblue2;
           font-weight: 700;
         }
       }
@@ -302,7 +302,7 @@
       .links {
         display: flex;
         justify-content: center;
-        gap: 1.2rem;
+        gap: 0.5rem;
         margin-top: auto;
         cursor: pointer;
 
@@ -313,7 +313,7 @@
           text-decoration: none;
           text-transform: uppercase;
           letter-spacing: 0.5px;
-          color: $lapis;
+          color: $cambridgeblue;
           padding: 0.6rem 1.2rem;
           border-radius: 8px;
           box-shadow: 0 4px 6px rgba($softcharcoal, 0.1);

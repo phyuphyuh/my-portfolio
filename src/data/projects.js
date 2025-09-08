@@ -8,6 +8,12 @@ import watchlist5 from "../assets/images/watchlist5.png";
 import selfShelfImg from "../assets/images/selfshelf.png";
 import selfShelf from "../assets/videos/selfshelf.mp4";
 
+import artclasses1 from "../assets/images/artclasses1.jpg";
+import artclasses2 from "../assets/images/artclasses2.jpg";
+import artclasses3 from "../assets/images/artclasses3.jpg";
+import artclasses4 from "../assets/images/artclasses4.jpg";
+import artclasses5 from "../assets/images/artclasses5.jpg";
+
 import weather1 from "../assets/images/weather1.png";
 import weather2 from "../assets/images/weather2.png";
 import weather3 from "../assets/images/weather3.png";
@@ -59,7 +65,7 @@ const projects = [
     url: "https://art-classes-22f38858df0a.herokuapp.com/",
     github: "https://github.com/phyuphyuh/art_classes",
     techStack: ["Ruby on Rails", "PostgreSQL", "Bootstrap", "Stimulus", "Devise", "Mapbox API", "Heroku", "Git/GitHub"],
-    images: [img1, img1, img1],
+    images: [artclasses1, artclasses2, artclasses3, artclasses4, artclasses5],
   },
   {
     id: 4,
