@@ -5,6 +5,9 @@ import watchlist3 from "../assets/images/watchlist3.png";
 import watchlist4 from "../assets/images/watchlist4.png";
 import watchlist5 from "../assets/images/watchlist5.png";
 
+import selfShelfImg from "../assets/images/selfshelf.png";
+import selfShelf from "../assets/videos/selfshelf.mp4";
+
 import weather1 from "../assets/images/weather1.png";
 import weather2 from "../assets/images/weather2.png";
 import weather3 from "../assets/images/weather3.png";
@@ -15,7 +18,6 @@ import wagonRace from "../assets/videos/wagonrace.mp4";
 import aiPlaylist1 from "../assets/images/ai-playlist-1.png";
 import aiPlaylist2 from "../assets/images/ai-playlist-2.png";
 import aiPlaylist3 from "../assets/images/ai-playlist-3.png";
-import aiPlaylist4 from "../assets/images/ai-playlist-4.png";
 
 
 const projects = [
@@ -43,7 +45,8 @@ const projects = [
     url: "https://www.selfshelf.me/",
     github: "https://github.com/phyuphyuh/SelfShelf",
     techStack: ["Ruby on Rails", "PostgreSQL", "Stimulus", "Bootstrap", "Devise", "TMDB API", "Spotify API", "Google Books API", "Heroku", "Git/GitHub"],
-    images: [img1, img1, img1],
+    images: [selfShelfImg],
+    video: selfShelf,
   },
   {
     id: 3,
@@ -105,7 +108,7 @@ const projects = [
     url: "https://ai-playlist-xi.vercel.app",
     github: "https://github.com/phyuphyuh/ai-playlist",
     techStack: ["React", "Typescript", "Vite", "Tailwind CSS", "react-youtube", "OpenAI API", "Youtube Data API v3", "Vercel (Serverless Functions + Hosting)"],
-    images: [aiPlaylist1, aiPlaylist2, aiPlaylist3, aiPlaylist4],
+    images: [aiPlaylist1, aiPlaylist2, aiPlaylist3],
   }
 ];
 
