@@ -1,9 +1,7 @@
-import img1 from "../assets/images/img1.png";
 import watchlist1 from "../assets/images/watchlist1.png";
 import watchlist2 from "../assets/videos/watchlist2.mp4";
 import watchlist3 from "../assets/images/watchlist3.png";
 import watchlist4 from "../assets/videos/watchlist4.mp4";
-
 
 import selfShelfImg from "../assets/images/selfshelf.png";
 import selfShelf from "../assets/videos/selfshelf.mp4";
@@ -13,6 +11,11 @@ import artclasses2 from "../assets/images/artclasses2.jpg";
 import artclasses3 from "../assets/images/artclasses3.jpg";
 import artclasses4 from "../assets/images/artclasses4.jpg";
 import artclasses5 from "../assets/images/artclasses5.jpg";
+
+import portfolio1 from "../assets/images/portfolio1.jpg";
+import portfolio2 from "../assets/images/portfolio2.jpg";
+import portfolio3 from "../assets/images/portfolio3.jpg";
+import portfolio4 from "../assets/images/portfolio4.jpg";
 
 import weather1 from "../assets/images/weather1.png";
 import weather2 from "../assets/images/weather2.png";
@@ -107,9 +110,12 @@ const projects = [
     url: "https://phyuphyuh.me/",
     github: "https://github.com/phyuphyuh/my-portfolio",
     techStack: ["React", "Vite", "SCSS Modules", "Motion", "Vercel"],
-    thumbnail: img1,
+    thumbnail: portfolio1,
     media: [
-      { type: "image", src: img1 },
+      { type: "image", src: portfolio1 },
+      { type: "image", src: portfolio2 },
+      { type: "image", src: portfolio3 },
+      { type: "image", src: portfolio4 },
     ]
   },
   {
