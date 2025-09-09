@@ -100,14 +100,14 @@ const ProjectCard = ({ project, isExpanded, setExpandedId, scrollYProgress, inde
   // Image scrolling logic
   // Scroll to next/previous image
   const scrollImages = (direction) => {
-    if (!imgScrollerRef.current || !project.images) return;
+    if (!imgScrollerRef.current || !project.media) return;
 
     const scroller = imgScrollerRef.current;
     const imageWidth = scroller.children[0].clientWidth;
 
     let newIndex;
     if (direction === 'next') {
-      newIndex = Math.min(currentImageIndex + 1, project.images.length - 1);
+      newIndex = Math.min(currentImageIndex + 1, project.media.length - 1);
     } else {
       newIndex = Math.max(currentImageIndex - 1, 0);
     }
@@ -123,7 +123,7 @@ const ProjectCard = ({ project, isExpanded, setExpandedId, scrollYProgress, inde
 
   // Scroll to specific image
   const scrollToImage = (index) => {
-    if (!imgScrollerRef.current || !project.images) return;
+    if (!imgScrollerRef.current || !project.media) return;
 
     const scroller = imgScrollerRef.current;
     const imageWidth = scroller.children[0].clientWidth;
@@ -140,7 +140,7 @@ const ProjectCard = ({ project, isExpanded, setExpandedId, scrollYProgress, inde
   // Update current index to manual scrolling
   useEffect(() => {
     const scroller = imgScrollerRef.current;
-    if (!scroller || !project.images || project.images.length <= 1) return;
+    if (!scroller || !project.media || project.media.length <= 1) return;
 
     const handleScroll = () => {
       const imageWidth = scroller.children[0].clientWidth;
@@ -157,7 +157,7 @@ const ProjectCard = ({ project, isExpanded, setExpandedId, scrollYProgress, inde
     return () => {
       scroller.removeEventListener('scroll', handleScroll);
     };
-  }, [currentImageIndex, project.images]);
+  }, [currentImageIndex, project.media]);
 
   // Reset current image index when card expands/collapses
   useEffect(() => {
@@ -199,7 +199,7 @@ const ProjectCard = ({ project, isExpanded, setExpandedId, scrollYProgress, inde
             style={{
               opacity: isHovered ? 0.8 : 0,
               transition: 'opacity 0.3s',
-              backgroundImage: isHovered ? `url(${project.images[0]})` : 'none',
+              backgroundImage: isHovered ? `url(${project.thumbnail})` : "none"
             }}
           />
         )}
@@ -224,7 +224,7 @@ const ProjectCard = ({ project, isExpanded, setExpandedId, scrollYProgress, inde
         {isExpanded && (
           <motion.div layout className={styles.expandedContent}>
             <div className={styles.mediaContainer}>
-              {project.images && project.images.length > 1 && (
+              {project.media && project.media.length > 1 && (
                 <>
                   <button
                     className={`${styles.navArrow} ${styles.navPrev}`}
@@ -255,32 +255,38 @@ const ProjectCard = ({ project, isExpanded, setExpandedId, scrollYProgress, inde
               )}
 
               <div className={styles.mediaScroller} ref={imgScrollerRef}>
-                {project.video ? (
-                  <video
-                    src={project.video}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="none"
-                    className={styles.projectVideo}
-                  />
-                ) : (
-                  project.images.map((img, index) => (
-                    <img
-                      key={index}
-                      src={img}
-                      alt={`${project.name} image ${index + 1}`}
-                      className={styles.projectImage}
-                    />
-                  ))
-                )}
+                {project.media.map((item, index) => {
+                  if (item.type === 'image') {
+                    return (
+                      <img
+                        key={index}
+                        src={item.src}
+                        alt={`${project.name} image ${index + 1}`}
+                        className={styles.projectImage}
+                      />
+                    );
+                  } else if (item.type === 'video') {
+                    return (
+                      <video
+                        key={index}
+                        src={item.src}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="none"
+                        className={styles.projectVideo}
+                      />
+                    );
+                  }
+                  return null;
+                })}
               </div>
             </div>
 
-            {project.images && project.images.length > 1 && (
+            {project.media && project.media.length > 1 && (
               <div className={styles.imageIndicators}>
-                {project.images.map((_, index) => (
+                {project.media.map((_, index) => (
                   <button
                     key={index}
                     className={`${styles.indicator} ${currentImageIndex === index ? styles.active : ''}`}

@@ -1,9 +1,9 @@
 import img1 from "../assets/images/img1.png";
 import watchlist1 from "../assets/images/watchlist1.png";
-import watchlist2 from "../assets/images/watchlist2.png";
+import watchlist2 from "../assets/videos/watchlist2.mp4";
 import watchlist3 from "../assets/images/watchlist3.png";
-import watchlist4 from "../assets/images/watchlist4.png";
-import watchlist5 from "../assets/images/watchlist5.png";
+import watchlist4 from "../assets/videos/watchlist4.mp4";
+
 
 import selfShelfImg from "../assets/images/selfshelf.png";
 import selfShelf from "../assets/videos/selfshelf.mp4";
@@ -38,7 +38,13 @@ const projects = [
     url: "https://watchlist-pp-b1b5f2bf4594.herokuapp.com/",
     github: "https://github.com/phyuphyuh/rails-watch-list",
     techStack: ["Ruby on Rails", "PostgreSQL", "Turbo (Hotwire)", "Stimulus", "Bootstrap", "TMDB API", "Heroku"],
-    images: [watchlist1, watchlist2, watchlist3, watchlist4, watchlist5],
+    thumbnail: watchlist1,
+    media: [
+      { type: "image", src: watchlist1 },
+      { type: "video", src: watchlist2 },
+      { type: "image", src: watchlist3 },
+      { type: "video", src: watchlist4 },
+    ]
   },
   {
     id: 2,
@@ -51,8 +57,10 @@ const projects = [
     url: "https://www.selfshelf.me/",
     github: "https://github.com/phyuphyuh/SelfShelf",
     techStack: ["Ruby on Rails", "PostgreSQL", "Stimulus", "Bootstrap", "Devise", "TMDB API", "Spotify API", "Google Books API", "Heroku", "Git/GitHub"],
-    images: [selfShelfImg],
-    video: selfShelf,
+    thumbnail: selfShelfImg,
+    media: [
+      { type: "video", src: selfShelf },
+    ]
   },
   {
     id: 3,
@@ -65,7 +73,14 @@ const projects = [
     url: "https://art-classes-22f38858df0a.herokuapp.com/",
     github: "https://github.com/phyuphyuh/art_classes",
     techStack: ["Ruby on Rails", "PostgreSQL", "Bootstrap", "Stimulus", "Devise", "Mapbox API", "Heroku", "Git/GitHub"],
-    images: [artclasses1, artclasses2, artclasses3, artclasses4, artclasses5],
+    thumbnail: artclasses1,
+    media : [
+      { type: "image", src: artclasses1 },
+      { type: "image", src: artclasses2 },
+      { type: "image", src: artclasses3 },
+      { type: "image", src: artclasses4 },
+      { type: "image", src: artclasses5 },
+    ]
   },
   {
     id: 4,
@@ -78,8 +93,10 @@ const projects = [
     url: "https://phyuphyuh.github.io/Wagon-Race/",
     github: "https://github.com/phyuphyuh/Wagon-Race",
     techStack: ["JavaScript", "HTML", "CSS", "Github Pages"],
-    images: [wagonRaceImg],
-    video: wagonRace,
+    thumbnail: wagonRaceImg,
+    media: [
+      { type: "video", src: wagonRace },
+    ]
   },
   {
     id: 5,
@@ -90,7 +107,10 @@ const projects = [
     url: "https://phyuphyuh.me/",
     github: "https://github.com/phyuphyuh/my-portfolio",
     techStack: ["React", "Vite", "SCSS Modules", "Motion", "Vercel"],
-    images: [img1, img1, img1, img1, img1, img1],
+    thumbnail: img1,
+    media: [
+      { type: "image", src: img1 },
+    ]
   },
   {
     id: 6,
@@ -101,7 +121,12 @@ const projects = [
     url: "https://phyuphyuh.github.io/react-weather-app/",
     github: "https://github.com/phyuphyuh/react-weather-app",
     techStack: ["React", "Vite", "Tailwind CSS", "OpenWeatherMap API", "GitHub Pages"],
-    images: [weather1, weather2, weather3],
+    thumbnail: weather1,
+    media: [
+      { type: "image", src: weather1 },
+      { type: "image", src: weather2 },
+      { type: "image", src: weather3 },
+    ]
   },
   {
     id: 7,
@@ -114,7 +139,12 @@ const projects = [
     url: "https://ai-playlist-xi.vercel.app",
     github: "https://github.com/phyuphyuh/ai-playlist",
     techStack: ["React", "Typescript", "Vite", "Tailwind CSS", "react-youtube", "OpenAI API", "Youtube Data API v3", "Vercel (Serverless Functions + Hosting)"],
-    images: [aiPlaylist1, aiPlaylist2, aiPlaylist3],
+    thumbnail: aiPlaylist1,
+    media: [
+      { type: "image", src: aiPlaylist1 },
+      { type: "image", src: aiPlaylist2 },
+      { type: "image", src: aiPlaylist3 },
+    ]
   }
 ];
 
