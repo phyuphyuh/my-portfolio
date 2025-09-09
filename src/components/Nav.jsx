@@ -141,7 +141,7 @@ const Nav = ({ scrollYProgress }) => {
   };
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const visibilityThreshold = isMobile ? 0.10 : 0.18;
+    const visibilityThreshold = isMobile ? 0.10 : 0.15;
     const fadeStartThreshold = isMobile ? 0.07 : 0.14;
 
     if (latest >= visibilityThreshold) {
