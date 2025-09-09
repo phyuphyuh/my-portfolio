@@ -7,12 +7,9 @@ import milo from "../assets/images/milo2.png";
 import styles from "./ScatterImages.module.scss";
 
 const images = [
-  // { src: pp, size: 'large' },
   { src: mochi, size: 'small' },
   { src: muffin },
   { src: milo, size: 'xsmall' },
-  // { src: pac, size: 'small' },
-  // { src: matcha, size: 'small' },
 ];
 
 const ScatterImages = ({ containerRef, scrollYProgress }) => {
