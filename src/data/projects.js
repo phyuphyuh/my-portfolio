@@ -28,6 +28,9 @@ import aiPlaylist1 from "../assets/images/ai-playlist-1.png";
 import aiPlaylist2 from "../assets/images/ai-playlist-2.png";
 import aiPlaylist3 from "../assets/images/ai-playlist-3.png";
 
+import bluejar from "../assets/images/nutbutter.png";
+import bluejar1 from "../assets/videos/nutbutter1.mp4";
+import bluejar2 from "../assets/videos/nutbutter2.mp4";
 
 const projects = [
   {
@@ -163,10 +166,10 @@ const projects = [
     url: "https://nut-butter-shop.netlify.app/",
     github: "https://github.com/phyuphyuh/nut-butter-shop",
     techStack: ["React", "TypeScript", "Vite", "SCSS", "Stripe API", "Auth0", "Netlify (Functions + Hosting)", "Context API"],
-    thumbnail: aiPlaylist1,
+    thumbnail: bluejar,
     media: [
-      { type: "image", src: aiPlaylist1 },
-      { type: "image", src: aiPlaylist2 },
+      { type: "video", src: bluejar1 },
+      { type: "video", src: bluejar2 },
     ]
   }
 ];
