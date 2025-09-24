@@ -151,6 +151,23 @@ const projects = [
       { type: "image", src: aiPlaylist2 },
       { type: "image", src: aiPlaylist3 },
     ]
+  },
+  {
+    id: 8,
+    name: "Blue Jar Folks",
+    description: {
+      before: "Experience modern e-commerce with ",
+      highlight: "Blue Jar Folks",
+      after: ", a complete online storefront for artisan nut butters. Originally built with vanilla JavaScript in 2019, this project showcases a full modernization to React with TypeScript, featuring secure Stripe payments, Auth0 authentication, persistent shopping cart with localStorage, and serverless checkout processing. The transformation demonstrates migrating legacy codebases to production-ready applications with contemporary web development practices."
+    },
+    url: "https://nut-butter-shop.netlify.app/",
+    github: "https://github.com/phyuphyuh/nut-butter-shop",
+    techStack: ["React", "TypeScript", "Vite", "SCSS", "Stripe API", "Auth0", "Netlify (Functions + Hosting)", "Context API"],
+    thumbnail: aiPlaylist1,
+    media: [
+      { type: "image", src: aiPlaylist1 },
+      { type: "image", src: aiPlaylist2 },
+    ]
   }
 ];
 
