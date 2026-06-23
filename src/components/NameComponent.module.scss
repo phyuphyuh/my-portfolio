@@ -12,6 +12,7 @@
     width: 100%;
     height: 100%;
     transform-origin: center;
+    transform-style: preserve-3d;
   }
 
   &.navMode {
@@ -36,33 +37,42 @@
     align-items: center;
     transition: font-size 0.3s ease;
 
-    span:first-of-type {
+    .wordRow {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
       position: relative;
-      display: block;
+    }
+
+    .charContainer {
+      position: relative;
+      display: inline-block;
+
+      .charText {
+        position: relative;
+        z-index: 2;
+      }
     }
 
     .shadowWrapper {
       position: absolute;
-      // top: -50px;
-      top: min(-30px, -3vh);
+      bottom: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      perspective: 300px;
-      // perspective: calc(300px + 5vw);
-      z-index: -1;
+      perspective: 1000px;
+      z-index: 1;
+      pointer-events: none;
 
       .shadow {
         font-size: inherit;
-        line-height: 0;
-        color: rgba($softcharcoal, 0.3);
-        transform-origin: bottom;
+        line-height: inherit;
+        color: rgba($softcharcoal, 0.35);
+        transform-origin: bottom center;
         transform-style: preserve-3d;
-        perspective: 50px;
-        filter: blur(2px);
-        opacity: 0.3;
         pointer-events: none;
-        transform: translateY(20px);
+        display: block;
+        text-align: center;
       }
     }
   }
